@@ -1,0 +1,26 @@
+
+.introduction{
+    padding: 20px;
+}
+.volkswagenImage{
+    background-image: url(../../../public/assets/VW_Werk_Altes_Heizkraftwerk_WB_edit.jpg);
+    background-repeat: no-repeat;
+
+    background-size: auto;
+}
+
+.textContent{
+    height: 300px;
+    padding: 40px;
+}
+h4{
+    padding: 20px;
+}
+.volkswagenTitle{
+    padding: 20px;
+    text-align: center;
+}
+.titleBox{
+    height: 50px;
+    text-align: center;
+}
