@@ -226,9 +226,10 @@ input {
 }
 
 .loginMainContainer{
-	height: 700px;
+	height: 600px;
 	width: 60%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+

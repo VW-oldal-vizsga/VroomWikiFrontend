@@ -24,3 +24,13 @@ h4{
     height: 50px;
     text-align: center;
 }
+.container {
+	background-color: none;
+}
+
+.accordion-button {
+    background-color: transparent !important;
+    color: black !important;
+  }
+  
+  
