@@ -19,13 +19,20 @@ export class SalesGraphComponent implements OnInit {
       datasets: [
         {
           label: 'Sales',
-          data: ['160','170','180','200'],
-          backgroundColor: 'blue',
+          data: ['160','170',null,'180','200'],
+          backgroundColor: 'rgb(255, 99, 132)',
+          fill: false,
+          spanGaps: true,
+          borderColor: "rgb(255, 99, 132)"
+
         },
         {
           label: 'PAT',
           data: ['100','120','133','134'],
           backgroundColor: 'red',
+          fill: false,
+          spanGaps: true,
+          borderColor: "red"
         },
       ],
     },
