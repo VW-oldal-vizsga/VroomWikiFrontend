@@ -1,0 +1,11 @@
+.chartContainer{
+    width: 100%;
+}
+.mainContentContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chart-container{
+    border: 2px solid lightgray;
+}
