@@ -1,4 +1,11 @@
-
+.mainPageLangContainer{
+    height: 60px;
+    /* border: 2px solid lightgray; */
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 .mainPageContainer{
     height: 80px;
     border-bottom: 2px solid lightgray;
@@ -51,6 +58,10 @@ button:hover{
     font-style: italic;
     font-weight: bold;
     text-shadow: 3px 3px 6px gray;
+}
+.btn{
+    padding: 0;
+    height: 0;
 }
 
 
