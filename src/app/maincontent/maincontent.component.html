@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-8 introductionBox">
               <div class="row titleBox">
-                <h4>What is Lorem Ipsum?</h4>
+                <h4 class="h4MainTitle">What is Lorem Ipsum?</h4>
               </div>
               <div class="row textContent">
                 <p >
@@ -23,42 +23,23 @@
               <div class="row borderNone textContent">
                 <div class="volkswagenImage"></div>
               </div>
-                
             </div>
-            <div class="container mt-4">
-                <div class="accordion" id="accordionExample">
-                  
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                        Első elem
-                      </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show">
-                      <div class="accordion-body">
-                        Ez az első elem tartalma.
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                        Második elem
-                      </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse show">
-                      <div class="accordion-body">
-                        Ez a második elem tartalma.
-                      </div>
-                    </div>
-                  </div>
-              
+        </div>
+        <div class="row">
+          <div class="col-12 middle">
+            <div class="accordion">
+              <div *ngFor="let item of accordionData; let i = index" class="accordion-item">
+                <div class="accordion-header" (click)="toggle(i)">
+                  <h4>{{ item.title }}</h4>
+                </div>
+                <div class="accordion-body" *ngIf="item.open">
+                  <p>{{ item.content }}</p>
                 </div>
               </div>
-              
-              
+            </div>
+          </div>
         </div>
+        
         
     </div>
 

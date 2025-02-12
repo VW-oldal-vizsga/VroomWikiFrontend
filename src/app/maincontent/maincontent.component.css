@@ -13,7 +13,7 @@
     height: 300px;
     padding: 40px;
 }
-h4{
+.h4MainTitle{
     padding: 20px;
 }
 .volkswagenTitle{
@@ -28,9 +28,28 @@ h4{
 	background-color: none;
 }
 
-.accordion-button {
-    background-color: transparent !important;
-    color: black !important;
+.accordion {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+  }
+  
+  .accordion-item {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  
+  .accordion-header {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .accordion-body {
+    padding: 10px;
+    font-size: 16px;
   }
   
   
