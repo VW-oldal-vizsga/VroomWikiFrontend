@@ -6,3 +6,7 @@
 .card{
     border: 2px solid black;
 }
+.card-img-top {
+    height: 200px;
+    object-fit: cover; /* A képek arányait megtartva jelenjenek meg */
+  }
