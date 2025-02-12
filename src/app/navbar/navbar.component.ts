@@ -14,7 +14,7 @@ export class NavbarComponent {
   constructor(private modalService: NgbModal) {}
 
   openModal() {
-    const modalRef = this.modalService.open(LanguageModalComponent);
+    const modalRef = this.modalService.open(LanguageModalComponent, {size: 'lg'});
     modalRef.componentInstance.name = 'World';
   }
 }

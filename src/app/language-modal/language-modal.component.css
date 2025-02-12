@@ -1,0 +1,55 @@
+.roLang{
+    height: 40px;
+    background-image: url(../../assets/images/ro-flag.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 60px;
+}
+
+.langcoverer{
+    height: auto;
+    width: auto;
+}
+.ukrLang{
+    height: 40px;
+    background-image: url(../../assets/images/up-flag.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 60px;
+}
+.sloLang{
+    height: 40px;
+    background-image: url(../../assets/images//lo-flag.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 60px;
+}
+.srbLang{
+    height: 40px;
+    background-image: url(../../assets/images/ri-flag.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 60px;
+}
+.auLang{
+    height: 40px;
+    background-image: url(../../assets/images/au-flag.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 60px;
+}
+.croLang{
+    height: 40px;
+    background-image: url(../../assets/images/hr-flag.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 60px;
+    background-position: center;
+}
+
