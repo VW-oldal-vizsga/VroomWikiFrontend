@@ -4,6 +4,7 @@ import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OldmodelsComponent } from './oldmodels/oldmodels.component';
 import { SalesGraphComponent } from './sales-graph/sales-graph.component';
+import { LanguageModalComponent } from './language-modal/language-modal.component';
 
 export const routes: Routes = [
     { path: '', component: MainComponent },
@@ -11,5 +12,6 @@ export const routes: Routes = [
     { path: 'maincontent', component: MainComponent},
     { path: 'oldmodels', component:OldmodelsComponent},
     { path: 'login-signup', component:LoginSignupComponent},
-    { path: 'sales-graph', component:SalesGraphComponent}
+    { path: 'sales-graph', component:SalesGraphComponent},
+    { path: 'language-modal', component:LanguageModalComponent}
 ];
