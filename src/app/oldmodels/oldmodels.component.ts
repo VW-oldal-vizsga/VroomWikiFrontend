@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
+import { cardData } from '../cards';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-oldmodels',
@@ -10,18 +12,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './oldmodels.component.css'
 })
 export class OldmodelsComponent {
-  cardData = [
-    { image: 'assets/poloVivo.png', text: 'Polo Vivo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/taigo.jpg', text: 'Taigo' },
-  ];
+  cardData = cardData;
+  
+  constructor(private router: Router) {}
+
+  navigateToDetail(id: string) {
+    this.router.navigate(['/cards', id]);
+  }
 }
