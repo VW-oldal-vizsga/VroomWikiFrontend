@@ -19,6 +19,5 @@ export class LanguageModalComponent {
   }
   close() {
     this.modalService.dismissAll();
-    console.log('A modál bezáródott');
   }
 }
