@@ -1,6 +1,6 @@
 .mainContentContainer{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 .card{
@@ -18,5 +18,6 @@ button{
 .col-4 {
     margin-bottom: 50px;
 }
+
 
 

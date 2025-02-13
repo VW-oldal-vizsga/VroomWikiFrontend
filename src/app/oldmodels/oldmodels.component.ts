@@ -13,14 +13,15 @@ export class OldmodelsComponent {
   cardData = [
     { image: 'assets/poloVivo.png', text: 'Polo Vivo' },
     { image: 'assets/taigo.jpg', text: 'Taigo' },
-    { image: 'assets/arteon.jpg', text: 'Arteon' }, 
-    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
-    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
-    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
-    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
-    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
-    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
-    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
-    { image: 'assets/touareg.jpg', text: 'Touareg' } 
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
   ];
 }
