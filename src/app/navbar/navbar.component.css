@@ -60,7 +60,7 @@ button:hover{
 }
 .languageImage{
     height: 30px;
-    background-image: url(../../assets/images/magyarzaszlo-min.png);
+    background-image: url(../../assets/magyarzaszlo-min.png);
     background-repeat: no-repeat;
     background-size: contain;
     border: none;

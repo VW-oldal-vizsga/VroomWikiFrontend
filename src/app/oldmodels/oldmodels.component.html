@@ -2,13 +2,15 @@
 <div class="middle">
     <div class="mainContentContainer">
         <div class="row rowPadding">
-            <div *ngFor="let image of cardData" class="col-4">
-                <div  class="card" style="width: 18rem;">
-                    <img [src]="image.image" class="card-img-top" [alt]="image.text">
-                    <div class="card-body">
-                      <p class="card-text">{{ image.text}}</p>
+            <div *ngFor="let i of cardData" class="col-4">
+                <button>
+                    <div  class="card" style="width: 18rem;">
+                        <img [src]="i.image" class="card-img-top" [alt]="i.text">
+                        <div class="card-body">
+                          <p class="card-text">{{ i.text}}</p>
+                        </div>
                     </div>
-                </div>
+                </button>
             </div>
             
         </div>

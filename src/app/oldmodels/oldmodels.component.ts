@@ -11,9 +11,16 @@ import { CommonModule } from '@angular/common';
 })
 export class OldmodelsComponent {
   cardData = [
-    { image:'assets/images/poloVivo.png', text: "Polo Vivo"},
-    { image:"assets/images/taigo.jpg", text: "Taigo"},
-    { image:"http://www.kepfeltoltes.eu/view.php?filename=4462018_Volkswagen_Touare.jpg", text: "Touareg"},
-    { image:"http://www.kepfeltoltes.eu/view.php?filename=3522018_Volkswagen_Arteon.jpg", text: "Arteon"}
-  ]
+    { image: 'assets/poloVivo.png', text: 'Polo Vivo' },
+    { image: 'assets/taigo.jpg', text: 'Taigo' },
+    { image: 'assets/arteon.jpg', text: 'Arteon' }, 
+    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
+    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
+    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
+    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
+    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
+    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
+    { image: 'assets/touareg.jpg', text: 'Touareg' }, 
+    { image: 'assets/touareg.jpg', text: 'Touareg' } 
+  ];
 }
