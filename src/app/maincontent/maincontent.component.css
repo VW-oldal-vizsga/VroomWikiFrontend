@@ -29,27 +29,31 @@
 }
 
 .accordion {
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
-  }
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.accordion-item:hover{
+  box-shadow: 8px 4px 4px gray;
+}
   
-  .accordion-item {
-    border: 1px solid #ccc;
-    margin-bottom: 5px;
-    border-radius: 5px;
-  }
+.accordion-item {
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
   
-  .accordion-header {
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-  }
+.accordion-header {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
   
-  .accordion-body {
-    padding: 10px;
-    font-size: 16px;
-  }
+.accordion-body {
+  padding: 10px;
+  font-size: 16px;
+}
   
   
