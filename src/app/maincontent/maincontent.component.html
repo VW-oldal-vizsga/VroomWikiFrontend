@@ -38,7 +38,7 @@
                     <div class="accordion-header" (click)="toggle(i)">
                       <h4>{{ item.title }}</h4>
                     </div>
-                    <div class="accordion-body" *ngIf="item.open">
+                    <div class="accordion-body" *ngIf="item.open" (click)="toggle(i)">
                       <p>{{ item.content }}</p>
                     </div>
                   </div>
