@@ -1,11 +1,10 @@
-<nav style="padding-top: 0; border-bottom: 2px solid lightgray;" class="navbar navbar-expand-lg navbar-dark">
+<!-- <nav style="padding-top: 0;" class="navbar navbar-expand-lg navbar-dark bg-light">
     <div style="margin-top: 10px; padding: 15;" class="container d-flex justify-content-between">
-      <!-- Balra igazított hamburger ikon -->
       <button class="navbar-toggler bg-dark order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-      <div class="container ">
+      <div class="container">
           <div class="collapse navbar-collapse middle" id="navbarNav">
             <ul class="navbar-nav ms-auto gap-5">
               <li class="nav-item"><a href="#">Kezdőlap</a></li>
@@ -18,7 +17,48 @@
           </div>
       </div>
     
-  </nav>
+  </nav> -->
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="container d-lg-flex justify-content-between">
+        <!-- Offcanvas Toggle Button for small screens -->
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navbar items for large screens -->
+        <ul class="navbar-nav d-none d-lg-flex flex-row gap-5">
+            <li class="nav-item"><a class="nav-link" href="#">Kezdőlap</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/oldmodels">Korábbi modellek</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/sales-graph">Eladási grafikon</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Konfigurátor</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/login-signup">Bejelentkezés</a></li>
+            <li class="nav-item">
+                <button class="languageImage" (click)="openModal()"></button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Offcanvas Sidebar for small screens -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menü</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div  class="offcanvas-body">
+        <ul style="display: flex; justify-content: left; align-items: start;" class="navbar-nav gap-3 text-start">
+            <li class="nav-item"><a class="nav-link text-start" href="#">Kezdőlap</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/oldmodels">Korábbi modellek</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/sales-graph">Eladási grafikon</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Konfigurátor</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/login-signup">Bejelentkezés</a></li>
+            <li class="nav-item">
+                <button class="languageImage" (click)="openModal()"></button>
+            </li>
+        </ul>
+    </div>
+</div>
    
 
 
