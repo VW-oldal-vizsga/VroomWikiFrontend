@@ -234,3 +234,49 @@ input {
 }
 
 
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column; 
+        align-items: stretch; 
+        width: 100%;
+        height: auto;
+		margin-top: 300px;
+    }
+
+    .form-container {
+        width: 100%; 
+        margin-bottom: 20px; 
+        position: static; 
+    }
+
+    .sign-in-container,
+    .sign-up-container {
+        width: 100%; 
+        opacity: 1;
+        position: relative; 
+        transform: none; 
+    }
+
+    .overlay-container {
+        left: 0;
+        width: 100%;
+        height: auto;
+        top: 0;
+        transform: none;
+    }
+
+    .overlay {
+        left: 0;
+        width: 100%;
+        transform: translateX(0);
+    }
+
+    .overlay-panel {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .social-container {
+        flex-direction: column; 
+    }
+}
