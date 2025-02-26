@@ -1,16 +1,18 @@
 <app-navbar></app-navbar>
-<div class="middle">
-    <div class="mainContentContainer ">
-        <div class="row rowPadding">
-            <div *ngFor="let i of cardData" class="col-4 middle">
-                <button (click)="navigateToDetail(i.id)">
-                    <div  class="card" style="width: 18rem;">
-                        <img [src]="i.image" class="card-img-top" [alt]="i.text">
-                        <div class="card-body">
-                          <p class="card-text">{{ i.text}}</p>
+<div class="container mt-5">
+    <div class="middle">
+        <div class="mainContentContainer ">
+            <div class="row rowPadding">
+                <div *ngFor="let i of cardData" class="col-4 middle">
+                    <button (click)="navigateToDetail(i.id)">
+                        <div class="card" style="width: 18rem;">
+                            <img [src]="i.image" class="card-img-top" [alt]="i.text">
+                            <div class="card-body">
+                              <p class="card-text">{{ i.text}}</p>
+                            </div>
                         </div>
-                    </div>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

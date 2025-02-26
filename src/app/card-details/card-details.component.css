@@ -1,0 +1,11 @@
+.gallery {
+    display: flex; /* Vagy grid */
+    gap: 10px;
+  }
+  
+  .gallery img {
+    width: 100%;  /* Rögzített szélesség */
+    height: 175px; /* Rögzített magasság */
+    object-fit: scale-down; /* Kitölti a területet és megtartja az arányokat */
+    border-radius: 10px; /* Opcionális: kerekített sarkok */
+  }
