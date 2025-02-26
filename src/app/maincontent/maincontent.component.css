@@ -55,5 +55,83 @@
   padding: 10px;
   font-size: 16px;
 }
+
+.introduction{
+  padding: 20px;
+}
+.volkswagenImage{
+  background-image: url(../../assets/VW_Werk_Altes_Heizkraftwerk_WB_edit.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
+
+.textContent{
+  height: 300px;
+  padding: 40px;
+}
+.h4MainTitle{
+  padding: 20px;
+}
+.volkswagenTitle{
+  padding: 20px;
+  text-align: center;
+}
+.titleBox{
+  height: 50px;
+  text-align: center;
+}
+.container {
+background-color: none;
+}
+
+.accordion {
+width: 100%;
+max-width: 1200px;
+padding: 20px;
+}
+
+.accordion-item:hover{
+box-shadow: 8px 4px 4px gray;
+}
+
+.accordion-item {
+border: 1px solid #ccc;
+margin-bottom: 5px;
+border-radius: 5px;
+}
+
+.accordion-header {
+padding: 10px;
+cursor: pointer;
+font-size: 18px;
+font-weight: bold;
+}
+
+.accordion-body {
+padding: 10px;
+font-size: 16px;
+}
+@media (max-width: 768px) {
+  .h4MainTitle {
+    font-size: 18px; /* A főcím kisebb képernyőkön */
+  }
+
+  .textContent p {
+    font-size: 14px; /* A szöveg kisebb legyen a kisebb képernyőkön */
+    line-height: 20px;
+  }
+
+  .volkswagenTitle {
+    font-size: 20px; /* A cím kisebb képernyőkön */
+  }
+
+  .accordion-header h4 {
+    font-size: 14px; /* Kisebb képernyőkön a fejléc szöveg mérete */
+  }
+}
+
+
   
+
   
