@@ -1,24 +1,24 @@
-<div class="row mainPageContainer">
-    <div class="col-2 mainTitle">
-        VroomWiki
+<nav style="padding-top: 0; border-bottom: 2px solid lightgray;" class="navbar navbar-expand-lg navbar-dark">
+    <div style="margin-top: 10px; padding: 15;" class="container d-flex justify-content-between">
+      <!-- Balra igazított hamburger ikon -->
+      <button class="navbar-toggler bg-dark order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-    <div class="col-8 menuPoints">
-        <a href="#" >Kezdőlap</a>
-        <a routerLink="/oldmodels">Korábbi modellek</a>
-        <a routerLink="/sales-graph" >Eladási grafikon</a>
-        <a href="#" >Konfigurátor</a>
-        
-    </div>
-    <div class="col-2 login">
-        <a href="#" routerLink="/login-signup" class="btn">Bejelentkezés</a>
-    </div>
-</div>
+      <div class="container ">
+          <div class="collapse navbar-collapse middle" id="navbarNav">
+            <ul class="navbar-nav ms-auto gap-5">
+              <li class="nav-item"><a href="#">Kezdőlap</a></li>
+              <li class="nav-item"><a routerLink="/oldmodels">Korábbi modellek</a></li>
+              <li class="nav-item"><a routerLink="/sales-graph">Eladási grafikon</a></li>
+              <li class="nav-item"><a href="#">Konfigurátor</a></li>
+              <li class="nav-item"><a routerLink="/login-signup">Bejelentkezés</a></li>
+              <button class="languageImage" (click)="openModal()"></button>
+            </ul>
+          </div>
+      </div>
+    
+  </nav>
+   
 
-<div style="height: 0px;" class="row ">
-    <div style="height: 0px;" class="col-10"></div>
-    <div class="col-2 mainPageLangContainer ">
-        <button class="languageImage" (click)="openModal()">
 
-        </button>
-    </div>
-</div>
