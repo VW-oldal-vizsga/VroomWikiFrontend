@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, catchError, map, Observable, tap, throwError } from 'rxjs';
 import { User } from '../models/user.interface';
 import { Login } from '../models/login.interface';
+import { Register } from '../models/register.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,15 @@ export class UserService {
         throw error;
       })
     );
+  }
+
+  register(registerData: Register): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/api/Auth/registration`, registerData).pipe(
+      catchError((error) => {
+        console.error('Login failed', error);
+        throw error;
+      })
+    )
   }
 
   storeToken(token: string): void {

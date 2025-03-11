@@ -5,6 +5,7 @@ import { Login } from '../../models/login.interface';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Register } from '../../models/register.interface';
 
 
 @Component({
@@ -19,6 +20,12 @@ export class LoginSignupComponent {
     username: '',
     password: '',
   };
+
+  registerData: Register = {
+    username: '',
+    email: '',
+    password: '',
+  }
 
   errorMessage: string | null = null;
 
@@ -57,9 +64,23 @@ export class LoginSignupComponent {
         console.error(error);
       }
     );
-
-  
   }
+
+  signUp(): void {
+    this.userService.register(this.registerData).subscribe({
+      next: (response) => {
+        console.log('Sikeres regisztráció:', response);
+        alert("Sikeres regisztráció, most már bejelentkezhetsz!")
+        
+    },
+    error: (error) => {
+      console.error('Hiba történt a regisztráció során:', error);
+      alert('Hiba lépett fel, ellenőrizd mindent kitöltöttél-e!')
+    }
+
+  });
+  }
+
   logout() {
     this.userService.logout();
     console.log("Sikeres kijelentkezés!");
