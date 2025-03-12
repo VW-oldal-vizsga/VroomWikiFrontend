@@ -15,6 +15,7 @@ import { oldModelsService } from '../../services/oldModelsService.service';
 export class CardDetailsComponent implements OnInit {
   cardData: ICard[] = [];
   selectedCard: ICard | undefined;
+  selectedCardImage: string | undefined; // Új változó a kép URL tárolására
 
   constructor(
     private route: ActivatedRoute,
@@ -23,31 +24,46 @@ export class CardDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Paraméter lekérdezése
     this.route.paramMap.subscribe(params => {
       const id = params.get("id");
-      if (id !== null) { // Ellenőrizzük, hogy van-e érték
-        const numericId = parseInt(id, 10); // String -> Number konverzió
+      if (id !== null) {
+        const numericId = parseInt(id, 10);
 
-        // Adatok lekérése a service-től
+        // Első API hívás: Modellek lekérése
         this.oldModelsService.getOldModelsById(numericId).subscribe({
           next: (data) => {
             this.cardData = data;
-            console.log('Adatok:', this.cardData);
 
-            // Megkeressük a kiválasztott kártyát
             this.selectedCard = this.cardData.find(c => c.id === numericId);
             if (!this.selectedCard) {
               console.warn(`Nincs találat az id-vel: ${numericId}`);
+            } else {
+              // Ha a kártya megtalálható, lekérjük a képét
+              this.getCardImage(numericId);
             }
           },
           error: (error) => {
-            console.error('Hiba a lekérdezés során:', error);
+            console.error('Hiba a modellek lekérdezése során:', error);
           }
         });
       }
     });
   }
+
+  // Új metódus a kép lekérésére
+  private getCardImage(id: number): void {
+    this.oldModelsService.getOldModelsImage(id).subscribe({
+      next: (imageBlob) => {
+        const objectURL = URL.createObjectURL(imageBlob);
+        this.selectedCardImage = objectURL;
+      },
+      error: (error) => {
+        console.error('Hiba a kép lekérdezése során:', error);
+      }
+    });
+  }
+  
+  
 
   navigateToDetail() {
     this.router.navigate(['/oldmodels']);

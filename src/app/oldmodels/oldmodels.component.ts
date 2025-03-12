@@ -26,11 +26,10 @@ export class OldmodelsComponent implements OnInit { // OnInit implementálása
     this.oldModelsService.getOldModels().subscribe({
       next: (data) => {
         this.cardData = data;
-        console.log('Adatok:', this.cardData);
       },
       error: (error) => {
         console.error('Hiba a lekérdezés során:', error);
       }
-    });
+    })
   }
 }

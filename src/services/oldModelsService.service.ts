@@ -22,4 +22,10 @@ export class oldModelsService {
       return this.http.get<ICard[]>(`${this.apiUrl}/api/PastModels/${id}`)
     }
 
+    getOldModelsImage(id: number): Observable<Blob> {
+      return this.http.get(`${this.apiUrl}/api/PastModels/image/${id}`, { responseType: 'blob' });
+    }
+    
+    
+
 }
