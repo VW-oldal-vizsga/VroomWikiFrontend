@@ -8,9 +8,9 @@
                 <div *ngFor="let i of cardData" class="col-4 middle">
                     <button (click)="navigateToDetail(i.id)">
                         <div class="card" style="width: 18rem;">
-                            <img [src]="i.image" class="card-img-top" [alt]="i.text">
+                            <img [src]="" class="card-img-top" [alt]="i.name">
                             <div class="card-body">
-                              <p class="card-text">{{ i.text}}</p>
+                              <p class="card-text">{{ i.name}}</p>
                             </div>
                         </div>
                     </button>
