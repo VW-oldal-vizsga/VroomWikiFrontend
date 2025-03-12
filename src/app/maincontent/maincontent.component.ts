@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { mainPageData } from '../../services/mainPageData.service';
 import { IMainData } from '../../models/mainPageData.interface';
+import { IHistory } from '../../models/mainPageHistory.interface';
 
 @Component({
   selector: 'app-maincontent',
@@ -11,14 +12,10 @@ import { IMainData } from '../../models/mainPageData.interface';
   styleUrl: './maincontent.component.css'
 })
 export class MaincontentComponent {
-  accordionData = [
-    { title: "Első", content: "Első tartalom", open: false},
-    { title: "Második", content: "Első tartalom", open: false},
-    { title: "Harmadik", content: "Első tartalom", open: false},
-    { title: "Negyedik", content: "Első tartalom", open: false}
-
-  ]
   constructor(private mainPageData : mainPageData ) {}
+  
+  historyData: IHistory [] = [
+  ];
 
   mainData: IMainData[] = [];
 
@@ -26,7 +23,7 @@ export class MaincontentComponent {
 
 
   toggle(index: number): void {
-    this.accordionData[index].open = !this.accordionData[index].open;
+    this.historyData[index].open = !this.historyData[index].open;
   }
 
   ngOnInit(): void {
@@ -34,6 +31,15 @@ export class MaincontentComponent {
       next: (data) => {
         this.mainData = data;
         console.log('Adatok:', this.mainData);
+      },
+      error: (error) => {
+        console.error('Hiba a lekérdezés során:', error);
+      }
+    }),
+    this.mainPageData.getMainHistory().subscribe({
+      next: (data) => {
+        this.historyData = data;
+        console.log('Adatok:', this.historyData);
       },
       error: (error) => {
         console.error('Hiba a lekérdezés során:', error);

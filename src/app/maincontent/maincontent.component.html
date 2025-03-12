@@ -29,12 +29,16 @@
             <div class="row">
               <div class="col-12 middle">
                 <div class="accordion">
-                  <div *ngFor="let item of accordionData; let i = index" class="accordion-item">
+                  <div *ngFor="let item of historyData; let i = index" class="accordion-item">
                     <div class="accordion-header" (click)="toggle(i)">
                       <h4>{{ item.title }}</h4>
                     </div>
                     <div class="accordion-body" *ngIf="item.open" (click)="toggle(i)">
-                      <p>{{ item.content }}</p>
+                      <p>{{ item.history }}</p>
+                      <br>
+                      <p>{{item.history2}}</p>
+                      <br>
+                      <p>{{item.history3}}</p>
                     </div>
                   </div>
                 </div>
