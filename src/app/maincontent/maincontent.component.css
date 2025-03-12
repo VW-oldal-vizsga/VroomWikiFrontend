@@ -9,6 +9,17 @@
     background-size: auto;
 } */
 
+.imageBox{
+  object-fit: scale-down;
+  display: flex;
+  justify-content: center;
+}
+
+.imageContent{
+  height: 200px;
+  margin: 20px;
+  margin-top: 0px;
+}
 .textContent{
     height: 300px;
     padding: 40px;

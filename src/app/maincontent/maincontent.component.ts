@@ -13,6 +13,7 @@ import { IHistory } from '../../models/mainPageHistory.interface';
 })
 export class MaincontentComponent {
   constructor(private mainPageData : mainPageData ) {}
+  apiImage = "http://localhost:5269/api/MainPage_Sales/image/1"
   
   historyData: IHistory [] = [
   ];
@@ -44,6 +45,6 @@ export class MaincontentComponent {
       error: (error) => {
         console.error('Hiba a lekérdezés során:', error);
       }
-    });
+    })
   }
 }

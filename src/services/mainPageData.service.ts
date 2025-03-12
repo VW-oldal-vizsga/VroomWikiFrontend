@@ -22,4 +22,5 @@ export class mainPageData {
       return this.http.get<IHistory[]>(`${this.apiUrl}/api/MainPage_Sales/mainpage/history`);
     }
 
+
 }
