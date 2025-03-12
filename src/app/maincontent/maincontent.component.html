@@ -19,7 +19,9 @@
                       <h3 class="volkswagenTitle">Volkswagen</h3>
                     </div>
                     <div class="row borderNone textContent">
-                      <div class="volkswagenImage"></div>
+                      <div *ngFor="let item of mainData">
+                        <img [src]="item.imageBase64" alt="asd">
+                      </div>
                     </div>
                    </div>
                 </div>
@@ -35,9 +37,7 @@
                     </div>
                     <div class="accordion-body" *ngIf="item.open" (click)="toggle(i)">
                       <p>{{ item.history }}</p>
-                      <br>
                       <p>{{item.history2}}</p>
-                      <br>
                       <p>{{item.history3}}</p>
                     </div>
                   </div>

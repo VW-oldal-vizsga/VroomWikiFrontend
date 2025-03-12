@@ -2,12 +2,12 @@
 .introduction{
     padding: 20px;
 }
-.volkswagenImage{
+/* .volkswagenImage{
     background-image: url(../../assets/VW_Werk_Altes_Heizkraftwerk_WB_edit.jpg);
     background-repeat: no-repeat;
 
     background-size: auto;
-}
+} */
 
 .textContent{
     height: 300px;
