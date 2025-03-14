@@ -6,6 +6,7 @@ import { OldmodelsComponent } from './oldmodels/oldmodels.component';
 import { SalesGraphComponent } from './sales-graph/sales-graph.component';
 import { LanguageModalComponent } from './language-modal/language-modal.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
+import { ConfiguratorMainComponent } from './configurator/configurator-main/configurator-main.component';
 
 export const routes: Routes = [
     { path: '', component: MainComponent },
@@ -16,4 +17,5 @@ export const routes: Routes = [
     { path: 'sales-graph', component:SalesGraphComponent},
     { path: 'language-modal', component:LanguageModalComponent},
     { path: 'cards/:id', component:CardDetailsComponent},
+    { path: 'configuratorMain', component:ConfiguratorMainComponent}
 ];
