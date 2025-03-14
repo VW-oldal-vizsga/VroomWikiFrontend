@@ -15,7 +15,7 @@ import { oldModelsService } from '../../services/oldModelsService.service';
 export class CardDetailsComponent implements OnInit {
   cardData: ICard[] = [];
   selectedCard: ICard | undefined;
-  selectedCardImage: string | undefined; // Új változó a kép URL tárolására
+  selectedCardImage: string | undefined; 
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +29,6 @@ export class CardDetailsComponent implements OnInit {
       if (id !== null) {
         const numericId = parseInt(id, 10);
 
-        // Első API hívás: Modellek lekérése
         this.oldModelsService.getOldModelsById(numericId).subscribe({
           next: (data) => {
             this.cardData = data;

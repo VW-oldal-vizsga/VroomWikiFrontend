@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -12,12 +12,12 @@ import { oldModelsService } from '../../services/oldModelsService.service';
   templateUrl: './oldmodels.component.html',
   styleUrls: ['./oldmodels.component.css'] // styleUrl -> styleUrls
 })
-export class OldmodelsComponent implements OnInit { // OnInit implementálása
+export class OldmodelsComponent implements OnInit, OnDestroy {
   cardData: ICard[] = [];
+  cardImages: { [key: number]: string } = {}; // Store image URLs by card ID
 
   constructor(private router: Router, private oldModelsService: oldModelsService) {}
 
-  // Az id típusa number, de a navigate stringgé konvertálja az URL-ben
   navigateToDetail(id: number) {
     this.router.navigate(['/cards', id]);
   }
@@ -26,10 +26,31 @@ export class OldmodelsComponent implements OnInit { // OnInit implementálása
     this.oldModelsService.getOldModels().subscribe({
       next: (data) => {
         this.cardData = data;
+        // Fetch images for all cards
+        this.loadCardImages();
       },
       error: (error) => {
-        console.error('Hiba a lekérdezés során:', error);
+        console.error('Hiba a lekérdezés során:', error); // "Error during query"
       }
-    })
+    });
+  }
+
+  private loadCardImages(): void {
+    this.cardData.forEach(card => {
+      this.oldModelsService.getOldModelsImage(card.id).subscribe({
+        next: (imageBlob) => {
+          const objectURL = URL.createObjectURL(imageBlob);
+          this.cardImages[card.id] = objectURL; // Store image URL by card ID
+        },
+        error: (error) => {
+          console.error(`Hiba a kép lekérdezése során (ID: ${card.id}):`, error); // "Error during image query"
+        }
+      });
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Clean up object URLs to prevent memory leaks
+    Object.values(this.cardImages).forEach(url => URL.revokeObjectURL(url));
   }
 }
