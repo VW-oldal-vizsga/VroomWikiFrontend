@@ -2,16 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px; /* Némi padding a szélekhez */
+    padding: 20px;
     padding-top: 0;
 }
 
 .card {
     border: 2px solid black;
-    width: 100%; /* Alapértelmezett szélesség 100% a konténerhez képest */
-    max-width: 300px; /* Maximum szélesség, hogy ne nőjön túl nagyra */
-    margin: 10px; /* Margó a kártyák között */
-    box-sizing: border-box; /* A border ne növelje a méretet */
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    box-sizing: border-box;
 }
 
 .card:hover {
@@ -19,34 +19,34 @@
 }
 
 .card-img-top {
-    height: 200px;
+    height: 100%;
     object-fit: scale-down;
-    width: 100%; /* Kép szélessége alkalmazkodjon a kártyához */
+    width: 100%;
 }
 
 button {
     border: none;
     padding: 0;
-    background: none; /* Háttér eltávolítása a gombtól */
+    background: none;
 }
 
 .col-4 {
     margin-bottom: 50px;
-    flex: 0 0 calc(33.33% - 20px); /* 3 oszlop, margóval korrigálva */
-    max-width: calc(33.33% - 20px); /* Bootstrap-stílus felülírása */
+    flex: 0 0 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px); 
 }
 
-/* Média lekérdezések a reszponzivitáshoz */
+
 @media (max-width: 768px) {
     .col-4 {
-        flex: 0 0 calc(50% - 20px); /* 2 oszlop tableten */
+        flex: 0 0 calc(50% - 20px); 
         max-width: calc(50% - 20px);
     }
 }
 
 @media (max-width: 480px) {
     .col-4 {
-        flex: 0 0 100%; /* 1 oszlop mobilon */
+        flex: 0 0 100%; 
         max-width: 100%;
     }
 }

@@ -6,13 +6,14 @@
         <div  class="mainContentContainer">
             <div  *ngFor="let item of cardData; let i = index" class="col-12 middle mt-3"><h3 >{{item.name}}</h3></div>
             <div class="container mt-5">
-                <div class="row p-5">
-                    <div *ngFor="let item of cardData; let i = index" class="col-6 middle">
-                        {{item.description}}
-                    </div>
+                <div class="row">
                     <div *ngFor="let item of cardData; let i = index" class="col-6 gallery">
                         <img  [src]="selectedCardImage" alt="{{ item.name }}" >
                     </div>
+                    <div *ngFor="let item of cardData; let i = index" class="col-6 middle">
+                        {{item.description}}
+                    </div>
+                    
                 </div>
             </div>
             <div  class="col-12 middle mt-5 mb-5"><button class="btn btn-danger" (click)="navigateToDetail()">Vissza</button></div>

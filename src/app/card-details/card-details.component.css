@@ -1,11 +1,59 @@
-.gallery {
-    display: flex; /* Vagy grid */
-    gap: 10px;
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.gallery img {
+  width: 100%;  /* Rögzített szélesség */
+  height: 200px; /* Rögzített magasság */
+  object-fit: scale-down; /* Kitölti a területet és megtartja az arányokat */
+  border-radius: 10px; /* Opcionális: kerekített sarkok */
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-footer {
+  padding: 10px;
+}
+
+/* Alapértelmezett reszponzív beállítások */
+@media (max-width: 992px) {
+  .row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
   }
-  
-  .gallery img {
-    width: 100%;  /* Rögzített szélesség */
-    height: 175px; /* Rögzített magasság */
-    object-fit: scale-down; /* Kitölti a területet és megtartja az arányokat */
-    border-radius: 10px; /* Opcionális: kerekített sarkok */
+
+  .gallery{
+    margin-bottom: 25px;
+    margin-top: 25px;
   }
+
+  .col-6 {
+    width: 80%;
+  }
+  .card {
+      margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+
+  .col-md-4 {
+      width: 33.3333%;
+  }
+}

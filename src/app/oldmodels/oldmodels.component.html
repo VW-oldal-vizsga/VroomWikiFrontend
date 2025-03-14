@@ -4,12 +4,12 @@
 <div class="container">
     <div class="middle">
         <div class="mainContentContainer">
-            <div class="row rowPadding">
-                <div *ngFor="let card of cardData" class="col-4 middle">
+            <div class="row rowPadding justify-content-center">
+                <div *ngFor="let card of cardData" class="col-12 col-md-4 middle">
                     <button (click)="navigateToDetail(card.id)" class="no-underline">
                         <div class="card">
                             <img [src]="cardImages[card.id] || 'placeholder-image.jpg'" alt="Card Image" class="card-img-top" />
-                            <div class="card-body">
+                            <div class="card-body text-center">
                                 <p class="card-text">{{ card.name }}</p>
                             </div>
                         </div>
