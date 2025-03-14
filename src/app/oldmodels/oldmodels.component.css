@@ -1,27 +1,52 @@
-.mainContentContainer{
+.container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px; /* Némi padding a szélekhez */
+    padding-top: 0;
 }
-.card{
+
+.card {
     border: 2px solid black;
-    
+    width: 100%; /* Alapértelmezett szélesség 100% a konténerhez képest */
+    max-width: 300px; /* Maximum szélesség, hogy ne nőjön túl nagyra */
+    margin: 10px; /* Margó a kártyák között */
+    box-sizing: border-box; /* A border ne növelje a méretet */
 }
-.card:hover{
+
+.card:hover {
     box-shadow: 8px 4px 4px gray;
 }
+
 .card-img-top {
     height: 200px;
-    object-fit: cover;
+    object-fit: scale-down;
+    width: 100%; /* Kép szélessége alkalmazkodjon a kártyához */
 }
 
-button{
+button {
     border: none;
     padding: 0;
+    background: none; /* Háttér eltávolítása a gombtól */
 }
+
 .col-4 {
     margin-bottom: 50px;
+    flex: 0 0 calc(33.33% - 20px); /* 3 oszlop, margóval korrigálva */
+    max-width: calc(33.33% - 20px); /* Bootstrap-stílus felülírása */
 }
 
+/* Média lekérdezések a reszponzivitáshoz */
+@media (max-width: 768px) {
+    .col-4 {
+        flex: 0 0 calc(50% - 20px); /* 2 oszlop tableten */
+        max-width: calc(50% - 20px);
+    }
+}
 
-
+@media (max-width: 480px) {
+    .col-4 {
+        flex: 0 0 100%; /* 1 oszlop mobilon */
+        max-width: 100%;
+    }
+}
