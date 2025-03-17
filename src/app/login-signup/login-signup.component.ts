@@ -56,6 +56,8 @@ export class LoginSignupComponent {
           // Ha sikeres a bejelentkezés, tároljuk el a tokent
           this.userService.storeToken(response.token);
           console.log("Sikeres bejelentkezés");
+          this.loginData.username = '',
+          this.loginData.password = ''
           
         }
       },
@@ -71,6 +73,9 @@ export class LoginSignupComponent {
       next: (response) => {
         console.log('Sikeres regisztráció:', response);
         alert("Sikeres regisztráció, most már bejelentkezhetsz!")
+        this.registerData.email = '',
+        this.registerData.password = '',
+        this.registerData.username = ''
         
     },
     error: (error) => {
