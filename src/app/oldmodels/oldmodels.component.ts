@@ -10,11 +10,11 @@ import { oldModelsService } from '../../services/oldModelsService.service';
   standalone: true,
   imports: [NavbarComponent, CommonModule],
   templateUrl: './oldmodels.component.html',
-  styleUrls: ['./oldmodels.component.css'] // styleUrl -> styleUrls
+  styleUrls: ['./oldmodels.component.css'] 
 })
 export class OldmodelsComponent implements OnInit, OnDestroy {
   cardData: ICard[] = [];
-  cardImages: { [key: number]: string } = {}; // Store image URLs by card ID
+  cardImages: { [key: number]: string } = {};
 
   constructor(private router: Router, private oldModelsService: oldModelsService) {}
 
