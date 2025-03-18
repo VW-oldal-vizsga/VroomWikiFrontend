@@ -1,19 +1,69 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // OnInit hozzáadva az interfészhez
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { Router } from '@angular/router';
+import { IColor, IConfigurator, IEngine, ITransmissionType } from '../../../models/configurator.interface';
+
+import { forkJoin } from 'rxjs';
+import { configurator } from '../../../services/configurator.service';
+
 
 @Component({
   selector: 'app-configurator-main',
-  standalone:true,
+  standalone: true,
   imports: [CommonModule, NavbarComponent],
   templateUrl: './configurator-main.component.html',
-  styleUrl: './configurator-main.component.css'
+  styleUrls: ['./configurator-main.component.css'] // styleUrl -> styleUrls (tömb)
 })
-export class ConfiguratorMainComponent {
-  constructor (private router:Router) {}
 
-  navigateToCar() {
+
+
+export class ConfiguratorMainComponent implements OnInit { // OnInit implementálása
+  configurators: IConfigurator[] = [];
+  colors: IColor[] = [];
+  engines: IEngine[] = [];
+  transmissionTypes: ITransmissionType[] = [];
+
+  constructor(private router: Router, private configurator: configurator) {}
+
+  
+
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(): void {
+    forkJoin({
+      configurators: this.configurator.getConfigurators(),
+      colors: this.configurator.getColors(),
+      engines: this.configurator.getEngines(),
+      transmissionTypes: this.configurator.getTransmissionTypes()
+    }).subscribe({
+      next: (results) => {
+        this.configurators = results.configurators;
+        this.colors = results.colors;
+        this.engines = results.engines;
+        this.transmissionTypes = results.transmissionTypes;
+      },
+      error: (err) => {
+        console.error('Hiba az adatok betöltésekor:', err);
+      }
+    });
+  }
+
+  navigateToCar(): void {
     this.router.navigate(['/configPreComp']);
+  }
+
+  getEngineData(engineId: number): IEngine | undefined {
+    return this.engines.find(e => e.id === engineId);
+  }
+
+  getColorData(colorId: number): IColor | undefined {
+    return this.colors.find(c => c.id === colorId);
+  }
+
+  getTransmissionData(transmissionId: number): ITransmissionType | undefined {
+    return this.transmissionTypes.find(t => t.id === transmissionId);
   }
 }

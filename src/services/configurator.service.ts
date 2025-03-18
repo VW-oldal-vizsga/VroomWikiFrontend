@@ -2,25 +2,34 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-import { IMainData } from '../models/mainPageData.interface';
-import { IHistory } from '../models/mainPageHistory.interface';
+import { IColor, IConfigurator, IEngine, ITransmissionType } from '../models/configurator.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class configurator {
 
-    private apiUrl = 'http://localhost:5269';
+    private apiUrl = 'http://localhost:5269/api/Configurator';
 
     constructor(private http: HttpClient) { }
 
-    getMainData(): Observable<IMainData[]> {
-        return this.http.get<IMainData[]>(`${this.apiUrl}/api/MainPage_Sales/mainpage`);
-      }
-
-    getMainHistory(): Observable<IHistory[]> {
-      return this.http.get<IHistory[]>(`${this.apiUrl}/api/MainPage_Sales/mainpage/history`);
+    getConfigurators(): Observable<IConfigurator[]> {
+      return this.http.get<IConfigurator[]>(`${this.apiUrl}`)
     }
+
+    getColors(): Observable<IColor[]> {
+      return this.http.get<IColor[]>(`${this.apiUrl}/colors`);
+    }
+  
+    getEngines(): Observable<IEngine[]> {
+      return this.http.get<IEngine[]>(`${this.apiUrl}/engines`);
+    }
+  
+    getTransmissionTypes(): Observable<ITransmissionType[]> {
+      return this.http.get<ITransmissionType[]>(`${this.apiUrl}/transmissions`);
+    }
+
+
 
 
 }

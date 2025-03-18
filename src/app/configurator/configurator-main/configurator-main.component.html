@@ -5,13 +5,23 @@
 <div class="container configuratorText">
     <h2 class="middle p-5">Válasszon modellt!</h2>
 </div>
-<div class="container middle">
+<div *ngFor="let item of configurators; let i = index" class="container middle p-5">
     <button class="btn" (click)="navigateToCar()">
-        <div class="card">
+        <div *ngIf="getEngineData(item.engine_Id) as engine;" class="card">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text" >{{engine.name}}</p>
+              <p class="card-text" >{{engine.fuelConsumption}}</p>
+              <p class="card-text" >{{engine.fuelType}}</p>
+              <p class="card-text" >{{engine.horsePower}}</p>
+              <p class="card-text" >{{engine.co2Emission}}</p>
             </div>
           </div>
     </button>
 </div>
+
+
+
+
+
+

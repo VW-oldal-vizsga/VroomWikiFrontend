@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
+import { configurator } from '../../../services/configurator.service';
 
 @Component({
   selector: 'app-configurator-pre-compiled',
@@ -10,4 +11,11 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 })
 export class ConfiguratorPreCompiledComponent {
 
+  
+
+  constructor (private configurator:configurator) {}
+
+  
+
+  
 }
