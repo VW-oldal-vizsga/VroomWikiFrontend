@@ -5,7 +5,7 @@
     <div class="middle">
         <div class="mainContentContainer">
             <div class="row rowPadding justify-content-center">
-                <div *ngFor="let card of cardData" class="col-12 col-md-4 middle">
+                <div *ngFor="let card of cardData" class="col-12 col-md-6 col-lg-4 middle">
                     <button (click)="navigateToDetail(card.id)" class="no-underline">
                         <div class="card">
                             <img [src]="cardImages[card.id] || 'placeholder-image.jpg'" alt="Card Image" class="card-img-top" />
