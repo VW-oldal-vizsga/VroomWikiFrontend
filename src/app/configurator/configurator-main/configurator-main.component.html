@@ -5,16 +5,13 @@
 <div class="container configuratorText">
     <h2 class="middle p-5">Válasszon modellt!</h2>
 </div>
-<div *ngFor="let item of configurators; let i = index" class="container middle p-5">
+<div *ngFor="let item of poloData; let i = index" class="container middle p-5">
     <button class="btn" (click)="navigateToCar()">
-        <div *ngIf="getEngineData(item.engine_Id) as engine;" class="card">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card">
+            <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
             <div class="card-body">
-              <p class="card-text" >{{engine.name}}</p>
-              <p class="card-text" >{{engine.fuelConsumption}}</p>
-              <p class="card-text" >{{engine.fuelType}}</p>
-              <p class="card-text" >{{engine.horsePower}}</p>
-              <p class="card-text" >{{engine.co2Emission}}</p>
+              <h2 class="card-text" >{{item.name}}</h2>
+              
             </div>
           </div>
     </button>

@@ -26,11 +26,10 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
     this.oldModelsService.getOldModels().subscribe({
       next: (data) => {
         this.cardData = data;
-        // Fetch images for all cards
         this.loadCardImages();
       },
       error: (error) => {
-        console.error('Hiba a lekérdezés során:', error); // "Error during query"
+        console.error('Hiba a lekérdezés során:', error); 
       }
     });
   }
@@ -40,17 +39,16 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
       this.oldModelsService.getOldModelsImage(card.id).subscribe({
         next: (imageBlob) => {
           const objectURL = URL.createObjectURL(imageBlob);
-          this.cardImages[card.id] = objectURL; // Store image URL by card ID
+          this.cardImages[card.id] = objectURL; 
         },
         error: (error) => {
-          console.error(`Hiba a kép lekérdezése során (ID: ${card.id}):`, error); // "Error during image query"
+          console.error(`Hiba a kép lekérdezése során (ID: ${card.id}):`, error); 
         }
       });
     });
   }
 
   ngOnDestroy(): void {
-    // Clean up object URLs to prevent memory leaks
     Object.values(this.cardImages).forEach(url => URL.revokeObjectURL(url));
   }
 }

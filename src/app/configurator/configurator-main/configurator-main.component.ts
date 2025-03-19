@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core'; // OnInit hozzáadva az interfészhez
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { Router } from '@angular/router';
-import { IColor, IConfigurator, IEngine, ITransmissionType } from '../../../models/configurator.interface';
+import { IColor, IEngine, ITransmissionType } from '../../../models/configurator.interface';
 
 import { forkJoin } from 'rxjs';
-import { configurator } from '../../../services/configurator.service';
+import { oldModelsService } from '../../../services/oldModelsService.service';
+import { ICard } from '../../../models/oldModels.interface';
 
 
 @Component({
@@ -13,57 +14,70 @@ import { configurator } from '../../../services/configurator.service';
   standalone: true,
   imports: [CommonModule, NavbarComponent],
   templateUrl: './configurator-main.component.html',
-  styleUrls: ['./configurator-main.component.css'] // styleUrl -> styleUrls (tömb)
+  styleUrls: ['./configurator-main.component.css']
 })
 
 
 
-export class ConfiguratorMainComponent implements OnInit { // OnInit implementálása
-  configurators: IConfigurator[] = [];
-  colors: IColor[] = [];
-  engines: IEngine[] = [];
-  transmissionTypes: ITransmissionType[] = [];
+export class ConfiguratorMainComponent implements OnInit { 
+  oldModelsData:ICard[] = [];
+  poloData:ICard[] = []
+  poloId:number | undefined = 0
+  cardImages: { [key: number]: string } = {};
 
-  constructor(private router: Router, private configurator: configurator) {}
+  constructor(private router: Router, private oldModels: oldModelsService) {}
 
   
 
   ngOnInit(): void {
     this.loadData();
+
   }
 
   loadData(): void {
     forkJoin({
-      configurators: this.configurator.getConfigurators(),
-      colors: this.configurator.getColors(),
-      engines: this.configurator.getEngines(),
-      transmissionTypes: this.configurator.getTransmissionTypes()
+      oldModelsData: this.oldModels.getOldModels()
     }).subscribe({
       next: (results) => {
-        this.configurators = results.configurators;
-        this.colors = results.colors;
-        this.engines = results.engines;
-        this.transmissionTypes = results.transmissionTypes;
+        this.oldModelsData = results.oldModelsData
+        this.poloData = this.getPoloData()
+        this.poloId = this.getPoloId()
+        console.log(this.poloId); 
+
+        this.loadCardImages();
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);
       }
-    });
+    })
+    
   }
 
   navigateToCar(): void {
     this.router.navigate(['/configPreComp']);
   }
-
-  getEngineData(engineId: number): IEngine | undefined {
-    return this.engines.find(e => e.id === engineId);
+  getPoloData(): ICard[] {
+    return this.oldModelsData.filter((data) => data.name === 'Volkswagen Polo');
+  }
+  getPoloId(): number | undefined {
+    const polo = this.poloData.find((adat) => true); 
+    return polo?.id; 
   }
 
-  getColorData(colorId: number): IColor | undefined {
-    return this.colors.find(c => c.id === colorId);
+  private loadCardImages(): void {
+    this.oldModelsData.forEach(card => {
+      this.oldModels.getOldModelsImage(this.poloId).subscribe({
+        next: (imageBlob) => {
+          const objectURL = URL.createObjectURL(imageBlob);
+          this.cardImages[card.id] = objectURL; 
+        },
+        error: (error) => {
+          console.error(`Hiba a kép lekérdezése során (ID: ${card.id}):`, error); 
+        }
+      });
+    });
   }
+  
 
-  getTransmissionData(transmissionId: number): ITransmissionType | undefined {
-    return this.transmissionTypes.find(t => t.id === transmissionId);
-  }
+
 }
