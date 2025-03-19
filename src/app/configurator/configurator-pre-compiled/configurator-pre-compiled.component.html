@@ -1,17 +1,18 @@
 <div class="bg-light" style="display: flex; justify-content: center; border-bottom: 2px solid lightgray;">
     <app-navbar></app-navbar>
 </div>
+
 <div class="container configuratorText">
-    <h2 class="middle p-5">A Volkswagen ajánlásával</h2>
+    <h2 class="middle p-5">A Volkswagen ajánlásával!</h2>
 </div>
-<div class="container p-5 middle">
-    <button class="btn">
+<!-- <div *ngFor="let item of configurators; let i = index" class="container middle p-5">
+    <button class="btn" (click)="navigateToCar()">
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+            <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
             <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h2 class="card-text" >{{item.name}}</h2>
+              
             </div>
           </div>
     </button>
-</div>
-
+</div> -->

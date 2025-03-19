@@ -21,8 +21,8 @@ import { ICard } from '../../../models/oldModels.interface';
 
 export class ConfiguratorMainComponent implements OnInit { 
   oldModelsData:ICard[] = [];
-  poloData:ICard[] = []
-  poloId:number | undefined = 0
+  golfData:ICard[] = []
+  golfId:number | undefined = 0
   cardImages: { [key: number]: string } = {};
 
   constructor(private router: Router, private oldModels: oldModelsService) {}
@@ -40,9 +40,9 @@ export class ConfiguratorMainComponent implements OnInit {
     }).subscribe({
       next: (results) => {
         this.oldModelsData = results.oldModelsData
-        this.poloData = this.getPoloData()
-        this.poloId = this.getPoloId()
-        console.log(this.poloId); 
+        this.golfData = this.getGolfData()
+        this.golfId = this.getGolfId()
+        console.log(this.golfId); 
 
         this.loadCardImages();
       },
@@ -56,17 +56,17 @@ export class ConfiguratorMainComponent implements OnInit {
   navigateToCar(): void {
     this.router.navigate(['/configPreComp']);
   }
-  getPoloData(): ICard[] {
-    return this.oldModelsData.filter((data) => data.name === 'Volkswagen Polo');
+  getGolfData(): ICard[] {
+    return this.oldModelsData.filter((data) => data.name === 'Volkswagen Golf');
   }
-  getPoloId(): number | undefined {
-    const polo = this.poloData.find((adat) => true); 
+  getGolfId(): number | undefined {
+    const polo = this.golfData.find((adat) => true); 
     return polo?.id; 
   }
 
   private loadCardImages(): void {
     this.oldModelsData.forEach(card => {
-      this.oldModels.getOldModelsImage(this.poloId).subscribe({
+      this.oldModels.getOldModelsImage(this.golfId).subscribe({
         next: (imageBlob) => {
           const objectURL = URL.createObjectURL(imageBlob);
           this.cardImages[card.id] = objectURL; 

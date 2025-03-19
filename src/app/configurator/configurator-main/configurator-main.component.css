@@ -2,9 +2,18 @@
     border: none;
     height: 300px;
     width: 350px;
-    box-shadow: 4px 4px 4px 4px black;
+    border: 2px solid gray;
+}
+.card:hover{
+    box-shadow: 4px 4px 4px 4px gray;
 }
 .card-img-top{
     height: 100%;
     width: 100%;
 }
+button{
+    border: none;
+    background-color: white;
+}
+
+

@@ -5,6 +5,7 @@ export interface IConfigurator{
     engine_Id:number,
     color_Id:number,
     transmissionType_Id:number,
+    price:number,
 }
 
 export interface IColor{
@@ -18,11 +19,13 @@ export interface IEngine {
     horsePower:number,
     fuelConsumption:number,
     co2Emission:number,
-    fuelType:string
+    fuelType:string,
+    price:number,
 }
 
 export interface ITransmissionType{
     id:number,
     name:string,
-    wheelDrive:number
+    wheelDrive:number,
+    price:number,
 }
