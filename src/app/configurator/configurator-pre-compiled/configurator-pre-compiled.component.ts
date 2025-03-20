@@ -19,6 +19,7 @@ export class ConfiguratorPreCompiledComponent {
   colors: IColor[] = [];
   engines: IEngine[] = [];
   transmissionTypes: ITransmissionType[] = [];
+  cardImages: { [key: number]: string } = {};
 
   constructor(private router: Router, private configurator: configurator) {}
 
@@ -40,6 +41,7 @@ export class ConfiguratorPreCompiledComponent {
         this.colors = results.colors;
         this.engines = results.engines;
         this.transmissionTypes = results.transmissionTypes;
+        this.loadCardImages()
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);
@@ -62,5 +64,19 @@ export class ConfiguratorPreCompiledComponent {
 
   getTransmissionData(transmissionId: number): ITransmissionType | undefined {
     return this.transmissionTypes.find(t => t.id === transmissionId);
+  }
+
+  private loadCardImages(): void {
+    this.configurators.forEach(config => {
+      this.configurator.getConfiguratorImage(config.id).subscribe({
+        next: (imageBlob) => {
+          const objectURL = URL.createObjectURL(imageBlob);
+          this.cardImages[config.id] = objectURL; 
+        },
+        error: (error) => {
+          console.error(`Hiba a kép lekérdezése során (ID: ${config.id}):`, error); 
+        }
+      });
+    });
   }
 }

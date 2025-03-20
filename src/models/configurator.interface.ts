@@ -16,7 +16,7 @@ export interface IColor{
 export interface IEngine {
     id:number,
     name:string,
-    horsePower:number,
+    horsepower:number,
     fuelConsumption:number,
     co2Emission:number,
     fuelType:string,

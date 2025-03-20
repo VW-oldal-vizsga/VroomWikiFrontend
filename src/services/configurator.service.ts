@@ -29,7 +29,9 @@ export class configurator {
       return this.http.get<ITransmissionType[]>(`${this.apiUrl}/transmissions`);
     }
 
-
+    getConfiguratorImage(id: number | undefined): Observable<Blob> {
+      return this.http.get(`${this.apiUrl}/image/${id}`, { responseType: 'blob' });
+    }
 
 
 }
