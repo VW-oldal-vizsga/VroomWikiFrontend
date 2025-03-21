@@ -20,7 +20,7 @@ export class ConfiguratorPreCompiledComponent {
   transmissionTypes: ITransmissionType[] = [];
   cardImages: { [key: number]: string } = {};
   configuratorGroups: IConfigurator[][] = [];
-  selectedConfigs: IConfigurator[] = []; // Új tömb a kiválasztott konfigurációk tárolására
+  selectedConfigs: IConfigurator[] = [];
 
   constructor(private router: Router, private configurator: configurator) {}
 
@@ -83,22 +83,22 @@ export class ConfiguratorPreCompiledComponent {
     });
   }
 
-  getButtonText(item: IConfigurator): string {
-    return this.selectedConfigs.some(c => c.id === item.id) ? 'Kiválasztva' : 'Kiválasztás';
-  }
-
   selectConfig(config: IConfigurator): void {
-    const index = this.selectedConfigs.findIndex(c => c.id === config.id);
-    if (index === -1) {
-      this.selectedConfigs.push(config);
-      console.log(`Hozzáadva: ${config.configName}`, this.selectedConfigs);
+    const isSelected = this.configurator.getSelectedConfigs().some(c => c.id === config.id);
+    if (!isSelected) {
+      this.configurator.addSelectedConfig(config);
+      console.log(`Hozzáadva: ${config.configName}`, this.configurator.getSelectedConfigs());
     } else {
-      this.selectedConfigs.splice(index, 1);
-      console.log(`Eltávolítva: ${config.configName}`, this.selectedConfigs);
+      this.configurator.removeSelectedConfig(config);
+      console.log(`Eltávolítva: ${config.configName}`, this.configurator.getSelectedConfigs());
     }
   }
 
+  getButtonText(item: IConfigurator): string {
+    return this.configurator.getSelectedConfigs().some(c => c.id === item.id) ? 'Kiválasztva' : 'Kiválasztás';
+  }
+
   isConfigSelected(item: IConfigurator): boolean {
-    return this.selectedConfigs.some(c => c.id === item.id);
+    return this.configurator.getSelectedConfigs().some(c => c.id === item.id);
   }
 }
