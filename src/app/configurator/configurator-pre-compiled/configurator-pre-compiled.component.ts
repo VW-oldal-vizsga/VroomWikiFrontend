@@ -20,6 +20,7 @@ export class ConfiguratorPreCompiledComponent {
   engines: IEngine[] = [];
   transmissionTypes: ITransmissionType[] = [];
   cardImages: { [key: number]: string } = {};
+  configuratorGroups: IConfigurator[][] = [];
 
   constructor(private router: Router, private configurator: configurator) {}
 

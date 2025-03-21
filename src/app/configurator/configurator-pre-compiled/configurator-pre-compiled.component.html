@@ -6,19 +6,19 @@
     <h2 class="middle p-5">A Volkswagen ajánlásával!</h2>
 </div>
 <div class="configContainer">
-    <div *ngFor="let item of configurators; let i = index" class="container ">
-        <button (click)="navigateToCar()">
-            <div class="card">
-                <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h3 class="card-text" >{{item.configName}}</h3>
-                  <p class="card-text">{{item.configName}} {{getEngineData(item.id)?.name}}</p>
-                  <p class="card-text">{{getEngineData(item.id)?.fuelType}}</p>
-                  <p class="card-text">{{getEngineData(item.id)?.horsepower}}</p>
-                  <p class="card-text">{{getEngineData(item.id)?.co2Emission}}</p>
-                  <p class="card-text">{{item.price}} Ft</p>
-                </div>
-              </div>
-        </button>
+    <div *ngFor="let item of configurators; let i = index">
+        <div class="card">
+            <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-text">{{item.configName}}</h3>
+                <p class="card-text">{{item.configName}} {{getEngineData(item.id)?.name}}</p>
+                <p class="card-text">{{getEngineData(item.id)?.fuelType}}</p>
+                <p class="card-text">{{getEngineData(item.id)?.horsepower}}</p>
+                <p class="card-text">{{getEngineData(item.id)?.co2Emission}}</p>
+                <p class="card-text">{{item.price}} Ft</p>
+                <div class="text-center p-3"><button class="selectButton">Kiválasztás</button></div>
+            </div>
+        </div>
     </div>
 </div>
+

@@ -1,36 +1,43 @@
 .card {
-    height: 250px;
-    width: 100%;
-    max-width: 300px;
-    margin: 15px;
-    border: none;
-    
+  height: 250px;
+  width: 100%;
+  max-width: 300px;
+  min-width: 350px;
+  margin: 15px;
+  border: none;
 }
 
-.configContainer{
-    display: flex;
-    justify-content: flex-start;
+.configContainer {
+  height: max-content;
+  display: flex;
+  justify-content: space-around;
 }
 
 .card-img-top {
-    height: 100%;
-    /* object-fit: scale-down; */
-    width: 100%;
-    border: 2px solid black;
+  height: 100%;
+  /* object-fit: scale-down; */
+  width: 100%;
+  border: 2px solid black;
 }
-button{
-    border: none;
-    background-color: white;
-}
-
-.card-body{
-    border: 2px solid black; 
-    background-color: lightgray;
-    min-height: 300px;
+button {
+  border: none;
+  background-color: white;
 }
 
-
-.hoverContainer:hover{
-    box-shadow: 2px 2px 4px 4px gray;
+.card-body {
+  border: 2px solid black;
+  background-color: lightgray;
+  min-height: max-content;
+  text-align: left;
 }
 
+.hoverContainer:hover {
+  box-shadow: 2px 2px 4px 4px gray;
+}
+.selectButton {
+  border-radius: 12px;
+  width: 150px;
+  height: 30px;
+  background-color: black;
+  color: white;
+}
