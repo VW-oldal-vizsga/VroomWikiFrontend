@@ -13,8 +13,11 @@ import { IConfigurator } from '../../../models/configurator.interface';
 export class ConfiguratorFooterComponent {
 
   configurator:IConfigurator [] = []
+  selectedConfigs: IConfigurator[] = [];
 
-  constructor(private configurators: configurator) {}
+  constructor(private configurators: configurator) {
+    this.selectedConfigs = this.configurators.getSelectedConfigs();
+  }
 
   ngOnInit(): void {
       this.loadData();
@@ -27,6 +30,7 @@ export class ConfiguratorFooterComponent {
       }).subscribe({
         next: (results) => {
           this.configurator = results.configurators;
+          console.log('Kiválasztott konfigurációk:', this.selectedConfigs);
         },
         error: (err) => {
           console.error('Hiba az adatok betöltésekor:', err);

@@ -1,1 +1,5 @@
-<div class="footerContainer"></div>
+<div class="footerContainer">
+    <div *ngFor="let item of selectedConfigs" class="container">
+        {{item.price}}
+    </div>
+</div>
