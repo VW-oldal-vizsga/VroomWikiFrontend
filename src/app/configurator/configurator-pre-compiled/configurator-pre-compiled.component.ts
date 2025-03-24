@@ -5,10 +5,11 @@ import { configurator } from '../../../services/configurator.service';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { IColor, IConfigurator, IEngine, ITransmissionType } from '../../../models/configurator.interface';
+import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
 
 @Component({
   selector: 'app-configurator-pre-compiled',
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, ConfiguratorFooterComponent],
   templateUrl: './configurator-pre-compiled.component.html',
   styleUrl: './configurator-pre-compiled.component.css'
 })

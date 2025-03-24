@@ -13,6 +13,7 @@ import { ConfiguratorPreCompiledComponent } from './configurator/configurator-pr
 import { ConfiguratorDriveToComponent } from './configurator/configurator-drive-to/configurator-drive-to.component';
 import { ConfiguratorEquipmentComponent } from './configurator/configurator-equipment/configurator-equipment.component';
 import { ConfiguratorReadyToBuyComponent } from './configurator/configurator-ready-to-buy/configurator-ready-to-buy.component';
+import { ConfiguratorFooterComponent } from './configurator/configurator-footer/configurator-footer.component';
 
 export const routes: Routes = [
     { path: '', component: MainComponent },
@@ -30,4 +31,5 @@ export const routes: Routes = [
     { path: 'configDriveTo', component:ConfiguratorDriveToComponent},
     { path: 'configEquipment', component:ConfiguratorEquipmentComponent},
     { path: 'configReady', component:ConfiguratorReadyToBuyComponent},
+    { path: 'configFooter', component:ConfiguratorFooterComponent}
 ];
