@@ -5,20 +5,18 @@
 <div class="container configuratorText">
     <h2 class="middle p-5">Válasszon modellt!</h2>
 </div>
-<div *ngFor="let item of golfData; let i = index" class="container middle p-5">
-    <button  (click)="navigateToCar()">
+
+<div class="container middle p-5">
+    <button (click)="navigateToCar()">
         <div class="card">
-            <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
+            <img *ngIf="cardImage" [src]="cardImage" class="card-img-top" alt="Golf Car Image">
             <div class="card-body">
-              <h2 class="card-text" >{{item.name}}</h2>
-              
+                <h2 class="card-text">Golf</h2> 
             </div>
-          </div>
+        </div>
     </button>
 </div>
 
-
-
-
-
-
+<div *ngIf="!cardImage" class="container middle p-5">
+    <p>A kép betöltése folyamatban van vagy hiba történt.</p>
+</div>

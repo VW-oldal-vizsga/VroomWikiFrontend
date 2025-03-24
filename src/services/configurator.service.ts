@@ -18,6 +18,10 @@ export class configurator {
       return this.http.get<IConfigurator[]>(`${this.apiUrl}`)
     }
 
+    getGolfMainImage(): Observable<Blob> {
+      return this.http.get(`${this.apiUrl}/image/1`, {responseType: 'blob'});
+    }
+
     getColors(): Observable<IColor[]> {
       return this.http.get<IColor[]>(`${this.apiUrl}/colors`);
     }
