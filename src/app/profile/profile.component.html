@@ -1,5 +1,11 @@
 <div class="bg-light" style="display: flex; justify-content: center; border-bottom: 2px solid lightgray;">
     <app-navbar></app-navbar>
 </div>
-
-asd
+<div *ngIf="userData">
+    <h2>Üdvözöllek, {{ userData.username }}!</h2>
+    <p>Email: {{ userData.email }}</p>
+    <!-- <button (click)="logout()">Kijelentkezés</button> -->
+  </div>
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>

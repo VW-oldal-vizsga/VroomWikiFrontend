@@ -15,6 +15,7 @@ import { ConfiguratorEquipmentComponent } from './configurator/configurator-equi
 import { ConfiguratorReadyToBuyComponent } from './configurator/configurator-ready-to-buy/configurator-ready-to-buy.component';
 import { ConfiguratorFooterComponent } from './configurator/configurator-footer/configurator-footer.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from '../services/auth.guard';
 
 export const routes: Routes = [
     { path: '', component: MainComponent },
@@ -33,5 +34,5 @@ export const routes: Routes = [
     { path: 'configEquipment', component:ConfiguratorEquipmentComponent},
     { path: 'configReady', component:ConfiguratorReadyToBuyComponent},
     { path: 'configFooter', component:ConfiguratorFooterComponent},
-    { path: 'profile', component:ProfileComponent}
+    { path: 'profile', component:ProfileComponent, canActivate: [AuthGuard]}
 ];
