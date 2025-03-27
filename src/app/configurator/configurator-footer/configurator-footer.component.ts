@@ -25,7 +25,7 @@ export class ConfiguratorFooterComponent implements OnInit {
   }
 
   getCredit(price: number): number {
-    return price / 48;
+    return price / 60;
   }
 
   navigateToReadyToBuy() {
