@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 import { IColor, IConfigurator, IEngine, ITransmissionType } from '../models/configurator.interface';
 
@@ -11,6 +11,8 @@ export class configurator {
 
     private apiUrl = 'http://localhost:5269/api/Configurator';
     private selectedConfigs: IConfigurator[] = [];
+    private selectedConfigSubject = new BehaviorSubject<IConfigurator | null>(null);
+    selectedConfig$ = this.selectedConfigSubject.asObservable();
 
     constructor(private http: HttpClient) { }
 
@@ -42,22 +44,18 @@ export class configurator {
       return this.selectedConfigs;
     }
   
-    setSelectedConfigs(configs: IConfigurator[]): void {
-      this.selectedConfigs = configs;
+    getSelectedConfig(): IConfigurator | null {
+      return this.selectedConfigSubject.value;
     }
   
-    addSelectedConfig(config: IConfigurator): void {
-      if (!this.selectedConfigs.some(c => c.id === config.id)) {
-        this.selectedConfigs.push(config);
-      }
+    setSelectedConfig(config: IConfigurator | null): void {
+      this.selectedConfigSubject.next(config);
     }
   
-    removeSelectedConfig(config: IConfigurator): void {
-      const index = this.selectedConfigs.findIndex(c => c.id === config.id);
-      if (index !== -1) {
-        this.selectedConfigs.splice(index, 1);
-      }
+    clearSelectedConfig(): void {
+      this.selectedConfigSubject.next(null);
     }
+
 
 
 }

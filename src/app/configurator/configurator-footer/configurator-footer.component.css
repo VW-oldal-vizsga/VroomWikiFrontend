@@ -1,7 +1,30 @@
 .footerContainer{
-    height: 130px;
+    height: 100px;
     background-color: gray;
     width: 100%;
-    margin-top: 2%;
+    position: fixed;
+    bottom: 0;
 }
+.templateParagraph{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.borderRight{
+    border-right: 3px solid black;
+}
+
+.col-2.middle.borderRight {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    border: none;
+    padding: 15px;
+    background: lightgray;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
 

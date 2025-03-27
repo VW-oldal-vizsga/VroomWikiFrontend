@@ -1,5 +1,17 @@
 <div class="footerContainer">
-    <div *ngFor="let item of selectedConfigs" class="container">
-        {{item.price}}
+    <div *ngIf="selectedConfig; else noData">
+        <div class="row">
+            <div style="height: 100px;" class="col-2 borderRight middle"><h3>{{ selectedConfig.configName }}</h3></div>
+            <div class="col-2 middle borderRight"><h4>Kiskereskedelmi ára: </h4></div>
+            <div class="col-2 middle borderRight">
+                <h5>{{ selectedConfig.price | number }} Ft</h5>
+                <h5>{{ getCredit(selectedConfig.price) | number:'1.0-0' }} Ft/hó</h5>
+            </div>
+            <div class="col-3 middle borderRight"><h4><button (click)="navigateToReadyToBuy()">Ugrás a fizetésre!</button></h4></div>
+            <div class="col-3 middle"><h4><button (click)="navigateToConfig()">Konfiguráljon sajátot!</button></h4></div>
+        </div>
     </div>
+    <ng-template #noData>
+        <h3 class="middle">Válassz egy autó típust!</h3>
+    </ng-template>
 </div>

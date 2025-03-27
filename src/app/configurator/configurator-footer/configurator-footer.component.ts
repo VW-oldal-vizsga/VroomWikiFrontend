@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { configurator } from '../../../services/configurator.service';
-import { forkJoin } from 'rxjs';
 import { IConfigurator } from '../../../models/configurator.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configurator-footer',
@@ -10,33 +10,28 @@ import { IConfigurator } from '../../../models/configurator.interface';
   templateUrl: './configurator-footer.component.html',
   styleUrl: './configurator-footer.component.css'
 })
-export class ConfiguratorFooterComponent {
+export class ConfiguratorFooterComponent implements OnInit {
 
-  configurator:IConfigurator [] = []
-  selectedConfigs: IConfigurator[] = [];
+  selectedConfig: IConfigurator | null = null;
 
-  constructor(private configurators: configurator) {
-    this.selectedConfigs = this.configurators.getSelectedConfigs();
+  constructor(private configurators: configurator, private router: Router) {
+    this.configurators.selectedConfig$.subscribe(config => {
+      this.selectedConfig = config;
+    });
   }
 
   ngOnInit(): void {
-      this.loadData();
-    }
-  
-    loadData(): void {
-      forkJoin({
-        configurators: this.configurators.getConfigurators(),
+    this.selectedConfig = this.configurators.getSelectedConfig();
+  }
 
-      }).subscribe({
-        next: (results) => {
-          this.configurator = results.configurators;
-          console.log('Kiválasztott konfigurációk:', this.selectedConfigs);
-        },
-        error: (err) => {
-          console.error('Hiba az adatok betöltésekor:', err);
-        }
-      });
-    }
+  getCredit(price: number): number {
+    return price / 48;
+  }
 
-
+  navigateToReadyToBuy() {
+    this.router.navigate(['/configReady']);
+  }
+  navigateToConfig() {
+    this.router.navigate(['/configColor']);
+  }
 }
