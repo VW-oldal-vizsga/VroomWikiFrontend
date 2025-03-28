@@ -5,8 +5,17 @@
   height: 100%;
 }
 
+.introductionTitle{
+  height: 5px;
+  width: 96%;
+  border-top: 2px solid gray;
+}
+
+.imgContainer{
+  width: 300px;
+}
 .gallery img {
-  width: 100%; 
+  width: 300px; 
   height: 200px; 
   object-fit: scale-down; 
   border-radius: 10px; 
@@ -21,6 +30,7 @@
 .paragraphDescription{
   border: 2px solid gray;
   border-radius: 15px;
+  width: 320px;
 }
 
 .card-body {

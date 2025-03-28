@@ -4,15 +4,53 @@
 <div class="container">
     <div class="middle">
         <div  class="mainContentContainer">
-            <div  *ngFor="let item of cardData; let i = index" class="col-12 middle mt-3"><h3 >{{item.name}}</h3></div>
-            <div class="container mt-5">
+            <div  *ngFor="let item of cardData; let i = index" class="col-12 middle mt-5"><h3 >{{item.name}}</h3></div>
+            <div *ngFor="let item of cardData" class="container mt-3">
                 <div class="row">
-                    <div *ngFor="let item of cardData; let i = index" class="col-4 gallery">
-                        <img [src]="selectedCardImage" alt="{{ item.name }}" >
+                    <div class="col-4">
+                        <div class="middle mt-5">
+                            <div class="imgContainer gallery"><img [src]="selectedCardImage" alt="{{ item.name }}" ></div>
+                        </div>
+                        <div class="middle mt-2 mb-3">
+                            <div class="paragraphDescription">
+                                <h5 class="p-4 ">Alkotói: {{item.designer}}</h5>
+                                <div class="middle pb-3">
+                                    <div style="width: 100%;" class="introductionTitle"></div>
+                                </div>
+                                <h5 class="p-4 pt-0">Gyártási helyzínek: {{item.assembly}}</h5>
+                                <div class="middle pb-3">
+                                    <div style="width: 100%;" class="introductionTitle"></div>
+                                </div>
+                                <h5 class="p-4 pt-0">Gyártás kezdete: {{item.releaseDate}}</h5>
+                                <div class="middle pb-3">
+                                    <div style="width: 100%;" class="introductionTitle"></div>
+                                </div>
+                                <h5 class="p-4 pt-0">Motor típusa: <br>{{item.engine}}</h5>
+                                <div class="middle pb-3">
+                                    <div style="width: 100%;" class="introductionTitle"></div>
+                                </div>
+                                <h5 class="p-4 pt-0">Lóerő: {{item.horsepower}}</h5>
+                            </div>
+                        </div>
                     </div>
-                    <div *ngFor="let item of cardData; let i = index" class="col-8 cardDescription p-5 pt-0">
-                        <p class="p-3 paragraphDescription">{{item.description}}</p>
-                    </div>
+                    <div class="col-8 cardDescription p-5 pt-0 ">
+                        <div>
+                            <h3 class="p-3 pb-0 mt-5">Bevezető</h3>
+                            <div class="middle">
+                                <div class="introductionTitle"></div>
+                            </div>
+                            <p class="p-3 ">
+                                {{item.description}}
+                            </p>
+                            <div>
+                                <h3 class="p-3 pb-0 ">Megjelenés</h3>
+                                    <div class="middle">
+                                        <div class="introductionTitle"></div>
+                                    </div>
+                                <p class="p-3 ">{{item.design}}</p>
+                            </div>
+                        </div>
+                    </div> 
                     
                 </div>
             </div>
