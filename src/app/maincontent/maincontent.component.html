@@ -5,25 +5,35 @@
             <div class="row">
                 <div class="col-lg-8 col-md-12 introductionBox">
                   <div class="row titleBox">
-                    <h4 class="h4MainTitle">What is Lorem Ipsum?</h4>
+                    <h4 class="h4MainTitle">Bevezető</h4>
                   </div>
-                  <div class="row textContent">
-                    <p *ngFor="let item of mainData">
+                  <div *ngFor="let item of mainData" class="row textContent">
+                    <p >
                       {{item.description}}
                     </p>
+
+                    <h4>Nagyobb gyárak helyszínei:</h4>
+                    <p>{{item.factories}}</p>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
                   <div class="container">
                     <div class="row borderNone titleBox">
                       <h3 class="volkswagenTitle">Volkswagen</h3>
+                      
                     </div>
                     <div style="height: 40px;"></div>
-                    <div class="row borderNone ">
-                      <div class="imageBox" *ngFor="let item of mainData">
+                    <div *ngFor="let item of mainData" class="row borderNone ">
+                      <div class="imageBox" >
                         <img class="imageContent" [src]="apiImage" alt="asd">
                          
                       </div>
+                      <div class="">
+                        <h5 class="middle">Igazgató: {{item.chairman}}</h5>
+                        <h5 class="middle">Profit: {{item.profit | number}}$</h5>
+                      </div>
+
+                      
                     </div>
                    </div>
                 </div>
