@@ -7,11 +7,11 @@
             <div  *ngFor="let item of cardData; let i = index" class="col-12 middle mt-3"><h3 >{{item.name}}</h3></div>
             <div class="container mt-5">
                 <div class="row">
-                    <div *ngFor="let item of cardData; let i = index" class="col-6 gallery">
-                        <img  [src]="selectedCardImage" alt="{{ item.name }}" >
+                    <div *ngFor="let item of cardData; let i = index" class="col-4 gallery">
+                        <img [src]="selectedCardImage" alt="{{ item.name }}" >
                     </div>
-                    <div *ngFor="let item of cardData; let i = index" class="col-6 middle">
-                        {{item.description}}
+                    <div *ngFor="let item of cardData; let i = index" class="col-8 cardDescription p-5 pt-0">
+                        <p class="p-3 paragraphDescription">{{item.description}}</p>
                     </div>
                     
                 </div>
