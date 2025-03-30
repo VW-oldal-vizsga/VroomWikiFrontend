@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { configurator } from '../../../services/configurator.service';
 import { IConfigurator } from '../../../models/configurator.interface';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-configurator-footer',
@@ -11,10 +12,18 @@ import { Router } from '@angular/router';
   styleUrl: './configurator-footer.component.css'
 })
 export class ConfiguratorFooterComponent implements OnInit {
-
   selectedConfig: IConfigurator | null = null;
+  showFooter: boolean = false; 
 
   constructor(private configurators: configurator, private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      if (!event.url.includes('/configColor') && !event.url.includes('/configReady') && !event.url.includes('/configPreComp')) {
+        this.configurators.clearSelectedConfig();
+      }
+    });
+  
     this.configurators.selectedConfig$.subscribe(config => {
       this.selectedConfig = config;
     });
@@ -31,6 +40,7 @@ export class ConfiguratorFooterComponent implements OnInit {
   navigateToReadyToBuy() {
     this.router.navigate(['/configReady']);
   }
+
   navigateToConfig() {
     this.router.navigate(['/configColor']);
   }

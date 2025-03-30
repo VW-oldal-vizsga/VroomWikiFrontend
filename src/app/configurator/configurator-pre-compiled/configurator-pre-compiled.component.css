@@ -100,5 +100,9 @@
 }
 
 .selectButton.selected {
-  background-color: green; /* Vagy bármilyen szín, ami jelzi a kiválasztást */
+  background-color: green; 
+}
+
+.card-text{
+  margin-bottom: 2px;
 }

@@ -4,10 +4,9 @@ import { UserService } from '../services/user.service';
 import { inject } from '@angular/core';
 
 export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-  const userService = inject(UserService); // Dependency injection funkcionális módon
+  const userService = inject(UserService); 
   const token = userService.getToken();
 
-  console.log('Interceptor token:', token); // Ellenőrzés
   
   if (token) {
     const authReq = req.clone({
