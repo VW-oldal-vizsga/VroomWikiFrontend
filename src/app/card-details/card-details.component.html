@@ -3,15 +3,18 @@
 </div>
 <div class="container">
     <div class="middle">
-        <div  class="mainContentContainer">
-            <div  *ngFor="let item of cardData; let i = index" class="col-12 middle mt-5"><h3 >{{item.name}}</h3></div>
+        <div class="mainContentContainer">
+            <div *ngFor="let item of cardData; let i = index" class="col-12 middle mt-5">
+                <h3>{{item.name}}</h3>
+            </div>
             <div *ngFor="let item of cardData" class="container mt-3">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 mt-4">
                         <div class="middle mt-5">
-                            <div class="imgContainer gallery"><img [src]="selectedCardImage" alt="{{ item.name }}" ></div>
+                            <div class="imgContainer gallery"><img [src]="selectedCardImage" alt="{{ item.name }}">
+                            </div>
                         </div>
-                        <div class="middle mt-2 mb-3">
+                        <div class="middle mt-4 mb-3">
                             <div class="paragraphDescription">
                                 <h5 class="p-4 ">Alkotói: {{item.designer}}</h5>
                                 <div class="middle pb-3">
@@ -44,18 +47,18 @@
                             </p>
                             <div>
                                 <h3 class="p-3 pb-0 ">Megjelenés</h3>
-                                    <div class="middle">
-                                        <div class="introductionTitle"></div>
-                                    </div>
-                                <p class="p-3 ">{{item.design}}</p>
+                                <div class="middle">
+                                    <div class="introductionTitle"></div>
+                                </div>
+                                <p class="p-3">{{item.design}}</p>
                             </div>
                         </div>
-                    </div> 
-                    
+                    </div>
+
                 </div>
             </div>
-            <div  class="col-12 middle mt-5 mb-5"><button class="btn btn-danger" (click)="navigateToDetail()">Vissza</button></div>
+            <div class="col-12 middle mt-5 mb-5"><button class="btn btn-danger"
+                    (click)="navigateToDetail()">Vissza</button></div>
         </div>
     </div>
 </div>
-  
