@@ -56,6 +56,10 @@ export class configurator {
       this.selectedConfigSubject.next(null);
     }
 
+    getCredit(price: number): number {
+      return price / 60;
+    }
+
 
 
 }

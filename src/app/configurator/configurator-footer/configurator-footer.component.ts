@@ -34,7 +34,7 @@ export class ConfiguratorFooterComponent implements OnInit {
   }
 
   getCredit(price: number): number {
-    return price / 60;
+    return this.configurators.getCredit(price);
   }
 
   navigateToReadyToBuy() {
@@ -42,6 +42,6 @@ export class ConfiguratorFooterComponent implements OnInit {
   }
 
   navigateToConfig() {
-    this.router.navigate(['/configColor']);
+    this.router.navigate(['/configEquipment']);
   }
 }

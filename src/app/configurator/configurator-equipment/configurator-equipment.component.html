@@ -1,1 +1,30 @@
-<p>configurator-equipment works!</p>
+<div class="bg-light" style="display: flex; justify-content: center; border-bottom: 2px solid lightgray;">
+    <app-navbar></app-navbar>
+</div>
+<div class="container">
+    <h2 class="middle p-5">A Volkswagen ajánlásával!</h2>
+</div>
+
+<div class="configContainer" *ngFor="let group of configuratorGroups">
+    <div class="card-wrapper" *ngFor="let item of group">
+        <div class="card">
+            <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h2 class="card-text">{{item.configName}}</h2>
+                <h3 class="card-text mt-1">{{item.price | number}} Ft</h3>
+                <h5 class="card-text mt-1">{{getCredit(item.price) | number:'1.0-0'}} Ft/hó</h5>
+                <p class="card-text mt-4">{{item.configName}} {{getEngineData(item.engine_Id)?.name}}</p>
+                <p class="card-text">{{getTransmissionData(item.transmissionType_Id)?.name}}</p>
+                <p class="card-text">{{getEngineData(item.engine_Id)?.fuelType}}</p>
+                <p class="card-text">{{getEngineData(item.engine_Id)?.horsepower}} LE</p>
+                
+                <div class="text-center p-3">
+                    <button class="selectButton" [class.selected]="isConfigSelected(item)" (click)="selectConfig(item)">
+                        {{ getButtonText(item) }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer><app-configurator-footer></app-configurator-footer></footer>

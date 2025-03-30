@@ -1,0 +1,108 @@
+.configContainer {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 20px; 
+    padding: 20px;
+  }
+  
+  .card-wrapper {
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 350px; 
+  }
+  
+  .card {
+    height: auto; 
+    width: 100%;
+    margin: 0; 
+    border: none;
+    transition: box-shadow 0.3s ease; 
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+    border: 2px solid black;
+    border-bottom: none;
+  }
+  
+  .card-body {
+    border: 2px solid black;
+    border-top: none;
+    background-color: lightgray;
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .selectButton {
+    border-radius: 12px;
+    width: 150px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .selectButton:hover {
+    background-color: #333;
+  }
+  
+  .card:hover {
+    box-shadow: 2px 2px 4px 4px gray;
+  }
+  
+  @media (max-width: 768px) {
+    .card-wrapper {
+        min-width: 250px;
+        max-width: 100%;
+    }
+    
+    .card-img-top {
+        height: 200px;
+    }
+    
+    .selectButton {
+        width: 120px;
+    }
+  }
+  
+  @media (max-width: 560px) {
+    .card-wrapper {
+        min-width: 100%;
+    }
+    
+    .card-img-top {
+        height: 150px;
+    }
+    
+    .card-body {
+        padding: 10px;
+    }
+    
+    .selectButton {
+        width: 100%;
+    }
+  }
+  
+  .selectButton {
+    border-radius: 12px;
+    width: 150px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .selectButton.selected {
+    background-color: green; 
+  }
+  
+  .card-text{
+    margin-bottom: 2px;
+  }
