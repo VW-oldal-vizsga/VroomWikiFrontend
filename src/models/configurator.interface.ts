@@ -11,6 +11,8 @@ export interface IConfigurator{
 export interface IColor{
     id:number,
     name:string,
+    colorCode:string,
+    price:number,
 }
 
 export interface IEngine {
