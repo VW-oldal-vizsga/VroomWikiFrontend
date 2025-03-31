@@ -22,3 +22,7 @@
 .rowPadding{
     padding: 40px;
 }
+.fullBorder{
+    border: 2px solid gray;
+    border-radius: 15px;
+}
