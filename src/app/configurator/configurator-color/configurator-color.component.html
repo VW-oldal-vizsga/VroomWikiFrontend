@@ -1,11 +1,12 @@
 <div class="bg-light" style="display: flex; justify-content: center; border-bottom: 2px solid lightgray;">
     <app-navbar></app-navbar>
 </div>
-<div class="container p-5 ">
-    <div class="row">
+<div style="width: 100%;" class="container mt-5">
+    <div  class="row">
         <div class="col-6 middle">
-            <div class="container middle">
-                <img *ngIf="selectedColorId" [src]="cardImages[selectedColorId]" alt="Autó képe">
+            <div class="container imageContainer middle">
+                <img class="gallery" *ngIf="selectedColorId" [src]="cardImages[selectedColorId]" alt="Autó képe">
+                <img class="gallery" *ngIf="!selectedColorId" [src]="cardImages[1]" alt="Autó képe">
             </div>
         </div>
         <div class="col-6 middle">

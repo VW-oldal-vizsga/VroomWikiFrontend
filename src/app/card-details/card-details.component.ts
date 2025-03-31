@@ -37,7 +37,6 @@ export class CardDetailsComponent implements OnInit {
             if (!this.selectedCard) {
               console.warn(`Nincs találat az id-vel: ${numericId}`);
             } else {
-              // Ha a kártya megtalálható, lekérjük a képét
               this.getCardImage(numericId);
             }
           },
@@ -49,7 +48,6 @@ export class CardDetailsComponent implements OnInit {
     });
   }
 
-  // Új metódus a kép lekérésére
   private getCardImage(id: number): void {
     this.oldModelsService.getOldModelsImage(id).subscribe({
       next: (imageBlob) => {

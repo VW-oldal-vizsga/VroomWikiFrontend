@@ -38,12 +38,20 @@ export class configurator {
       return this.http.get<IConfigurator[]>(`${this.apiUrl}`)
     }
 
+    getConfiguratorColorImage(id: number | undefined): Observable<Blob> {
+      return this.http.get(`${this.apiUrl}/color/image/${id}`, { responseType: 'blob' });
+    }
+
     getGolfMainImage(): Observable<Blob> {
       return this.http.get(`${this.apiUrl}/image/1`, {responseType: 'blob'});
     }
 
     getColors(): Observable<IColor[]> {
       return this.http.get<IColor[]>(`${this.apiUrl}/colors`);
+    }
+
+    getColorsById(colorid: number | null): Observable<IColor[]> {
+      return this.http.get<IColor[]>(`${this.apiUrl}/colors/${colorid}`);
     }
   
     getEngines(): Observable<IEngine[]> {

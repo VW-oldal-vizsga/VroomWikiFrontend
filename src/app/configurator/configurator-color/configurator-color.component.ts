@@ -35,6 +35,8 @@ export class ConfiguratorColorComponent {
         this.configurators = results.configurators;
         this.colors = results.colors;
         this.loadCardImages()
+        console.log(this.colors);
+        
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);
@@ -43,14 +45,14 @@ export class ConfiguratorColorComponent {
   }
 
   private loadCardImages(): void {
-    this.configurators.forEach(config => {
-      this.configurator.getConfiguratorImage(config.id).subscribe({
+    this.colors.forEach(color => {
+      this.configurator.getConfiguratorColorImage(color.id).subscribe({
         next: (imageBlob) => {
           const objectURL = URL.createObjectURL(imageBlob);
-          this.cardImages[config.id] = objectURL; 
+          this.cardImages[color.id] = objectURL; 
         },
         error: (error) => {
-          console.error(`Hiba a kép lekérdezése során (ID: ${config.id}):`, error); 
+          console.error(`Hiba a kép lekérdezése során (ID: ${color.id}):`, error); 
         }
       });
     });
