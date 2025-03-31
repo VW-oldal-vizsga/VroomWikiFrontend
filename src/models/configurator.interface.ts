@@ -29,3 +29,12 @@ export interface ITransmissionType{
     wheelDrive:number,
     price:number,
 }
+
+export interface ISelectConfigurator{
+    userId:number,
+    configName:string,
+    engine_Id:number,
+    color_Id:number,
+    transmissionType_Id:number,
+    price:number,
+}

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
-import { IColor, IConfigurator, IEngine, ITransmissionType } from '../../../models/configurator.interface';
+import { IColor, IConfigurator, IEngine, ISelectConfigurator, ITransmissionType } from '../../../models/configurator.interface';
 import { Router } from '@angular/router';
 import { configurator } from '../../../services/configurator.service';
 import { forkJoin } from 'rxjs';
@@ -15,12 +15,12 @@ import { ConfiguratorFooterComponent } from '../configurator-footer/configurator
   styleUrl: './configurator-equipment.component.css'
 })
 export class ConfiguratorEquipmentComponent {
-  configurators: IConfigurator[] = [];
+    configurators: IConfigurator[] = [];
     colors: IColor[] = [];
     engines: IEngine[] = [];
     transmissionTypes: ITransmissionType[] = [];
     cardImages: { [key: number]: string } = {};
-    configuratorGroups: IConfigurator[][] = [];
+    config: ISelectConfigurator[] = []
   
     constructor(private router: Router, private configurator: configurator) {}
   
@@ -52,9 +52,13 @@ export class ConfiguratorEquipmentComponent {
     navigateToCar(): void {
       this.router.navigate(['/configPreComp']);
     }
+
+    navigateToColor(): void {
+      this.router.navigate(['/configColor'])
+    }
   
     filterSpecificConfigurations(ids: number[]): void {
-      this.configuratorGroups = [this.configurators.filter(config => ids.includes(config.id))];
+      this.configurators = this.configurators.filter(config => ids.includes(config.id));
     }
   
     getEngineData(engineId: number): IEngine | undefined {
@@ -83,24 +87,15 @@ export class ConfiguratorEquipmentComponent {
       });
     }
   
-    selectConfig(config: IConfigurator): void {
-      const currentSelected = this.configurator.getSelectedConfig();
-      if (currentSelected === config) {
-        this.configurator.clearSelectedConfig();
-      } else {
-        this.configurator.setSelectedConfig(config);
-      }
-    }
-  
-    getButtonText(item: IConfigurator): string {
-      return this.configurator.getSelectedConfig() === item ? 'Kiválasztva' : 'Kiválasztás';
-    }
-  
-    isConfigSelected(item: IConfigurator): boolean {
-      return this.configurator.getSelectedConfig() === item;
-    }
 
     getCredit(price: number): number {
       return this.configurator.getCredit(price);
+    }
+
+    selectConfiguration(config: ISelectConfigurator) {
+      this.configurator.setConfigName(config.configName);
+      this.configurator.setEngine(config.engine_Id);
+      this.configurator.setTransmission(config.transmissionType_Id);
+      this.configurator.setPrice(config.price);
     }
 }
