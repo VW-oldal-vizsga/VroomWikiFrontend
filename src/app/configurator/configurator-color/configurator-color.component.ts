@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { configurator } from '../../../services/configurator.service';
 import { IColor, IConfigurator } from '../../../models/configurator.interface';
 import { forkJoin } from 'rxjs';
+import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
 
 @Component({
   selector: 'app-configurator-color',
   standalone:true,
-  imports: [NavbarComponent,CommonModule],
+  imports: [NavbarComponent,CommonModule, ConfiguratorFooterComponent],
   templateUrl: './configurator-color.component.html',
   styleUrl: './configurator-color.component.css'
 })

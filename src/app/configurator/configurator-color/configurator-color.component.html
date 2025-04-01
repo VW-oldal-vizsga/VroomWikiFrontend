@@ -9,16 +9,19 @@
                 <img class="gallery" *ngIf="!selectedColorId" [src]="cardImages[1]" alt="Autó képe">
             </div>
         </div>
-        <div class="col-6 middle">
+        <div class="col-6 mt-5">
 
             <div class="container fullBorder">
                 <h2 class="middle p-4 pb-0">Válassz egy külső színt!</h2>
-                <div class="middle">
+                <div class="middle mt-4 ">
                     <button class="circleButton" *ngFor="let color of colors" (click)="selectColor(color.id)"
                         [style.backgroundColor]="color.colorCode">
                     </button>
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
+
+<footer class="mt-5"><app-configurator-footer></app-configurator-footer></footer>

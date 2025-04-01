@@ -2,12 +2,12 @@
     <app-navbar></app-navbar>
 </div>
 <div class="container">
-    <h2 class="middle p-5">A Volkswagen ajánlásával!</h2>
+    <h2 class="middle p-5">Válasszon típusaink közül!</h2>
 </div>
 
-<div class="configContainer">
+<div class="configContainer ">
     <div class="card-wrapper" *ngFor="let item of configurators">
-        <div class="card">
+        <div class="card mb-5">
             <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-text">{{item.configName}}</h2>
@@ -26,4 +26,4 @@
         </div>
     </div>
 </div>
-<footer><app-configurator-footer></app-configurator-footer></footer>
+<footer class="mt-5"><app-configurator-footer></app-configurator-footer></footer>
