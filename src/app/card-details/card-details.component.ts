@@ -4,11 +4,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { ICard } from '../../models/oldModels.interface';
 import { oldModelsService } from '../../services/oldModelsService.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-card-details',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, TranslatePipe],
   templateUrl: './card-details.component.html',
   styleUrls: ['./card-details.component.css']
 })

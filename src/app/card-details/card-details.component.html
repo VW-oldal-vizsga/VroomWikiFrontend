@@ -16,29 +16,29 @@
                         </div>
                         <div class="middle mt-4 mb-3">
                             <div class="paragraphDescription">
-                                <h5 class="p-4 ">Tervezői: {{item.designer}}</h5>
+                                <h5 class="p-4 ">{{ 'CARDS.CREATOR' | translate }} {{item.designer}}</h5>
                                 <div class="middle pb-3">
                                     <div style="width: 100%;" class="introductionTitle"></div>
                                 </div>
-                                <h5 class="p-4 pt-0">Gyártási helyzínek: <br>{{item.assembly}}</h5>
+                                <h5 class="p-4 pt-0">{{ 'CARDS.FACTORIES' | translate }} <br>{{item.assembly}}</h5>
                                 <div class="middle pb-3">
                                     <div style="width: 100%;" class="introductionTitle"></div>
                                 </div>
-                                <h5 class="p-4 pt-0">Gyártás kezdete: {{item.releaseDate}}</h5>
+                                <h5 class="p-4 pt-0">{{ 'CARDS.FACTORIESDATE' | translate }} {{item.releaseDate}}</h5>
                                 <div class="middle pb-3">
                                     <div style="width: 100%;" class="introductionTitle"></div>
                                 </div>
-                                <h5 class="p-4 pt-0">Motor típusa: <br>{{item.engine}}</h5>
+                                <h5 class="p-4 pt-0">{{ 'CARDS.ENGINE' | translate }} <br>{{item.engine}}</h5>
                                 <div class="middle pb-3">
                                     <div style="width: 100%;" class="introductionTitle"></div>
                                 </div>
-                                <h5 class="p-4 pt-0">Lóerő: {{item.horsepower}}</h5>
+                                <h5 class="p-4 pt-0">{{ 'CARDS.HORSEPOWER' | translate }} {{item.horsepower}}</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-8 cardDescription p-5 pt-0 ">
                         <div>
-                            <h3 class="p-3 pb-0 mt-5">Bevezető</h3>
+                            <h3 class="p-3 pb-0 mt-5">{{ 'CARDS.INTRODUCTION' | translate }}</h3>
                             <div class="middle">
                                 <div class="introductionTitle"></div>
                             </div>
@@ -46,7 +46,7 @@
                                 {{item.description}}
                             </p>
                             <div>
-                                <h3 class="p-3 pb-0 ">Megjelenés</h3>
+                                <h3 class="p-3 pb-0 ">{{ 'CARDS.DESIGN' | translate }}</h3>
                                 <div class="middle">
                                     <div class="introductionTitle"></div>
                                 </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="col-12 middle mt-5 mb-5"><button class="btn btn-danger"
-                    (click)="navigateToDetail()">Vissza</button></div>
+                    (click)="navigateToDetail()">{{ 'BUTTONS.BACK' | translate}}</button></div>
         </div>
     </div>
 </div>

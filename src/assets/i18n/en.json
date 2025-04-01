@@ -13,5 +13,18 @@
         "LOGINTEXT": "To keep connected with us please login with your personal info",
         "WELCOME2": "Helló, Friend!",
         "REGISTERTEXT": "Enter your personal details and start journey with us"
+    },
+    "CARDS": {
+        "CREATOR": "Designer:",
+        "FACTORIES": "Production Sites:",
+        "FACTORIESDATE": "Production Start:",
+        "ENGINETYPE": "Engine Type:",
+        "HORSEPOWER": "Horsepower:",
+        "INTRODUCTION": "Introduction",
+        "DESIGN": "Appearance"
+    },
+    "BUTTONS": {
+        "BACK": "Back"
     }
+
 }

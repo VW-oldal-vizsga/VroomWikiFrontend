@@ -13,5 +13,17 @@
         "LOGINTEXT": "A velünk való kapcsolattartáshoz kérjük, jelentkezzen be személyes adataival",
         "WELCOME2": "Helló, Barát!",
         "REGISTERTEXT": "Adja meg személyes adatait és jelentkezzen be!"
+    },
+    "CARDS":{
+        "CREATOR": "Tervezői:",
+        "FACTORIES": "Gyártási helyszínek:",
+        "FACTORIESDATE": "Gyártás kezdete:",
+        "ENGINETYPE": "Motor típusa:",
+        "HORSEPOWER": "Lóerő:",
+        "INTRODUCTION": "Bevezető",
+        "DESIGN": "Megjelenés"
+    },
+    "BUTTONS":{
+        "BACK": "Vissza"
     }
 }

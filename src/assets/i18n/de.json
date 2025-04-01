@@ -13,5 +13,18 @@
         "LOGINTEXT": "Um uns zu kontaktieren, loggen Sie sich bitte mit Ihren persönlichen Daten ein",
         "WELCOME2": "Hallo, Freund!",
         "REGISTERTEXT": "Geben Sie Ihre persönlichen Daten ein und melden Sie sich an!"
+    },
+    "CARDS": {
+        "CREATOR": "Designer:",
+        "FACTORIES": "Produktionsstätten:",
+        "FACTORIESDATE": "Beginn der Produktion:",
+        "ENGINETYPE": "Motortyp:",
+        "HORSEPOWER": "Pferdestärke:",
+        "INTRODUCTION": "Einführung",
+        "DESIGN": "Erscheinung"
+    },
+    "BUTTONS": {
+        "BACK": "Zurück"
     }
+
 }
