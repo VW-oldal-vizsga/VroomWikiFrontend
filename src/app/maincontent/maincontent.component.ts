@@ -4,15 +4,19 @@ import { Component } from '@angular/core';
 import { mainPageData } from '../../services/mainPageData.service';
 import { IMainData } from '../../models/mainPageData.interface';
 import { IHistory } from '../../models/mainPageHistory.interface';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-maincontent',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './maincontent.component.html',
   styleUrl: './maincontent.component.css'
 })
 export class MaincontentComponent {
-  constructor(private mainPageData : mainPageData ) {}
+  constructor(private mainPageData : mainPageData , private translate: TranslateService) {
+    this.translate.setDefaultLang('hu'); 
+    this.translate.use('hu');
+  }
   apiImage = "http://localhost:5269/api/MainPage_Sales/image/1"
   
   
@@ -48,6 +52,7 @@ export class MaincontentComponent {
         console.error('Hiba a lekérdezés során:', error);
       }
     })
+    
 
   }
 }
