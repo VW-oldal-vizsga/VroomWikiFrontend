@@ -40,3 +40,11 @@ export interface ISelectConfigurator{
     transmissionType_Id:number,
     price:number,
 }
+export interface IPopularConfigs{
+    id: number,
+    configName:string,
+    engine_Id:number,
+    color_Id:number,
+    transmissionType_Id:number,
+    price:number,
+}

@@ -12,7 +12,10 @@
         "WELCOME": "Welcome back!",
         "LOGINTEXT": "To keep connected with us please login with your personal info",
         "WELCOME2": "Helló, Friend!",
-        "REGISTERTEXT": "Enter your personal details and start journey with us"
+        "REGISTERTEXT": "Enter your personal details and start journey with us",
+        "USERNAME": "Username",
+        "EMAIL": "Email",
+        "PASSWORD": "Password"
     },
     "CARDS": {
         "CREATOR": "Designer:",

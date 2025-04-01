@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { configurator } from '../../../services/configurator.service';
-import { IConfigurator } from '../../../models/configurator.interface';
+import { IConfigurator, IPopularConfigs } from '../../../models/configurator.interface';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -12,7 +12,7 @@ import { filter } from 'rxjs/operators';
   styleUrl: './configurator-footer.component.css'
 })
 export class ConfiguratorFooterComponent implements OnInit {
-  selectedConfig: IConfigurator | null = null;
+  selectedConfig: IPopularConfigs | null = null;
   currentRoute: string = '';
 
   constructor(private configurators: configurator, private router: Router) {

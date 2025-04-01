@@ -12,7 +12,10 @@
         "WELCOME": "Willkommen zurück!",
         "LOGINTEXT": "Um uns zu kontaktieren, loggen Sie sich bitte mit Ihren persönlichen Daten ein",
         "WELCOME2": "Hallo, Freund!",
-        "REGISTERTEXT": "Geben Sie Ihre persönlichen Daten ein und melden Sie sich an!"
+        "REGISTERTEXT": "Geben Sie Ihre persönlichen Daten ein und melden Sie sich an!",
+        "USERNAME": "Nutzername",   
+        "EMAIL": "E-Mail",
+        "PASSWORD": "Passwort"
     },
     "CARDS": {
         "CREATOR": "Designer:",

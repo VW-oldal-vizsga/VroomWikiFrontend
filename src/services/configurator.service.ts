@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-import { IColor, IConfigurator, IEngine, ISelectConfigurator, ITransmissionType } from '../models/configurator.interface';
+import { IColor, IConfigurator, IEngine, IPopularConfigs, ISelectConfigurator, ITransmissionType } from '../models/configurator.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class configurator {
     private apiUrl = 'http://localhost:5269/api/Configurator';
-    private selectedConfigs: IConfigurator[] = [];
-    private selectedConfigSubject = new BehaviorSubject<IConfigurator | null>(null);
+    private selectedConfigs: IPopularConfigs[] = [];
+    private selectedConfigSubject = new BehaviorSubject<IPopularConfigs | null>(null);
     selectedConfig$ = this.selectedConfigSubject.asObservable();
 
     private config: ISelectConfigurator = {
@@ -37,13 +37,16 @@ export class configurator {
     getConfigurators(): Observable<IConfigurator[]> {
       return this.http.get<IConfigurator[]>(`${this.apiUrl}`)
     }
+    getPopularConfigs(): Observable<IPopularConfigs[]> {
+      return this.http.get<[IPopularConfigs]>(`${this.apiUrl}/popularconfigs`)
+    }
 
     getConfiguratorColorImage(id: number | undefined): Observable<Blob> {
       return this.http.get(`${this.apiUrl}/color/image/${id}`, { responseType: 'blob' });
     }
 
     getGolfMainImage(): Observable<Blob> {
-      return this.http.get(`${this.apiUrl}/image/1`, {responseType: 'blob'});
+      return this.http.get(`${this.apiUrl}/popularconfigs/image/1`, {responseType: 'blob'});
     }
 
     getColors(): Observable<IColor[]> {
@@ -63,18 +66,18 @@ export class configurator {
     }
 
     getConfiguratorImage(id: number | undefined): Observable<Blob> {
-      return this.http.get(`${this.apiUrl}/image/${id}`, { responseType: 'blob' });
+      return this.http.get(`${this.apiUrl}/popularconfigs/image/${id}`, { responseType: 'blob' });
     }
 
-    getSelectedConfigs(): IConfigurator[] {
+    getSelectedConfigs(): IPopularConfigs[] {
       return this.selectedConfigs;
     }
   
-    getSelectedConfig(): IConfigurator | null {
+    getSelectedConfig(): IPopularConfigs | null {
       return this.selectedConfigSubject.value;
     }
   
-    setSelectedConfig(config: IConfigurator | null): void {
+    setSelectedConfig(config: IPopularConfigs | null): void {
       this.selectedConfigSubject.next(config);
     }
   

@@ -4,7 +4,7 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 import { configurator } from '../../../services/configurator.service';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
-import { IColor, IConfigurator, IEngine, ITransmissionType } from '../../../models/configurator.interface';
+import { IColor, IConfigurator, IEngine, IPopularConfigs, ITransmissionType } from '../../../models/configurator.interface';
 import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
 
 @Component({
@@ -15,12 +15,12 @@ import { ConfiguratorFooterComponent } from '../configurator-footer/configurator
 })
 export class ConfiguratorPreCompiledComponent {
 
-  configurators: IConfigurator[] = [];
+  configurators: IPopularConfigs[] = [];
   colors: IColor[] = [];
   engines: IEngine[] = [];
   transmissionTypes: ITransmissionType[] = [];
   cardImages: { [key: number]: string } = {};
-  configuratorGroups: IConfigurator[][] = [];
+  configuratorGroups: IPopularConfigs[][] = [];
 
   constructor(private router: Router, private configurator: configurator) {}
 
@@ -30,7 +30,7 @@ export class ConfiguratorPreCompiledComponent {
 
   loadData(): void {
     forkJoin({
-      configurators: this.configurator.getConfigurators(),
+      configurators: this.configurator.getPopularConfigs(),
       colors: this.configurator.getColors(),
       engines: this.configurator.getEngines(),
       transmissionTypes: this.configurator.getTransmissionTypes(),
@@ -83,7 +83,7 @@ export class ConfiguratorPreCompiledComponent {
     });
   }
 
-  selectConfig(config: IConfigurator): void {
+  selectConfig(config: IPopularConfigs): void {
     const currentSelected = this.configurator.getSelectedConfig();
     if (currentSelected === config) {
       this.configurator.clearSelectedConfig();
@@ -92,11 +92,11 @@ export class ConfiguratorPreCompiledComponent {
     }
   }
 
-  getButtonText(item: IConfigurator): string {
+  getButtonText(item: IPopularConfigs): string {
     return this.configurator.getSelectedConfig() === item ? 'Kiválasztva' : 'Kiválasztás';
   }
 
-  isConfigSelected(item: IConfigurator): boolean {
+  isConfigSelected(item: IPopularConfigs): boolean {
     return this.configurator.getSelectedConfig() === item;
   }
 }
