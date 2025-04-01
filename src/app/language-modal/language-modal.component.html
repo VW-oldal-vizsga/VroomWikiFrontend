@@ -3,24 +3,15 @@
     <button type="button" class="btn-close" (click)="close()"></button>
   </div>
   <div class="modal-body">
-    <div class="row langContainer">
+    <div class="row langContainer middle">
         <div class="col-2 ">
-            <button class="roLang"></button>
+            <button (click)="close()" (click)="translateToEn()" class="enLang"></button>
         </div>
         <div class="col-2 ">
-            <button class="ukrLang"></button>
+            <button (click)="close()" (click)="translateToDe()" class="deLang"></button>
         </div>
         <div class="col-2 ">
-            <button class="sloLang"></button>
-        </div>
-        <div class="col-2 ">
-            <button class="srbLang"></button>
-        </div>
-        <div class="col-2 ">
-            <button class="auLang"></button>
-        </div>
-        <div class="col-2 ">
-            <button class="croLang"></button>
+            <button (click)="close()" (click)="translateToHu()" class="huLang"></button>
         </div>
     </div>
     

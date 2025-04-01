@@ -6,12 +6,13 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Register } from '../../models/register.interface';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-login-signup',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, HttpClientModule, FormsModule],
+  imports: [NavbarComponent, CommonModule, HttpClientModule, FormsModule, TranslatePipe],
   templateUrl: './login-signup.component.html',
   styleUrl: './login-signup.component.css'
 })

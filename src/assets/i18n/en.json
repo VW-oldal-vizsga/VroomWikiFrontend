@@ -1,5 +1,17 @@
 {
     "MAIN":{
-        "INTRODUCTION": "Introduction"
+        "INTRODUCTION": "Introduction",
+        "FACTORIES":"Sites of larger factories:",
+        "DIRECTOR":"Director:",
+        "PROFIT": "Profit:"
+    },
+    "LOGIN":{
+        "CREATE": "Create account",
+        "SIGNUP": "Sign up",
+        "SIGNIN": "Sign in",
+        "WELCOME": "Welcome back!",
+        "LOGINTEXT": "To keep connected with us please login with your personal info",
+        "WELCOME2": "Helló, Friend!",
+        "REGISTERTEXT": "Enter your personal details and start journey with us"
     }
 }

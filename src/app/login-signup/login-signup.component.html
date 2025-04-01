@@ -6,7 +6,7 @@
         <div class="container" id="container">
             <div class="form-container sign-up-container">
                 <form action="#">
-                    <h1>Create Account</h1>
+                    <h1>{{ 'LOGIN.CREATE' | translate }}</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     </div>
@@ -14,12 +14,12 @@
                     <input type="username"  [(ngModel)]="registerData.username" name="username" required placeholder="Username"/>
                     <input type="email"  [(ngModel)]="registerData.email" name="email" required placeholder="Email" />
                     <input type="password" [(ngModel)]="registerData.password" name="password" required placeholder="Password" />
-                    <button type="submit" (click)="signUp()">Sign Up</button>
+                    <button type="submit" (click)="signUp()">{{ 'LOGIN.SIGNUP' | translate }}</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
                 <form action="#">
-                    <h1>Sign in</h1>
+                    <h1>{{ 'LOGIN.SIGNIN' | translate }}</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     </div>
@@ -27,20 +27,20 @@
                     <input type="username" id="username" [(ngModel)]="loginData.username" name="username" required placeholder="Username"/>
                     <input type="password" id="password" [(ngModel)]="loginData.password" name="password" required placeholder="Password" />
                     <a href="#">Forgot your password?</a>
-                    <button type="submit" (click)="onSubmit()" >Sign In</button>
+                    <button type="submit" (click)="onSubmit()" >{{ 'LOGIN.SIGNIN' | translate }}</button>
                 </form>
             </div>
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
-                        <h1>Welcome Back!</h1>
-                        <p>To keep connected with us please login with your personal info</p>
-                        <button class="ghost" (click)="animation()" id="signIn">Sign In</button>
+                        <h1>{{ 'LOGIN.WELCOME' | translate }}</h1>
+                        <p>{{ 'LOGIN.LOGINTEXT' | translate }}</p>
+                        <button class="ghost" (click)="animation()" id="signIn">{{ 'LOGIN.SIGNIN' | translate }}</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
-                        <button class="ghost" (click)="animation()" id="signUp">Sign Up</button>
+                        <h1>{{ 'LOGIN.WELCOME2' | translate }}</h1>
+                        <p>{{ 'LOGIN.REGISTERTEXT' | translate }}</p>
+                        <button class="ghost" (click)="animation()" id="signUp">{{ 'LOGIN.SIGNUP' | translate }}</button>
                     </div>
                 </div>
             </div>

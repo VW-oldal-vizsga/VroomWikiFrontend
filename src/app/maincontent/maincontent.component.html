@@ -12,7 +12,7 @@
                       {{item.description}}
                     </p>
 
-                    <h4>Nagyobb gyárak helyszínei:</h4>
+                    <h4>{{ 'MAIN.FACTORIES' | translate }}</h4>
                     <p>{{item.factories}}</p>
                   </div>
                 </div>
@@ -29,8 +29,8 @@
                          
                       </div>
                       <div class="">
-                        <h5 class="middle">Igazgató: {{item.chairman}}</h5>
-                        <h5 class="middle">Profit: {{item.profit | number}}$</h5>
+                        <h5 class="middle">{{ 'MAIN.DIRECTOR' | translate }} {{item.chairman}}</h5>
+                        <h5 class="middle">{{ 'MAIN.PROFIT' | translate }} {{item.profit | number}}$</h5>
                       </div>
 
                       

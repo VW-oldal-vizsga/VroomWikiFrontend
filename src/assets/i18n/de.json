@@ -1,0 +1,17 @@
+{
+    "MAIN":{
+        "INTRODUCTION": "Einführung",
+        "FACTORIES":"Standorte von größeren Fabriken:",
+        "DIRECTOR":"Direktor:",
+        "PROFIT": "Gewinn:"
+    },
+    "LOGIN":{
+        "CREATE": "Ein Konto erstellen",
+        "SIGNUP": "Anmeldung",
+        "SIGNIN": "Einloggen unter",
+        "WELCOME": "Willkommen zurück!",
+        "LOGINTEXT": "Um uns zu kontaktieren, loggen Sie sich bitte mit Ihren persönlichen Daten ein",
+        "WELCOME2": "Hallo, Freund!",
+        "REGISTERTEXT": "Geben Sie Ihre persönlichen Daten ein und melden Sie sich an!"
+    }
+}

@@ -1,51 +1,28 @@
-.roLang{
-    height: 40px;
-    background-image: url(../../assets/ro-flag.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 1px solid lightgray;
-    width: 60px;
-}
 
 .langcoverer{
     height: auto;
     width: auto;
 }
-.ukrLang{
+
+.enLang{
     height: 40px;
-    background-image: url(../../assets/up-flag.gif);
+    background-image: url(../../assets/English_language.svg.png);
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid lightgray;
     width: 60px;
 }
-.sloLang{
+.deLang{
     height: 40px;
-    background-image: url(../../assets/lo-flag.gif);
+    background-image: url(../../assets/Flag_of_Germany.svg.webp);
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid lightgray;
     width: 60px;
 }
-.srbLang{
+.huLang{
     height: 40px;
-    background-image: url(../../assets/ri-flag.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 1px solid lightgray;
-    width: 60px;
-}
-.auLang{
-    height: 40px;
-    background-image: url(../../assets/au-flag.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 1px solid lightgray;
-    width: 60px;
-}
-.croLang{
-    height: 40px;
-    background-image: url(../../assets/hr-flag.gif);
+    background-image: url(../../assets/magyarzaszlo-min.png);
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid lightgray;
