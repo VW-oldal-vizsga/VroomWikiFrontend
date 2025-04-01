@@ -1,5 +1,5 @@
 .footerContainer {
-    background-color: gray;
+    background-color: blue;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -32,7 +32,30 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex-direction: column; /* Tartalom függőlegesen rendezve */
+    flex-direction: column; 
 }
+
+a {
+    color: #31be31; 
+    text-decoration: underline; 
+    transition: color 0.3s ease; 
+    cursor: pointer;
+}
+
+a:visited {
+    color: #3CB371;
+}
+
+a:hover,
+a:visited:hover {
+    color: #00ff00; 
+}
+
+a:active,
+a:visited:active {
+    color: #006400; 
+}
+
+
 
 

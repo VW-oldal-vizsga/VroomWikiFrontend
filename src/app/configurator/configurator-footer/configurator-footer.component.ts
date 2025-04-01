@@ -13,17 +13,20 @@ import { filter } from 'rxjs/operators';
 })
 export class ConfiguratorFooterComponent implements OnInit {
   selectedConfig: IConfigurator | null = null;
-  showFooter: boolean = false; 
+  currentRoute: string = '';
 
   constructor(private configurators: configurator, private router: Router) {
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
+      this.currentRoute = event.url; 
       if (!event.url.includes('/configColor') && !event.url.includes('/configReady') && !event.url.includes('/configPreComp')) {
         this.configurators.clearSelectedConfig();
       }
     });
-  
+
+
     this.configurators.selectedConfig$.subscribe(config => {
       this.selectedConfig = config;
     });

@@ -26,3 +26,14 @@
     border: 2px solid gray;
     border-radius: 15px;
 }
+
+.left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

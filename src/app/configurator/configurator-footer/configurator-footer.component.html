@@ -1,17 +1,65 @@
 <div class="footerContainer">
-    <div *ngIf="selectedConfig; else noData">
+    <ng-container *ngIf="currentRoute.includes('/configPreComp')">
+      <div *ngIf="selectedConfig; else noData">
         <div class="row">
-            <div class="col-12 col-md-2 borderRight middle"><h3>{{ selectedConfig.configName }}</h3></div>
-            <div class="col-12 col-md-2 middle borderRight"><h4>Kiskereskedelmi ára: </h4></div>
-            <div class="col-12 col-md-2 middle borderRight">
-                <h5>{{ selectedConfig.price | number }} Ft</h5>
-                <h5>{{ getCredit(selectedConfig.price) | number:'1.0-0' }} Ft/hó</h5>
-            </div>
-            <div class="col-12 col-md-3 middle borderRight"><h4><button (click)="navigateToReadyToBuy()">Ugrás a fizetésre!</button></h4></div>
-            <div class="col-12 col-md-3 middle"><h4><button (click)="navigateToConfig()">Konfiguráljon sajátot!</button></h4></div>
+          <div class="col-12 col-md-2 borderRight middle"><h3 class="text-white">{{ selectedConfig.configName }}</h3></div>
+          <div class="col-12 col-md-2 middle borderRight"><h4 class="text-white">Kiskereskedelmi ára: </h4></div>
+          <div class="col-12 col-md-2 middle borderRight">
+            <h5 class="text-white">{{ selectedConfig.price | number }} Ft</h5>
+            <h5 class="text-white">{{ getCredit(selectedConfig.price) | number:'1.0-0' }} Ft/hó</h5>
+          </div>
+          <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToReadyToBuy()">Ugrás a fizetésre!</button></h5></div>
+          <div class="col-12 col-md-3 middle"><h5><button (click)="navigateToConfig()">Konfiguráljon sajátot!</button></h5></div>
         </div>
-    </div>
-    <ng-template #noData>
-        <h3 class="middle">Válassz egy autó típust!</h3>
-    </ng-template>
+      </div>
+      <ng-template #noData>
+        <div class="row">
+            <div class="col-12 col-md-7 ps-0 pe-0">
+                <h3 class="right text-white">Válassz egy előreösszeállított autót vagy</h3>
+            </div>
+            <div class="col-12 col-md-5 ps-2 pe-0">
+                <h3><a class="left" (click)="navigateToConfig()">konfiguráljon sajátot!</a></h3>
+            </div>
+        </div>
+        
+        
+      </ng-template>
+    </ng-container>
+  
+    <ng-container *ngIf="currentRoute.includes('/configColor')">
+      <div class="row">
+        <div class="col-12 col-md-10 ps-5 pt-2">
+          <h3 class="text-white">Itt válassza ki az autó színét, hogy még egyedibb legyen!</h3>
+        </div>
+        <div class="col-12 col-md-2 middle">
+            
+          <button>Következő lépés</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentRoute.includes('/configEquipment')">
+        <div *ngIf="selectedConfig; else noData">
+            <div class="row">
+              <div class="col-12 col-md-2 borderRight middle"><h3 class="text-white">{{ selectedConfig.configName }}</h3></div>
+              <div class="col-12 col-md-2 middle borderRight"><h4 class="text-white">Kiskereskedelmi ára: </h4></div>
+              <div class="col-12 col-md-2 middle borderRight">
+                <h5 class="text-white">{{ selectedConfig.price | number }} Ft</h5>
+                <h5 class="text-white">{{ getCredit(selectedConfig.price) | number:'1.0-0' }} Ft/hó</h5>
+              </div>
+              <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToReadyToBuy()">Ugrás a fizetésre!</button></h5></div>
+              <div class="col-12 col-md-3 middle"><h5><button (click)="navigateToConfig()">Konfiguráljon sajátot!</button></h5></div>
+            </div>
+          </div>
+          <ng-template #noData>
+            <div class="row">
+                <div class="col-12 col-md-12 middle">
+                    <h3 class="right text-white">Válassz egy autó típust</h3>
+                </div>
+                
+            </div>
+            
+            
+          </ng-template>
+    </ng-container>
 </div>
