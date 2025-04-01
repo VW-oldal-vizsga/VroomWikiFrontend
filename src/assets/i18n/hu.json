@@ -3,7 +3,9 @@
         "INTRODUCTION": "Bevezető",
         "FACTORIES":"Nagyobb gyárak helyszínei:",
         "DIRECTOR":"Igazgató:",
-        "PROFIT": "Profit:"
+        "PROFIT": "Profit:",
+        "DESCRIPTION": "A Volkswagen, rövidítve VW , egy német autómárka, amelyet 1937-ben alapították a Német Munkásfront (Deutsche Arbeitsfront) felkérésére, azzal a céllal, hogy beindítsa a tömeges motorizációt az akkori Harmadik Birodalomban. Székhelye az alsó-szászországi Wolfsburg városában található. A Volkswagen az ugyanilyen nevű konszern zászlóshajójának számít. A konszern 2016-ban és 2017-ben a világ legnagyobb autógyártójának számított",
+        "VW": "Volkswagen"
     },
     "LOGIN":{
         "CREATE": "Fiók létrehozása",
@@ -27,7 +29,8 @@
         "DESIGN": "Megjelenés"
     },
     "BUTTONS":{
-        "BACK": "Vissza"
+        "BACK": "Vissza",
+        "CHOOSE": "Kiválasztás"
     },
     "NAVBAR": {
         "MAINPAGE": "Kezdőlap",
@@ -37,5 +40,24 @@
         "PROFILE": "Profil",
         "SIGNIN" : "Bejelentkezés",
         "MENU": "Menü"
+    },
+    "CONFIGURATOR": {
+        "FAMOUS": "Népszerű konfigurációk",
+        "HORSEPOWER": "LE",
+        "CO2": "g/km",
+        "HUF": "Ft",
+        "CHOOSEMODEL": "Válasszon modellt!",
+        "GOLF": "Golf",
+        "ERROR": "A kép betöltése folyamatban van vagy hiba történt.",
+        "PRICE": "Kiskereskedelmi ára:",
+        "HUF/MONTH": "Ft/hó",
+        "PAY": "Ugrás a fizetésre!",
+        "PREBUILDTEXT": "Válassz egy előreösszeállított autót vagy",
+        "CONFIGCUSTOM": "konfiguráljon sajátot!",
+        "CHOOSECOLOR": "Itt válassza ki az autó színét, hogy még egyedibb legyen!",
+        "NEXT": "Következő lépés",
+        "CHOOSETYPE": "Válassz egy autó típust!",
+        "CHOOSEOURTYPE": "Válasszon típusaink közül!",
+        "CHOOSEOUTSIDECOLOR": "Válassz egy külső színt!"
     }
 }

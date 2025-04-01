@@ -3,7 +3,7 @@
 </div>
 
 <div class="container">
-    <h2 class="middle p-5">A Volkswagen ajánlásával!</h2>
+    <h2 class="middle p-5">Népszerű konfigurációk</h2>
 </div>
 
 <div class="configContainer" *ngFor="let group of configuratorGroups">
@@ -15,10 +15,10 @@
                 <p class="card-text">{{item.configName}} {{getEngineData(item.engine_Id)?.name}}</p>
                 <p class="card-text">{{getTransmissionData(item.transmissionType_Id)?.name}}</p>
                 <p class="card-text">{{getEngineData(item.engine_Id)?.fuelType}}</p>
-                <p class="card-text">{{getEngineData(item.engine_Id)?.horsepower}} LE</p>
-                <p class="card-text">{{getEngineData(item.engine_Id)?.co2Emission}} g/km</p>
+                <p class="card-text">{{getEngineData(item.engine_Id)?.horsepower}} {{ 'CONFIGURATOR.HORSEPOWER' | translate}}</p>
+                <p class="card-text">{{getEngineData(item.engine_Id)?.co2Emission}} {{ 'CONFIGURATOR.CO2' | translate}}</p>
                 <p class="card-text">{{getColorData(item.color_Id)?.name}}</p>
-                <h4 class="card-text mt-2">{{item.price | number}} Ft</h4>
+                <h4 class="card-text mt-2">{{item.price | number}} {{ 'CONFIGURATOR.HUF' | translate}}</h4>
                 <div class="text-center p-3">
                     <button class="selectButton" [class.selected]="isConfigSelected(item)" (click)="selectConfig(item)">
                         {{ getButtonText(item) }}

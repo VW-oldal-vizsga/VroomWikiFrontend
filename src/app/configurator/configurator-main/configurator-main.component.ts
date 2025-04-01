@@ -3,11 +3,12 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { Router } from '@angular/router';
 import { configurator } from '../../../services/configurator.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-configurator-main',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, TranslatePipe],
   templateUrl: './configurator-main.component.html',
   styleUrls: ['./configurator-main.component.css']
 })

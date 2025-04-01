@@ -12,7 +12,7 @@
         <div class="col-6 mt-5">
 
             <div class="container fullBorder">
-                <h2 class="middle p-4 pb-0">Válassz egy külső színt!</h2>
+                <h2 class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOOSEOUTSIDECOLOR' | translate}}</h2>
                 <div class="middle mt-4 ">
                     <button class="circleButton" *ngFor="let color of colors" (click)="selectColor(color.id)"
                         [style.backgroundColor]="color.colorCode">

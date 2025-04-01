@@ -8,12 +8,12 @@
         
         <!-- Navbar items for large screens -->
         <ul class="navbar-nav d-none d-lg-flex flex-row gap-5">
-            <li class="nav-item"><a class="nav-link" href="#">Kezdőlap</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/oldmodels">Korábbi modellek</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/sales-graph">Eladási grafikon</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/configuratorMain">Konfigurátor</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/profile">Profile</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/login-signup">Bejelentkezés</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">{{ 'NAVBAR.MAINPAGE' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/oldmodels">{{ 'NAVBAR.PREVIOUS' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/sales-graph">{{ 'NAVBAR.SALESGRAPH' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/configuratorMain">{{ 'NAVBAR.CONFIGURATOR' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/profile">{{ 'NAVBAR.PROFILE' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/login-signup">{{ 'NAVBAR.SIGNIN' | translate}}</a></li>
             <li class="nav-item">
                 <button class="languageImage" (click)="openModal()"></button>
             </li>
@@ -29,11 +29,12 @@
     </div>
     <div  class="offcanvas-body">
         <ul style="display: flex; justify-content: left; align-items: start;" class="navbar-nav gap-3 text-start">
-            <li class="nav-item"><a class="nav-link text-start" href="#">Kezdőlap</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/oldmodels">Korábbi modellek</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/sales-graph">Eladási grafikon</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Konfigurátor</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/login-signup">Bejelentkezés</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">{{ 'NAVBAR.MAINPAGE' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/oldmodels">{{ 'NAVBAR.PREVIOUS' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/sales-graph">{{ 'NAVBAR.SALESGRAPH' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/configuratorMain">{{ 'NAVBAR.CONFIGURATOR' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/profile">{{ 'NAVBAR.PROFILE' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/login-signup">{{ 'NAVBAR.SIGNIN' | translate}}</a></li>
             <li class="nav-item">
                 <button class="languageImage" (click)="openModal()"></button>
             </li>

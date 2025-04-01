@@ -9,7 +9,7 @@
                   </div>
                   <div *ngFor="let item of mainData" class="row textContent">
                     <p >
-                      {{item.description}}
+                      {{ 'MAIN.DESCRIPTION' | translate}}
                     </p>
 
                     <h4>{{ 'MAIN.FACTORIES' | translate }}</h4>
@@ -19,7 +19,7 @@
                 <div class="col-lg-4 col-md-12">
                   <div class="container">
                     <div class="row borderNone titleBox">
-                      <h3 class="volkswagenTitle">Volkswagen</h3>
+                      <h3 class="volkswagenTitle">{{ 'MAIN.VW' | translate}}</h3>
                       
                     </div>
                     <div style="height: 40px;"></div>

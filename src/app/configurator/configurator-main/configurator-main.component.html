@@ -3,7 +3,7 @@
 </div>
 
 <div class="container configuratorText">
-    <h2 class="middle p-5">Válasszon modellt!</h2>
+    <h2 class="middle p-5">{{ 'CONFIGURATOR.CHOOSEMODEL' | translate}}</h2>
 </div>
 
 <div class="container middle p-5">
@@ -11,7 +11,7 @@
         <div class="card">
             <img *ngIf="cardImage" [src]="cardImage" class="card-img-top" alt="Golf Car Image">
             <div class="card-body">
-                <h2 class="card-text">Golf</h2> 
+                <h2 class="card-text">{{ 'CONFIGURATOR.GOLF' | translate}}</h2> 
             </div>
         </div>
     </button>
@@ -19,5 +19,5 @@
 
 
 <div *ngIf="!cardImage" class="container middle p-5">
-    <p>A kép betöltése folyamatban van vagy hiba történt.</p>
+    <p>{{ 'CONFIGURATOR.ERROR' | translate}}</p>
 </div>

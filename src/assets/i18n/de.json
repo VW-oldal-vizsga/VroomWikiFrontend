@@ -3,7 +3,9 @@
         "INTRODUCTION": "Einführung",
         "FACTORIES":"Standorte von größeren Fabriken:",
         "DIRECTOR":"Direktor:",
-        "PROFIT": "Gewinn:"
+        "PROFIT": "Gewinn:",
+        "DESCRIPTION": "Volkswagen, abgekürzt VW, ist eine deutsche Automarke, die 1937 auf Anfrage der Deutschen Arbeitsfront (Deutsche Arbeitsfront) mit dem Ziel gegründet wurde, die Massenmotorisierung im damaligen Dritten Reich einzuleiten. Der Hauptsitz befindet sich in der Stadt Wolfsburg, Niedersachsen. Volkswagen gilt als das Flaggschiff des gleichnamigen Konzerns. Der Konzern war in den Jahren 2016 und 2017 der weltweit größte Automobilhersteller.",
+        "VW": "Volkswagen"
     },
     "LOGIN":{
         "CREATE": "Ein Konto erstellen",
@@ -27,7 +29,37 @@
         "DESIGN": "Erscheinung"
     },
     "BUTTONS": {
-        "BACK": "Zurück"
+        "BACK": "Zurück",
+        "CHOOSE": "Auswählen"
+    },
+    "NAVBAR": {
+        "MAINPAGE": "Startseite",
+        "PREVIOUS": "Frühere Modelle",
+        "SALESGRAPH": "Verkaufsdiagramm",
+        "CONFIGURATOR": "Konfigurator",
+        "PROFILE": "Profil",
+        "SIGNIN": "Anmelden",
+        "MENU": "Menü"
+    },
+    "CONFIGURATOR": {
+        "FAMOUS": "Beliebte Konfigurationen",
+        "HORSEPOWER": "LE",
+        "CO2": "g/km",
+        "HUF": "Ft",
+        "CHOOSEMODEL": "Wählen Sie ein Modell!",
+        "GOLF": "Golf",
+        "ERROR": "Das Bild wird gerade geladen oder es ist ein Fehler aufgetreten.",
+        "PRICE": "Einzelhandelspreis:",
+        "HUF/MONTH": "HUF/Monat",
+        "PAY": "Zur Zahlung fortfahren!",
+        "PREBUILDTEXT": "Wählen Sie ein vorgefertigtes Auto oder",
+        "CONFIGCUSTOM": "konfigurieren Sie Ihr eigenes!",
+        "CHOOSECOLOR": "Wählen Sie hier die Farbe des Autos, um es noch einzigartiger zu machen!",
+        "NEXT": "Nächster Schritt",
+        "CHOOSETYPE": "Wählen Sie einen Autotyp!",
+        "CHOOSEOURTYPE": "Wählen Sie aus unseren Typen!",
+        "CHOOSEOUTSIDECOLOR": "Wählen Sie eine Außenfarbe!"
+
     }
 
 }

@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 import { configurator } from '../../../services/configurator.service';
 import { forkJoin } from 'rxjs';
 import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-configurator-equipment',
   standalone:true,
-  imports: [CommonModule,NavbarComponent,ConfiguratorFooterComponent],
+  imports: [CommonModule,NavbarComponent,ConfiguratorFooterComponent, TranslatePipe],
   templateUrl: './configurator-equipment.component.html',
   styleUrl: './configurator-equipment.component.css'
 })

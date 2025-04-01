@@ -3,7 +3,9 @@
         "INTRODUCTION": "Introduction",
         "FACTORIES":"Sites of larger factories:",
         "DIRECTOR":"Director:",
-        "PROFIT": "Profit:"
+        "PROFIT": "Profit:",
+        "DESCRIPTION": "Volkswagen, abbreviated as VW, is a German car brand founded in 1937 at the request of the German Labour Front (Deutsche Arbeitsfront) with the aim of initiating mass motorization in the then Third Reich. Its headquarters are located in the city of Wolfsburg, Lower Saxony. Volkswagen is considered the flagship of the group bearing the same name. The group was the world's largest car manufacturer in 2016 and 2017.",
+        "VW": "Volkswagen"
     },
     "LOGIN":{
         "CREATE": "Create account",
@@ -27,7 +29,36 @@
         "DESIGN": "Appearance"
     },
     "BUTTONS": {
-        "BACK": "Back"
+        "BACK": "Back",
+        "CHOOSE": "Choose"
+    },
+    "NAVBAR": {
+        "MAINPAGE": "Main Page",
+        "PREVIOUS": "Previous Models",
+        "SALESGRAPH": "Sales Graph",
+        "CONFIGURATOR": "Configurator",
+        "PROFILE": "Profile",
+        "SIGNIN": "Sign In",
+        "MENU": "Menu"
+    },
+    "CONFIGURATOR": {
+        "FAMOUS": "Popular configurations",
+        "HORSEPOWER": "LE",
+        "CO2": "g/km",
+        "HUF": "Ft",
+        "CHOOSEMODEL": "Choose a model!",
+        "GOLF": "Golf",
+        "ERROR": "The image is loading or an error has occurred.",
+        "PRICE": "Retail price:",
+        "HUF/MONTH": "HUF/month",
+        "PAY": "Proceed to payment!",
+        "PREBUILDTEXT": "Choose a pre-built car or",
+        "CONFIGCUSTOM": "configure your own!",
+        "CHOOSECOLOR": "Select the car's color here to make it even more unique!",
+        "NEXT": "Next step",
+        "CHOOSETYPE": "Choose a car type!",
+        "CHOOSEOURTYPE": "Choose from our types!",
+        "CHOOSEOUTSIDECOLOR": "Choose an external colour!"
     }
 
 }

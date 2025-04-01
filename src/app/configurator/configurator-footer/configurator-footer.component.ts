@@ -4,10 +4,11 @@ import { configurator } from '../../../services/configurator.service';
 import { IConfigurator, IPopularConfigs } from '../../../models/configurator.interface';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-configurator-footer',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './configurator-footer.component.html',
   styleUrl: './configurator-footer.component.css'
 })
