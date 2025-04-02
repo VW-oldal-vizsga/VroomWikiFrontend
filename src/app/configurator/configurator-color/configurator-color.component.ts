@@ -71,4 +71,5 @@ export class ConfiguratorColorComponent {
     this.configurator.setColor(colorId)
   }
 
+
 }

@@ -43,6 +43,7 @@ export class ConfiguratorPreCompiledComponent {
         this.transmissionTypes = results.transmissionTypes;
         this.loadCardImages();
         this.filterSpecificConfigurations([2, 3, 4, 5]);
+        
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);

@@ -12,7 +12,7 @@ export class configurator {
     private selectedConfigs: IPopularConfigs[] = [];
     private selectedConfigSubject = new BehaviorSubject<IPopularConfigs | null>(null);
     selectedConfig$ = this.selectedConfigSubject.asObservable();
-    
+
 
     private config: ISelectConfigurator = {
       userId : 0,
@@ -31,7 +31,7 @@ export class configurator {
         this.config = JSON.parse(savedConfig);
         this.configSubject.next(this.config);
       }
-      console.log(this.config);
+      console.log(savedConfig);
       
      }
 

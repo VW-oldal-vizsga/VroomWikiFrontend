@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
-import { IColor, IConfigurator, IEngine, ISelectConfigurator, ITransmissionType } from '../../../models/configurator.interface';
+import { IColor, IConfigurator, IEngine, IPopularConfigs, ISelectConfigurator, ITransmissionType } from '../../../models/configurator.interface';
 import { Router } from '@angular/router';
 import { configurator } from '../../../services/configurator.service';
 import { forkJoin } from 'rxjs';
@@ -87,8 +87,24 @@ export class ConfiguratorEquipmentComponent {
         });
       });
     }
+    
+    selectConfig(config: IPopularConfigs): void {
+      const currentSelected = this.configurator.getSelectedConfig();
+      if (currentSelected === config) {
+        this.configurator.clearSelectedConfig();
+      } else {
+        this.configurator.setSelectedConfig(config);
+      }
+    }
   
-
+    getButtonText(item: IPopularConfigs): string {
+      return this.configurator.getSelectedConfig() === item ? 'Kiválasztva' : 'Kiválasztás';
+    }
+  
+    isConfigSelected(item: IPopularConfigs): boolean {
+      return this.configurator.getSelectedConfig() === item;
+    }
+    
     getCredit(price: number): number {
       return this.configurator.getCredit(price);
     }

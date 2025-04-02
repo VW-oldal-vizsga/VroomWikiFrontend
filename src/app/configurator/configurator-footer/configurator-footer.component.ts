@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { configurator } from '../../../services/configurator.service';
-import { IConfigurator, IPopularConfigs } from '../../../models/configurator.interface';
+import { IConfigurator, IPopularConfigs, ISelectConfigurator } from '../../../models/configurator.interface';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -15,6 +15,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class ConfiguratorFooterComponent implements OnInit {
   selectedConfig: IPopularConfigs | null = null;
   currentRoute: string = '';
+  carConfig: ISelectConfigurator[] = []
 
   constructor(private configurators: configurator, private router: Router) {
 
@@ -31,14 +32,36 @@ export class ConfiguratorFooterComponent implements OnInit {
     this.configurators.selectedConfig$.subscribe(config => {
       this.selectedConfig = config;
     });
+
+    
+  }
+
+
+  carConfigGet() {
+    const storedConfig = localStorage.getItem("carConfig");
+    if (storedConfig) {
+      this.carConfig = JSON.parse(storedConfig);
+    } else {
+      this.carConfig = []; 
+    }
+  }
+
+  saveCarConfig(config: ISelectConfigurator[]) {
+    this.carConfig = config;
+    localStorage.setItem("carConfig", JSON.stringify(this.carConfig));
   }
 
   ngOnInit(): void {
     this.selectedConfig = this.configurators.getSelectedConfig();
+    this.carConfigGet() 
   }
 
   getCredit(price: number): number {
     return this.configurators.getCredit(price);
+  }
+
+  navigateToColor() {
+    this.router.navigate(['/configColor'])
   }
 
   navigateToReadyToBuy() {
