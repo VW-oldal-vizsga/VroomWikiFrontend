@@ -15,7 +15,7 @@
                 <h5 class="card-text mt-1">{{getCredit(item.price) | number:'1.0-0'}} {{ 'CONFIGURATOR.HUF/MONTH' | translate}}</h5>
                 <p class="card-text mt-3">⚙️ {{getTransmissionData(item.transmissionType_Id)?.name}}</p>
                 <p class="card-text">⛽ {{getEngineData(item.engine_Id)?.fuelType}}</p>
-                <p class="card-text">⚡ {{getEngineData(item.engine_Id)?.horsepower}} {{ 'CONFIGURATOR.LE' | translate}}</p>
+                <p class="card-text">⚡ {{getEngineData(item.engine_Id)?.horsepower}} {{ 'CONFIGURATOR.HORSEPOWER' | translate}}</p>
                 
                 <div class="text-center p-3 mt-5">
                     <button class="selectButton" (click)="selectConfiguration(item)" (click)="navigateToColor()">
