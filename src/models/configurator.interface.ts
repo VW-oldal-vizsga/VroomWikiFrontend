@@ -48,3 +48,8 @@ export interface IPopularConfigs{
     transmissionType_Id:number,
     price:number,
 }
+
+export interface IColorCodes {
+    id:number,
+    colorCode: string
+}

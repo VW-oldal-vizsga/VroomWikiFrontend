@@ -13,7 +13,6 @@ export class configurator {
     private selectedConfigSubject = new BehaviorSubject<IPopularConfigs | null>(null);
     selectedConfig$ = this.selectedConfigSubject.asObservable();
 
-
     private config: ISelectConfigurator = {
       userId : 0,
       configName: '',
@@ -23,7 +22,6 @@ export class configurator {
       price: 0
     }
     private configSubject = new BehaviorSubject<ISelectConfigurator>(this.config);
-    
     
     constructor(private http: HttpClient) {
       const savedConfig = localStorage.getItem('carConfig');
@@ -119,15 +117,12 @@ export class configurator {
       this.updateConfig();
     }
   
-
     getConfigObservable() {
       return this.configSubject.asObservable();
     }
   
-
     private updateConfig() {
       this.configSubject.next(this.config);
       localStorage.setItem('carConfig', JSON.stringify(this.config));
     }
-
 }

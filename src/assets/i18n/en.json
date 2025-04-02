@@ -58,7 +58,8 @@
         "NEXT": "Next step",
         "CHOOSETYPE": "Choose a car type!",
         "CHOOSEOURTYPE": "Choose from our types!",
-        "CHOOSEOUTSIDECOLOR": "Choose an external colour!"
+        "CHOOSEOUTSIDECOLOR": "Choose an external colour!",
+        "CHOSENCOLOR": "Choice of colour:"
     }
 
 }

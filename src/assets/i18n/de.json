@@ -58,8 +58,8 @@
         "NEXT": "Nächster Schritt",
         "CHOOSETYPE": "Wählen Sie einen Autotyp!",
         "CHOOSEOURTYPE": "Wählen Sie aus unseren Typen!",
-        "CHOOSEOUTSIDECOLOR": "Wählen Sie eine Außenfarbe!"
-
+        "CHOOSEOUTSIDECOLOR": "Wählen Sie eine Außenfarbe!",
+        "CHOSENCOLOR": "Wählen Sie die Farbe:"
     }
 
 }

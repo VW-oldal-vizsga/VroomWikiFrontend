@@ -27,18 +27,16 @@
     </ng-container>
   
     <ng-container *ngIf="currentRoute.includes('/configColor')">
-      <div *ngIf="colorId > 1" class="row">
+      <div class="row">
         
-        <div class="col-12 col-md-6 middle">
-            
+        <div *ngFor="let config of carConfig" class="col-12 col-md-6 middle">
+           <p>{{config.color_Id}}</p>
           <button (click)="navigateToDriveTo()">{{ 'CONFIGURATOR.NEXT' | translate}}</button>
         </div>
-      </div>
-      <ng-template *ngIf="colorId === 1">
-        <div class="col-12 col-md-10 ps-5 pt-2">
+        <div class="col-12 col-md-6 ps-5 pt-2">
           <h3 class="text-white">{{ 'CONFIGURATOR.CHOOSECOLOR' | translate}}</h3>
         </div>
-      </ng-template>
+      </div>
     </ng-container>
 
     <ng-container *ngIf="currentRoute.includes('/configEquipment')">

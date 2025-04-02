@@ -3,7 +3,7 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { configurator } from '../../../services/configurator.service';
-import { IColor, IConfigurator, ISelectConfigurator } from '../../../models/configurator.interface';
+import { IColor, IColorCodes, IConfigurator, ISelectConfigurator } from '../../../models/configurator.interface';
 import { forkJoin } from 'rxjs';
 import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -21,6 +21,7 @@ export class ConfiguratorColorComponent {
   cardImages: { [key: number]: string } = {};
   selectedColorId: number | null = null;
   config: ISelectConfigurator[] = []
+  colorCodes: IColorCodes[] = []
 
   constructor(private router: Router, private configurator: configurator) {}
 
@@ -38,9 +39,8 @@ export class ConfiguratorColorComponent {
         this.configurators = results.configurators;
         this.colors = results.colors;
         this.loadCardImages()
-        console.log(this.colors);
-        console.log();
-        
+        this.colorCodeUnbundling()
+        console.log(this.colorCodes);
         
       },
       error: (err) => {
@@ -71,5 +71,13 @@ export class ConfiguratorColorComponent {
     this.configurator.setColor(colorId)
   }
 
+  colorCodeUnbundling() {
+    this.colorCodes = this.colors.map(item => ({id: item.id, colorCode: item.colorCode,  }));
+  }
+
+  getColorCodes(colorId: number | null): string | undefined {
+    const foundColor = this.colors.find(color => color.id === colorId);
+    return foundColor ? foundColor.colorCode : undefined;
+  }
 
 }

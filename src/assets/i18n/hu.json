@@ -58,6 +58,7 @@
         "NEXT": "Következő lépés",
         "CHOOSETYPE": "Válassz egy autó típust!",
         "CHOOSEOURTYPE": "Válasszon típusaink közül!",
-        "CHOOSEOUTSIDECOLOR": "Válassz egy külső színt!"
+        "CHOOSEOUTSIDECOLOR": "Válassz egy külső színt!",
+        "CHOSENCOLOR": "Választott szín:"
     }
 }

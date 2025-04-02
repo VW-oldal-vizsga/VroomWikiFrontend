@@ -16,7 +16,6 @@ export class ConfiguratorFooterComponent implements OnInit {
   selectedConfig: IPopularConfigs | null = null;
   currentRoute: string = '';
   carConfig: ISelectConfigurator[] = []
-  colorId:number = this.getColorId()
 
   constructor(private configurators: configurator, private router: Router) {
 
@@ -29,35 +28,37 @@ export class ConfiguratorFooterComponent implements OnInit {
       }
     });
 
-
     this.configurators.selectedConfig$.subscribe(config => {
       this.selectedConfig = config;
     });
-
-    
   }
-
 
   carConfigGet() {
     const storedConfig = localStorage.getItem("carConfig");
     if (storedConfig) {
-      this.carConfig = JSON.parse(storedConfig);
+      const parsedConfig = JSON.parse(storedConfig);
+      if (Array.isArray(parsedConfig)) {
+        this.carConfig = parsedConfig; 
+      } else {
+        this.carConfig = [parsedConfig];
+      }
     } else {
-      this.carConfig = []; 
+      this.carConfig = [];
     }
-    
   }
 
   saveCarConfig(config: ISelectConfigurator[]) {
-    this.carConfig = config;
-    localStorage.setItem("carConfig", JSON.stringify(this.carConfig));
+    if (Array.isArray(config)) {
+      this.carConfig = config;
+      localStorage.setItem("carConfig", JSON.stringify(this.carConfig));
+    } else {
+      console.error('Hiba: Az átadott config nem tömb!');
+    }
   }
 
   ngOnInit(): void {
     this.selectedConfig = this.configurators.getSelectedConfig();
-    this.carConfigGet() 
-    console.log(this.getColorId());
-    
+    this.carConfigGet()
   }
 
   getCredit(price: number): number {
@@ -79,12 +80,5 @@ export class ConfiguratorFooterComponent implements OnInit {
     this.router.navigate(['/configDriveTo'])
   }
 
-  getColorId():number {
-    const colorId = 0
-    this.carConfig.forEach((adat)=>{
-      adat.color_Id === colorId
-    })
-    return colorId
-  }
 
 }
