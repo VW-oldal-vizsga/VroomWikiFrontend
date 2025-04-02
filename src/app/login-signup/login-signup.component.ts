@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { UserService } from '../../services/user.service';
@@ -30,7 +31,7 @@ export class LoginSignupComponent {
 
   errorMessage: string | null = null;
 
-  constructor (private userService: UserService, private http: HttpClient) {}
+  constructor (private userService: UserService, private http: HttpClient, private router: Router) {}
   animation(): void {
     const signUpButton = document.getElementById('signUp') as HTMLButtonElement | null;
     const signInButton = document.getElementById('signIn') as HTMLButtonElement | null;
@@ -54,11 +55,10 @@ export class LoginSignupComponent {
     this.userService.login(this.loginData).subscribe(
       (response) => {
         if (response.token) {
-          // Ha sikeres a bejelentkezés, tároljuk el a tokent
-          this.userService.storeToken(response.token);
           console.log("Sikeres bejelentkezés");
           this.loginData.username = '',
           this.loginData.password = ''
+          this.router.navigate(['/profile'])
           
         }
       },
@@ -87,8 +87,9 @@ export class LoginSignupComponent {
   });
   }
 
-  logout() {
-    this.userService.logout();
-    console.log("Sikeres kijelentkezés!");
-  }
+  // logout() {
+  //   this.userService.logout();
+  //   console.log("Sikeres kijelentkezés!");
+  //   this.router.navigate(['/login-signup']);
+  // }
 }

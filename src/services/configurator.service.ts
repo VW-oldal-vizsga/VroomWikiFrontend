@@ -12,6 +12,7 @@ export class configurator {
     private selectedConfigs: IPopularConfigs[] = [];
     private selectedConfigSubject = new BehaviorSubject<IPopularConfigs | null>(null);
     selectedConfig$ = this.selectedConfigSubject.asObservable();
+    
 
     private config: ISelectConfigurator = {
       userId : 0,

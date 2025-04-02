@@ -1,18 +1,16 @@
 
   <nav class="navbar navbar-light bg-light">
     <div class="container d-lg-flex justify-content-between">
-        <!-- Offcanvas Toggle Button for small screens -->
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        <!-- Navbar items for large screens -->
         <ul class="navbar-nav d-none d-lg-flex flex-row gap-5">
             <li class="nav-item"><a class="nav-link" href="#">{{ 'NAVBAR.MAINPAGE' | translate}}</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/oldmodels">{{ 'NAVBAR.PREVIOUS' | translate}}</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/sales-graph">{{ 'NAVBAR.SALESGRAPH' | translate}}</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/configuratorMain">{{ 'NAVBAR.CONFIGURATOR' | translate}}</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/profile">{{ 'NAVBAR.PROFILE' | translate}}</a></li>
+            <li *ngIf="isLoggedIn" class="nav-item"><a class="nav-link" routerLink="/profile">{{ 'NAVBAR.PROFILE' | translate}}</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/login-signup">{{ 'NAVBAR.SIGNIN' | translate}}</a></li>
             <li class="nav-item">
                 <button class="languageImage" (click)="openModal()"></button>

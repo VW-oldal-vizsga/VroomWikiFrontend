@@ -44,7 +44,7 @@ export class ProfileComponent {
           },
           error: (error) => {
             if (error.status === 401) {
-              this.userService.logout();
+              // this.userService.logout();
               this.errorMessage = 'A munkamenet lejárt, kérlek jelentkezz be újra.';
             } else {
               this.errorMessage = 'Hiba történt az adatok lekérésekor.';

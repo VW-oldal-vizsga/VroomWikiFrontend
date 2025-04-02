@@ -48,4 +48,7 @@ export class ConfiguratorFooterComponent implements OnInit {
   navigateToConfig() {
     this.router.navigate(['/configEquipment']);
   }
+  navigateToDriveTo() {
+    this.router.navigate(['/configDriveTo'])
+  }
 }
