@@ -27,14 +27,14 @@
     </ng-container>
   
     <ng-container *ngIf="currentRoute.includes('/configColor')">
-      <div *ngIf="selectedConfig?.color_Id === 0;else noData" class="row">
+      <div *ngIf="colorId > 1" class="row">
         
-        <div class="col-12 col-md-2 middle">
+        <div class="col-12 col-md-6 middle">
             
           <button (click)="navigateToDriveTo()">{{ 'CONFIGURATOR.NEXT' | translate}}</button>
         </div>
       </div>
-      <ng-template #noData>
+      <ng-template *ngIf="colorId === 1">
         <div class="col-12 col-md-10 ps-5 pt-2">
           <h3 class="text-white">{{ 'CONFIGURATOR.CHOOSECOLOR' | translate}}</h3>
         </div>

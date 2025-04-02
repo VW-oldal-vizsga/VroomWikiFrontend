@@ -16,6 +16,7 @@ export class ConfiguratorFooterComponent implements OnInit {
   selectedConfig: IPopularConfigs | null = null;
   currentRoute: string = '';
   carConfig: ISelectConfigurator[] = []
+  colorId:number = this.getColorId()
 
   constructor(private configurators: configurator, private router: Router) {
 
@@ -44,6 +45,7 @@ export class ConfiguratorFooterComponent implements OnInit {
     } else {
       this.carConfig = []; 
     }
+    
   }
 
   saveCarConfig(config: ISelectConfigurator[]) {
@@ -54,6 +56,8 @@ export class ConfiguratorFooterComponent implements OnInit {
   ngOnInit(): void {
     this.selectedConfig = this.configurators.getSelectedConfig();
     this.carConfigGet() 
+    console.log(this.getColorId());
+    
   }
 
   getCredit(price: number): number {
@@ -74,4 +78,13 @@ export class ConfiguratorFooterComponent implements OnInit {
   navigateToDriveTo() {
     this.router.navigate(['/configDriveTo'])
   }
+
+  getColorId():number {
+    const colorId = 0
+    this.carConfig.forEach((adat)=>{
+      adat.color_Id === colorId
+    })
+    return colorId
+  }
+
 }
