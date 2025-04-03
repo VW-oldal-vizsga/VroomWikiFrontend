@@ -19,9 +19,12 @@
                     </button>
                     
                 </div>
-                <h2 class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOSENCOLOR' | translate}}</h2>
-                <div  class="middle mt-4">
-                    <button class="circleButton" [style.backgroundColor]="getColorCodes(selectedColorId)"></button>
+                <h2 *ngIf="selectedColorId" class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOSENCOLOR' | translate}}</h2>
+                <div  class="mt-4 row">
+                    <div class="col-6 middle mb-3 ps-4">
+                        <h3>{{getColorName(selectedColorId)}}</h3>
+                    </div>
+                    <div *ngIf="selectedColorId" class="col-6 middle"><button class="circleButton" [style.backgroundColor]="getColorCodes(selectedColorId)"></button></div>
                 </div>
             </div>
         </div>

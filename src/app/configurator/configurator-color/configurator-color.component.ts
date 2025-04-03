@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { configurator } from '../../../services/configurator.service';
-import { IColor, IColorCodes, IConfigurator, ISelectConfigurator } from '../../../models/configurator.interface';
+import { IColor, IConfigurator, ISelectConfigurator } from '../../../models/configurator.interface';
 import { forkJoin } from 'rxjs';
 import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -21,9 +20,8 @@ export class ConfiguratorColorComponent {
   cardImages: { [key: number]: string } = {};
   selectedColorId: number | null = null;
   config: ISelectConfigurator[] = []
-  colorCodes: IColorCodes[] = []
 
-  constructor(private router: Router, private configurator: configurator) {}
+  constructor(private configurator: configurator) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -39,8 +37,6 @@ export class ConfiguratorColorComponent {
         this.configurators = results.configurators;
         this.colors = results.colors;
         this.loadCardImages()
-        this.colorCodeUnbundling()
-        console.log(this.colorCodes);
         
       },
       error: (err) => {
@@ -69,15 +65,18 @@ export class ConfiguratorColorComponent {
 
   selectConfiguration(colorId: number) {
     this.configurator.setColor(colorId)
+    this.configurator.setColorName(this.selectedColorName as string)
   }
 
-  colorCodeUnbundling() {
-    this.colorCodes = this.colors.map(item => ({id: item.id, colorCode: item.colorCode,  }));
-  }
 
   getColorCodes(colorId: number | null): string | undefined {
     const foundColor = this.colors.find(color => color.id === colorId);
     return foundColor ? foundColor.colorCode : undefined;
+  }
+
+  getColorName(colorId: number | null): string | undefined {
+    const foundName = this.colors.find(color => color.id === colorId)
+    return foundName ? foundName.name : undefined;
   }
 
 }

@@ -13,11 +13,15 @@ export class configurator {
     private selectedConfigSubject = new BehaviorSubject<IPopularConfigs | null>(null);
     selectedConfig$ = this.selectedConfigSubject.asObservable();
 
+    private carConfigSubject = new BehaviorSubject<ISelectConfigurator[]>([]);
+    public carConfig$ = this.carConfigSubject.asObservable();
+
     private config: ISelectConfigurator = {
       userId : 0,
       configName: '',
       engine_Id: 0,
       color_Id: 0,
+      colorName: '',
       transmissionType_Id: 0,
       price: 0
     }
@@ -30,8 +34,21 @@ export class configurator {
         this.configSubject.next(this.config);
       }
       console.log(savedConfig);
+      this.loadInitialConfig();
       
      }
+
+     private loadInitialConfig() {
+      const storedConfig = localStorage.getItem("carConfig");
+      if (storedConfig) {
+        const parsedConfig = JSON.parse(storedConfig);
+        this.carConfigSubject.next(Array.isArray(parsedConfig) ? parsedConfig : [parsedConfig]);
+      }
+    }
+
+    getCarConfig(): ISelectConfigurator[] {
+      return this.carConfigSubject.getValue();
+    }
 
     getConfigurators(): Observable<IConfigurator[]> {
       return this.http.get<IConfigurator[]>(`${this.apiUrl}`)
@@ -97,6 +114,11 @@ export class configurator {
       this.config.color_Id = colorId;
       this.updateConfig();
     }
+
+    setColorName(colorName: string) {
+      this.config.colorName = colorName;
+      this.updateConfig();
+    }
   
     setUser(userId: number) {
       this.config.userId = userId;
@@ -125,4 +147,6 @@ export class configurator {
       this.configSubject.next(this.config);
       localStorage.setItem('carConfig', JSON.stringify(this.config));
     }
+
+
 }
