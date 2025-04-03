@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { configurator } from '../../../services/configurator.service';
-import { IColor, IConfigurator, IPopularConfigs, ISelectConfigurator } from '../../../models/configurator.interface';
+import { IColor, IPopularConfigs, ISelectConfigurator } from '../../../models/configurator.interface';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -19,10 +19,10 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   carConfig: ISelectConfigurator[] = [];
   colors: IColor[] = [];
   selectedColorId: number | null = null;
-  colorName: string | undefined = undefined; // Új tulajdonság
+  colorName: string | undefined = undefined;
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private configurators: configurator, private router: Router, private cdr: ChangeDetectorRef) {
+  constructor(private configurators: configurator, private router: Router) {
   
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -44,7 +44,6 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         this.carConfig = config;
         this.selectedColorId = this.getColorId() ?? null;
         this.colorName = this.getColorName(this.selectedColorId);
-        this.cdr.detectChanges();
         console.log('Updated carConfig:', this.carConfig);
         console.log('Updated selectedColorId:', this.selectedColorId);
         console.log('Updated colorName:', this.colorName);

@@ -21,7 +21,6 @@ export class configurator {
       configName: '',
       engine_Id: 0,
       color_Id: 0,
-      colorName: '',
       transmissionType_Id: 0,
       price: 0
     }
@@ -115,10 +114,6 @@ export class configurator {
       this.updateConfig();
     }
 
-    setColorName(colorName: string) {
-      this.config.colorName = colorName;
-      this.updateConfig();
-    }
   
     setUser(userId: number) {
       this.config.userId = userId;
@@ -141,6 +136,11 @@ export class configurator {
   
     getConfigObservable() {
       return this.configSubject.asObservable();
+    }
+
+    getItem<T>(key: string): T | null {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) as T : null;
     }
   
     private updateConfig() {

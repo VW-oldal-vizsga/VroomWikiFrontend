@@ -65,7 +65,7 @@ export class ConfiguratorColorComponent {
 
   selectConfiguration(colorId: number) {
     this.configurator.setColor(colorId)
-    this.configurator.setColorName(this.selectedColorName as string)
+    this.selectColor(colorId)
   }
 
 

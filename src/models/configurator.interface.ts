@@ -37,7 +37,6 @@ export interface ISelectConfigurator{
     configName:string,
     engine_Id:number,
     color_Id:number,
-    colorName:string,
     transmissionType_Id:number,
     price:number,
 }
