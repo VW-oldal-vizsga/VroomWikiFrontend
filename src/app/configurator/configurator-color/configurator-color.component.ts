@@ -6,6 +6,7 @@ import { IColor, IConfigurator, ISelectConfigurator } from '../../../models/conf
 import { forkJoin } from 'rxjs';
 import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ColorService } from '../../../services/color.service';
 
 @Component({
   selector: 'app-configurator-color',
@@ -21,7 +22,7 @@ export class ConfiguratorColorComponent {
   selectedColorId: number | null = null;
   config: ISelectConfigurator[] = []
 
-  constructor(private configurator: configurator) {}
+  constructor(private configurator: configurator,private colorService: ColorService) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -37,6 +38,9 @@ export class ConfiguratorColorComponent {
         this.configurators = results.configurators;
         this.colors = results.colors;
         this.loadCardImages()
+        this.colorService.getColors().subscribe(colors => {
+          this.colors = colors;
+        });
         
       },
       error: (err) => {
@@ -59,6 +63,8 @@ export class ConfiguratorColorComponent {
     });
   }
 
+  
+
   selectColor(colorId: number) {
     this.selectedColorId = colorId;
   }
@@ -79,4 +85,7 @@ export class ConfiguratorColorComponent {
     return foundName ? foundName.name : undefined;
   }
 
+  changeColor(color: IColor) {
+    this.colorService.changeColor(color);
+  }
 }

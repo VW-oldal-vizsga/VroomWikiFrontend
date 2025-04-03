@@ -6,6 +6,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TranslatePipe } from '@ngx-translate/core';
 import { forkJoin, Subscription } from 'rxjs';
+import { ColorService } from '../../../services/color.service';
 
 @Component({
   selector: 'app-configurator-footer',
@@ -18,11 +19,12 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   currentRoute: string = '';
   carConfig: ISelectConfigurator[] = [];
   colors: IColor[] = [];
+  color: IColor | null = null;
   selectedColorId: number | null = null;
   colorName: string | undefined = undefined;
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private configurators: configurator, private router: Router) {
+  constructor(private configurators: configurator, private router: Router, private colorService: ColorService) {
   
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -68,8 +70,9 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         this.carConfig = this.configurators.getCarConfig();
         this.selectedConfig = this.configurators.getSelectedConfig();
         this.selectedColorId = this.getColorId() ?? null;
-        this.colorName = this.getColorName(this.selectedColorId); // Inicializálás
+        this.colorName = this.getColorName(this.selectedColorId);
         console.log('localStorage carConfig:', localStorage.getItem("carConfig"));
+        this.colorService.currentColor.subscribe(color => this.color = color);
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);
@@ -105,5 +108,9 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   getColorId(): number | undefined {
     const foundId = this.carConfig.find(color => color.color_Id !== undefined);
     return foundId?.color_Id;
+  }
+
+  changeColor(color: IColor) {
+    this.colorService.changeColor(color);
   }
 }

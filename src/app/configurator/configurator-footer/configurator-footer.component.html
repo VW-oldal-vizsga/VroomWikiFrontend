@@ -72,7 +72,7 @@
               <h5 class="text-white">{{ selectedConfig.price | number }} {{ 'CONFIGURATOR.HUF' | translate}}</h5>
               <h5 class="text-white">{{ getCredit(selectedConfig.price) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate}}</h5>
             </div>
-            <div class="col-12 col-md-3 middle borderRight"><h4 class="text-white">{{colorName}}</h4></div>
+            <div *ngIf="color" class="col-12 col-md-3 middle borderRight"><h4 class="text-white">{{ color.name }}</h4></div>
             <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToDriveTo()">{{ 'CONFIGURATOR.NEXT' | translate}}</button></h5></div>
           </div>
         </div>

@@ -14,10 +14,10 @@
             <div  class="container fullBorder">
                 <h2 class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOOSEOUTSIDECOLOR' | translate}}</h2>
                 <div class="middle mt-4 ">
-                    <button class="circleButton" *ngFor="let color of colors" (click)="selectConfiguration(color.id)"
+                    <button class="circleButton" *ngFor="let color of colors" (click)="selectConfiguration(color.id)" (click)="changeColor(color)"
                         [style.backgroundColor]="color.colorCode">
                     </button>
-                    
+             
                 </div>
                 <h2 *ngIf="selectedColorId" class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOSENCOLOR' | translate}}</h2>
                 <div  class="mt-4 row">
