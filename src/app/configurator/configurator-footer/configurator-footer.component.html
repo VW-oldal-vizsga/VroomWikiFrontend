@@ -1,69 +1,30 @@
 <div class="footerContainer">
-    <ng-container *ngIf="currentRoute.includes('/configPreComp')">
-      <div *ngIf="selectedConfig; else noData">
-        <div class="row">
-          <div class="col-12 col-md-2 borderRight middle"><h3 class="text-white">{{ selectedConfig.configName }}</h3></div>
-          <div class="col-12 col-md-2 middle borderRight"><h4 class="text-white">{{ 'CONFIGURATOR.PRICE' | translate}}</h4></div>
-          <div class="col-12 col-md-2 middle borderRight">
-            <h5 class="text-white">{{ selectedConfig.price | number }} {{ 'CONFIGURATOR.HUF' | translate}}</h5>
-            <h5 class="text-white">{{ getCredit(selectedConfig.price) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate}}</h5>
-          </div>
-          <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToReadyToBuy()">{{ 'CONFIGURATOR.PAY' | translate}}</button></h5></div>
-          <div class="col-12 col-md-3 middle"><h5><button (click)="navigateToConfig()">Konfiguráljon sajátot!</button></h5></div>
+  <ng-container *ngIf="currentRoute.includes('/configPreComp')">
+    <div *ngIf="selectedConfig; else noData">
+      <div class="row">
+        <div class="col-12 col-md-2 borderRight middle"><h3 class="text-white">{{ selectedConfig.configName }}</h3></div>
+        <div class="col-12 col-md-2 middle borderRight"><h4 class="text-white">{{ 'CONFIGURATOR.PRICE' | translate}}</h4></div>
+        <div class="col-12 col-md-2 middle borderRight">
+          <h5 class="text-white">{{ selectedConfig.price | number }} {{ 'CONFIGURATOR.HUF' | translate}}</h5>
+          <h5 class="text-white">{{ getCredit(selectedConfig.price) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate}}</h5>
         </div>
+        <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToReadyToBuy()">{{ 'CONFIGURATOR.PAY' | translate}}</button></h5></div>
+        <div class="col-12 col-md-3 middle"><h5><button (click)="navigateToConfig()">Konfiguráljon sajátot!</button></h5></div>
       </div>
-      <ng-template #noData>
-        <div class="row footerPadding">
-            <div class="col-12 col-md-7 ps-0 pe-0">
-                <h3 class="right text-white">{{ 'CONFIGURATOR.PREBUILDTEXT' | translate}}</h3>
-            </div>
-            <div class="col-12 col-md-5 ps-2 pe-0">
-                <h3><a class="left" (click)="navigateToConfig()">{{ 'CONFIGURATOR.CONFIGCUSTOM' | translate}}</a></h3>
-            </div>
-        </div>
-        
-        
-      </ng-template>
-    </ng-container>
-  
-    <ng-container *ngIf="currentRoute.includes('/configColor')">
-      <!-- <div class="row">
-        
-        <div *ngFor="let config of carConfig" class="col-12 col-md-6 middle">
-           <p>{{config.color_Id}}</p>
-          <button (click)="navigateToDriveTo()">{{ 'CONFIGURATOR.NEXT' | translate}}</button>
-        </div>
-        <div class="col-12 col-md-6 ps-5 pt-2">
-          <h3 class="text-white">{{ 'CONFIGURATOR.CHOOSECOLOR' | translate}}</h3>
-        </div>
-      </div> -->
-    </ng-container>
-
-    <ng-container *ngIf="currentRoute.includes('/configEquipment')">
-        <div *ngIf="selectedConfig; else noData">
-            <div class="row">
-              <div class="col-12 col-md-2 borderRight middle"><h3 class="text-white">{{ selectedConfig.configName }}</h3></div>
-              <div class="col-12 col-md-2 middle borderRight"><h4 class="text-white">{{ 'CONFIGURATOR.PRICE' | translate}}</h4></div>
-              <div class="col-12 col-md-2 middle borderRight">
-                <h5 class="text-white">{{ selectedConfig.price | number }} {{ 'CONFIGURATOR.HUF' | translate}}</h5>
-                <h5 class="text-white">{{ getCredit(selectedConfig.price) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate}}</h5>
-              </div>
-              <div class="col-12 col-md-3 middle borderRight"></div>
-              <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToColor()">{{ 'CONFIGURATOR.NEXT' | translate}}</button></h5></div>
-            </div>
+    </div>
+    <ng-template #noData>
+      <div class="row footerPadding">
+          <div class="col-12 col-md-7 ps-0 pe-0">
+              <h3 class="right text-white">{{ 'CONFIGURATOR.PREBUILDTEXT' | translate}}</h3>
           </div>
-          <ng-template #noData>
-            <div class="row footerPadding">
-                <div class="col-12 col-md-12 middle">
-                    <h3 class="right text-white">{{ 'CONFIGURATOR.CHOOSETYPE' | translate}}</h3>
-                </div>
-                
-            </div>
-            
-          </ng-template>
-    </ng-container>
-    
-    <ng-container *ngIf="currentRoute.includes('/configColor')">
+          <div class="col-12 col-md-5 ps-2 pe-0">
+              <h3><a class="left" (click)="navigateToConfig()">{{ 'CONFIGURATOR.CONFIGCUSTOM' | translate}}</a></h3>
+          </div>
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngIf="currentRoute.includes('/configEquipment')">
       <div *ngIf="selectedConfig; else noData">
           <div class="row">
             <div class="col-12 col-md-2 borderRight middle"><h3 class="text-white">{{ selectedConfig.configName }}</h3></div>
@@ -72,19 +33,38 @@
               <h5 class="text-white">{{ selectedConfig.price | number }} {{ 'CONFIGURATOR.HUF' | translate}}</h5>
               <h5 class="text-white">{{ getCredit(selectedConfig.price) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate}}</h5>
             </div>
-            <div *ngIf="color" class="col-12 col-md-3 middle borderRight"><h4 class="text-white">{{ color.name }}</h4></div>
-            <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToDriveTo()">{{ 'CONFIGURATOR.NEXT' | translate}}</button></h5></div>
+            <div class="col-12 col-md-3 middle borderRight"></div>
+            <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToColor()">{{ 'CONFIGURATOR.NEXT' | translate}}</button></h5></div>
           </div>
         </div>
         <ng-template #noData>
-          <div class="row">
+          <div class="row footerPadding">
               <div class="col-12 col-md-12 middle">
                   <h3 class="right text-white">{{ 'CONFIGURATOR.CHOOSETYPE' | translate}}</h3>
               </div>
-              
           </div>
-          
-          
         </ng-template>
+  </ng-container>
+
+  <ng-container *ngIf="currentRoute.includes('/configColor')">
+    <div *ngIf="selectedConfig; else noData">
+        <div class="row">
+          <div  class="col-12 col-md-2 borderRight middle"><h3 class="text-white">{{ selectedConfig.configName }}</h3></div>
+          <div class="col-12 col-md-2 middle borderRight"><h4 class="text-white">{{ 'CONFIGURATOR.PRICE' | translate}}</h4></div>
+          <div class="col-12 col-md-2 middle borderRight">
+            <h5 class="text-white">{{ total | number }} {{ 'CONFIGURATOR.HUF' | translate}}</h5>
+            <h5 class="text-white">{{ getCredit(total) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate}}</h5>
+          </div>
+          <div *ngIf="color" class="col-12 col-md-3 middle borderRight"><h4 class="text-white">{{ color.name }}</h4></div>
+          <div class="col-12 col-md-3 middle borderRight"><h5><button (click)="navigateToDriveTo()">{{ 'CONFIGURATOR.NEXT' | translate}}</button></h5></div>
+        </div>
+      </div>
+      <ng-template #noData>
+        <div class="row">
+            <div class="col-12 col-md-12 middle">
+                <h3 class="right text-white">{{ 'CONFIGURATOR.CHOOSETYPE' | translate}}</h3>
+            </div>
+        </div>
+      </ng-template>
   </ng-container>
 </div>

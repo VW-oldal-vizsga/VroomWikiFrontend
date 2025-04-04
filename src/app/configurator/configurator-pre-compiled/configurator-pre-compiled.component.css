@@ -1,29 +1,36 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .configContainer {
   display: flex;
-  flex-wrap: wrap; 
-  justify-content: center; 
-  gap: 20px; 
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
+  flex-grow: 1; /* A tartalom kitölti a rendelkezésre álló helyet */
 }
 
 .card-wrapper {
-  flex: 1; 
-  min-width: 300px; 
-  max-width: 350px; 
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
 }
 
 .card {
-  height: auto; 
+  height: auto;
   width: 100%;
-  margin: 0; 
+  margin: 0;
   border: none;
-  transition: box-shadow 0.3s ease; 
+  transition: box-shadow 0.3s ease;
 }
 
 .card-img-top {
   width: 100%;
-  height: 200px; 
-  object-fit: cover; 
+  height: 200px;
+  object-fit: cover;
   border: 2px solid black;
   border-bottom: none;
 }
@@ -51,58 +58,14 @@
   background-color: #333;
 }
 
+.selectButton.selected {
+  background-color: green;
+}
+
 .card:hover {
   box-shadow: 2px 2px 4px 4px gray;
 }
 
-@media (max-width: 768px) {
-  .card-wrapper {
-      min-width: 250px;
-      max-width: 100%;
-  }
-  
-  .card-img-top {
-      height: 200px;
-  }
-  
-  .selectButton {
-      width: 120px;
-  }
-}
-
-@media (max-width: 560px) {
-  .card-wrapper {
-      min-width: 100%;
-  }
-  
-  .card-img-top {
-      height: 150px;
-  }
-  
-  .card-body {
-      padding: 10px;
-  }
-  
-  .selectButton {
-      width: 100%;
-  }
-}
-
-.selectButton {
-  border-radius: 12px;
-  width: 150px;
-  height: 30px;
-  background-color: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.selectButton.selected {
-  background-color: green; 
-}
-
-.card-text{
+.card-text {
   margin-bottom: 2px;
 }

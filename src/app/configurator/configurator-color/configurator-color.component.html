@@ -1,30 +1,31 @@
 <div class="bg-light" style="display: flex; justify-content: center; border-bottom: 2px solid lightgray;">
     <app-navbar></app-navbar>
 </div>
-<div style="width: 100%;" class="container mt-5">
-    <div  class="row">
-        <div class="col-6 middle">
+<div class="container mt-5" style="width: 100%; max-width: 1400px;">
+    <div class="row">
+        <div class="col-12 col-md-6 middle">
             <div class="container imageContainer middle">
                 <img class="gallery" *ngIf="selectedColorId" [src]="cardImages[selectedColorId]" alt="Autó képe">
                 <img class="gallery" *ngIf="!selectedColorId" [src]="cardImages[1]" alt="Autó képe">
             </div>
         </div>
-        <div class="col-6 mt-5">
-
-            <div  class="container fullBorder">
+        <div class="col-12 col-md-6 mt-5">
+            <div class="container fullBorder">
                 <h2 class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOOSEOUTSIDECOLOR' | translate}}</h2>
-                <div class="middle mt-4 ">
-                    <button class="circleButton" *ngFor="let color of colors" (click)="selectConfiguration(color.id)" (click)="changeColor(color)"
+                <div class="middle mt-4 color-buttons">
+                    <button class="circleButton" *ngFor="let color of colors" 
+                        (click)="selectConfiguration(color.id); changeColor(color)"
                         [style.backgroundColor]="color.colorCode">
                     </button>
-             
                 </div>
                 <h2 *ngIf="selectedColorId" class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOSENCOLOR' | translate}}</h2>
-                <div  class="mt-4 row">
+                <div class="mt-4 row">
                     <div class="col-6 middle mb-3 ps-4">
                         <h3>{{getColorName(selectedColorId)}}</h3>
                     </div>
-                    <div *ngIf="selectedColorId" class="col-6 middle"><button class="circleButton" [style.backgroundColor]="getColorCodes(selectedColorId)"></button></div>
+                    <div *ngIf="selectedColorId" class="col-6 middle">
+                        <button class="circleButton" [style.backgroundColor]="getColorCodes(selectedColorId)"></button>
+                    </div>
                 </div>
             </div>
         </div>

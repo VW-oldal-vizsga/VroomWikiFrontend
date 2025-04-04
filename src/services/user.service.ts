@@ -68,7 +68,7 @@ export class UserService {
       },
       error: (err) => {
         console.error('Profil betöltési hiba:', err);
-        // this.logout();
+        this.logout();
       }
     });
   }

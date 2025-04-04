@@ -87,9 +87,9 @@ export class LoginSignupComponent {
   });
   }
 
-  // logout() {
-  //   this.userService.logout();
-  //   console.log("Sikeres kijelentkezés!");
-  //   this.router.navigate(['/login-signup']);
-  // }
+  logout() {
+    this.userService.logout();
+    console.log("Sikeres kijelentkezés!");
+    this.router.navigate(['/login-signup']);
+  }
 }

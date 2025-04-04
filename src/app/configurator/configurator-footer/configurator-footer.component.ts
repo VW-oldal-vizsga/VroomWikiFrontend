@@ -7,6 +7,7 @@ import { filter } from 'rxjs/operators';
 import { TranslatePipe } from '@ngx-translate/core';
 import { forkJoin, Subscription } from 'rxjs';
 import { ColorService } from '../../../services/color.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-configurator-footer',
@@ -15,6 +16,7 @@ import { ColorService } from '../../../services/color.service';
   styleUrl: './configurator-footer.component.css'
 })
 export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
+  total:number = 0
   selectedConfig: IPopularConfigs | null = null;
   currentRoute: string = '';
   carConfig: ISelectConfigurator[] = [];
@@ -24,7 +26,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   colorName: string | undefined = undefined;
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private configurators: configurator, private router: Router, private colorService: ColorService) {
+  constructor(private configurators: configurator, private router: Router, private colorService: ColorService, private cartService: CartService) {
   
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -46,9 +48,6 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         this.carConfig = config;
         this.selectedColorId = this.getColorId() ?? null;
         this.colorName = this.getColorName(this.selectedColorId);
-        console.log('Updated carConfig:', this.carConfig);
-        console.log('Updated selectedColorId:', this.selectedColorId);
-        console.log('Updated colorName:', this.colorName);
       })
     );
   }
@@ -67,12 +66,14 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
     }).subscribe({
       next: (results) => {
         this.colors = results.colors;
+        this.colorService.currentColor.subscribe(color => this.color = color);
+        this.cartService.currentTotal.subscribe(total => this.total = total)
         this.carConfig = this.configurators.getCarConfig();
         this.selectedConfig = this.configurators.getSelectedConfig();
         this.selectedColorId = this.getColorId() ?? null;
         this.colorName = this.getColorName(this.selectedColorId);
         console.log('localStorage carConfig:', localStorage.getItem("carConfig"));
-        this.colorService.currentColor.subscribe(color => this.color = color);
+
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);
@@ -98,6 +99,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
 
   navigateToDriveTo() {
     this.router.navigate(['/configDriveTo']);
+    this.saveTotal()
   }
 
   getColorName(colorId: number | null): string | undefined {
@@ -112,5 +114,9 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
 
   changeColor(color: IColor) {
     this.colorService.changeColor(color);
+  }
+
+  saveTotal() {
+    this.cartService.saveTotal();
   }
 }
