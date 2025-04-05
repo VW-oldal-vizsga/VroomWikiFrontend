@@ -16,6 +16,7 @@ import { CartService } from '../../../services/cart.service';
   styleUrl: './configurator-footer.component.css'
 })
 export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
+  configName:string = '';
   total:number = 0
   selectedConfig: IPopularConfigs | null = null;
   currentRoute: string = '';
@@ -72,7 +73,9 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         this.selectedConfig = this.configurators.getSelectedConfig();
         this.selectedColorId = this.getColorId() ?? null;
         this.colorName = this.getColorName(this.selectedColorId);
+        this.getConfigName()
         console.log('localStorage carConfig:', localStorage.getItem("carConfig"));
+        
 
       },
       error: (err) => {
@@ -119,4 +122,10 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   saveTotal() {
     this.cartService.saveTotal();
   }
+
+  getConfigName() {
+    const configNameObject = this.configurators.getItem<{ configName: string }>('carConfig');
+    this.configName = configNameObject ? configNameObject.configName : 'string'; 
+  }
+
 }

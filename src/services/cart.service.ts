@@ -6,27 +6,30 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-  totalPrice: number = 0;
-  private totalSource = new BehaviorSubject<number>(0);  
+  private totalPrice: number = 0; 
+  private temporaryTotal: number = 0; 
+  private lastColorPrice: number = 0; 
+
+  private totalSource = new BehaviorSubject<number>(0);
   currentTotal = this.totalSource.asObservable();
 
-  private temporaryTotal: number = 0; 
-  private lastColorPrice: number = 0;
-
   constructor(private configurator: configurator) {
-    this.loadPrice(); 
+    this.loadPrice();
   }
 
   updateTemporaryTotal(newColorPrice: number) {
-    this.temporaryTotal = this.totalPrice - this.lastColorPrice + newColorPrice;
+    if (newColorPrice < 0) {
+      console.warn('A szín ára nem lehet negatív:', newColorPrice);
+      return;
+    }
+    this.temporaryTotal = this.totalPrice + newColorPrice;
     this.lastColorPrice = newColorPrice;
-
     this.totalSource.next(this.temporaryTotal);
   }
 
   saveTotal() {
-    this.totalPrice = this.temporaryTotal; 
-    this.totalSource.next(this.totalPrice);  
+    this.totalPrice = this.temporaryTotal;
+    this.totalSource.next(this.totalPrice);
     this.saveTotalToStorage(this.totalPrice);
   }
 
@@ -36,9 +39,8 @@ export class CartService {
 
   private loadPrice(): void {
     const priceObject = this.configurator.getItem<{ price: number }>('carConfig');
-    this.totalPrice = priceObject ? priceObject.price : 0; 
-
+    this.totalPrice = priceObject && priceObject.price >= 0 ? priceObject.price : 0;
+    this.temporaryTotal = this.totalPrice;
     this.totalSource.next(this.totalPrice);
-    this.temporaryTotal = this.totalPrice; 
   }
 }

@@ -42,7 +42,7 @@ export class ConfiguratorEquipmentComponent {
           this.engines = results.engines;
           this.transmissionTypes = results.transmissionTypes;
           this.loadCardImages();
-          this.filterSpecificConfigurations([2, 3, 4, 5]);
+          this.filterSpecificConfigurations([1, 2, 3, 4, 5]);
           
         },
         error: (err) => {
