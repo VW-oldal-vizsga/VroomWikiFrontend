@@ -18,7 +18,10 @@ export class MaincontentComponent {
     this.translate.use('hu');
   }
   apiImage = "http://localhost:5269/api/MainPage_Sales/image/1"
-  
+  chairmanImage = "http://localhost:5269/api/MainPage_Sales/imageChairman/1"
+  bratislavaFactory = "http://localhost:5269/api/MainPage_Sales/imageBratislava/1"
+  wolfsburgFactory = "http://localhost:5269/api/MainPage_Sales/imageWolfsburg/1"
+  dresdenFactory = "http://localhost:5269/api/MainPage_Sales/imageDresden/1"
   
   
   historyData: IHistory [] = [

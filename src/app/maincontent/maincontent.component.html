@@ -1,62 +1,73 @@
 <div class="container">
   <div class="middle">
-      <div class="mainContentContainer">
-          <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-12 introductionBox">
-                  <div class="row titleBox">
-                    <h4 class="h4MainTitle">{{ 'MAIN.INTRODUCTION' | translate }}</h4>
-                  </div>
-                  <div *ngFor="let item of mainData" class="row textContent">
-                    <p >
-                      {{ 'MAIN.DESCRIPTION' | translate}}
-                    </p>
-
-                    <h4>{{ 'MAIN.FACTORIES' | translate }}</h4>
-                    <p>{{item.factories}}</p>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                  <div class="container">
-                    <div class="row borderNone titleBox">
-                      <h3 class="volkswagenTitle">{{ 'MAIN.VW' | translate}}</h3>
-                      
-                    </div>
-                    <div style="height: 40px;"></div>
-                    <div *ngFor="let item of mainData" class="row borderNone ">
-                      <div class="imageBox" >
-                        <img class="imageContent" [src]="apiImage" alt="asd">
-                         
-                      </div>
-                      <div class="">
-                        <h5 class="middle">{{ 'MAIN.DIRECTOR' | translate }} {{item.chairman}}</h5>
-                        <h5 class="middle">{{ 'MAIN.PROFIT' | translate }} {{item.profit | number}}$</h5>
-                      </div>
-
-                      
-                    </div>
-                   </div>
-                </div>
+    <div class="mainContentContainer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 introductionBox">
+            <div class="row titleBox">
+              <h4 class="h4MainTitle">{{ 'MAIN.INTRODUCTION' | translate }}</h4>
             </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 middle">
-                <div class="accordion">
-                  <div *ngFor="let item of historyData; let i = index" class="accordion-item">
-                    <div class="accordion-header" (click)="toggle(i)">
-                      <h4>{{ item.title }}</h4>
-                    </div>
-                    <div class="accordion-body" *ngIf="item.open" (click)="toggle(i)">
-                      <p>{{ item.history }}</p>
-                      <p>{{item.history2}}</p>
-                      <p>{{item.history3}}</p>
-                    </div>
+            <div *ngFor="let item of mainData" class="row textContent">
+              <div class="col-12">
+                <p>{{ 'MAIN.DESCRIPTION' | translate }}</p>
+                <h4>{{ 'MAIN.FACTORIES' | translate }}</h4>
+                <p>{{ item.factories }}</p>
+              </div>
+              <div class="container">
+                <div class="row imageBoxFactories">
+                  <div class="col-lg-4 col-md-6 col-sm-12 factory-img-container">
+                    <img class="imageContentFactories" [src]="bratislavaFactory" alt="Bratislava Factory">
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12 factory-img-container">
+                    <img class="imageContentFactories" [src]="wolfsburgFactory" alt="Wolfsburg Factory">
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12 factory-img-container">
+                    <img class="imageContentFactories" [src]="dresdenFactory" alt="Dresden Factory">
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="col-lg-4 col-md-12 sidebar">
+            <div class="container">
+              <div class="row borderNone titleBox">
+                <h3 class="volkswagenTitle">{{ 'MAIN.VW' | translate }}</h3>
+              </div>
+              <div style="height: 40px;"></div>
+              <div *ngFor="let item of mainData" class="row borderNone">
+                <div class="col-12">
+                  <div class="imageBox">
+                    <img class="imageContent" [src]="apiImage" alt="Volkswagen">
+                  </div>
+                  <h5 class="middle">{{ 'MAIN.DIRECTOR' | translate }} {{ item.chairman }}</h5>
+                  <h5 class="middle">{{ 'MAIN.PROFIT' | translate }} {{ item.profit | number }}$</h5>
+                  <div class="imageBox">
+                    <img class="imageContent" [src]="chairmanImage" alt="Chairman">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 middle">
+            <div class="accordion">
+              <div *ngFor="let item of historyData; let i = index" class="accordion-item">
+                <div class="accordion-header" (click)="toggle(i)">
+                  <h4>{{ item.title }}</h4>
+                </div>
+                <div class="accordion-body" *ngIf="item.open" (click)="toggle(i)">
+                  <p>{{ item.history }}</p>
+                  <p>{{ item.history2 }}</p>
+                  <p>{{ item.history3 }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

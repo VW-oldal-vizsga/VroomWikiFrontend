@@ -1,37 +1,82 @@
 
-.introduction{
-    padding: 20px;
+.container {
+  background-color: transparent;
+  padding: 0 15px;
 }
 
-.imageBox{
-  object-fit: scale-down;
+.middle {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.imageContent{
+.introductionBox {
+  padding: 20px;
+}
+
+.h4MainTitle {
+  padding: 20px;
+  text-align: center;
+}
+
+.textContent {
+  padding: 20px;
+  min-height: 300px;
+}
+
+.imageBoxFactories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.factory-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.imageContentFactories {
+  max-width: 100%;
   height: 200px;
-  margin: 20px;
-  margin-top: 0px;
+  object-fit: cover;
+  border-radius: 5px;
 }
-.textContent{
-    height: 600px;
-    padding: 40px;
+
+
+.sidebar {
+  padding: 20px;
 }
-.h4MainTitle{
-    padding: 20px;
+
+.volkswagenTitle {
+  padding: 20px;
+  text-align: center;
 }
-.volkswagenTitle{
-    padding: 20px;
-    text-align: center;
+
+.imageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
-.titleBox{
-    height: 50px;
-    text-align: center;
+
+.imageContent {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin: 10px 0;
+  border-radius: 5px;
 }
-.container {
-	background-color: none;
+
+.titleBox {
+  height: 50px;
+  text-align: center;
 }
+
 
 .accordion {
   width: 100%;
@@ -39,104 +84,93 @@
   padding: 20px;
 }
 
-.accordion-item:hover{
-  box-shadow: 8px 4px 4px gray;
-}
-  
 .accordion-item {
   border: 1px solid #ccc;
   margin-bottom: 5px;
   border-radius: 5px;
 }
-  
+
+.accordion-item:hover {
+  box-shadow: 8px 4px 4px gray;
+}
+
 .accordion-header {
   padding: 10px;
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
 }
-  
+
 .accordion-body {
   padding: 10px;
   font-size: 16px;
 }
 
-.introduction{
-  padding: 20px;
-}
-.volkswagenImage{
-  background-image: url(../../assets/VW_Werk_Altes_Heizkraftwerk_WB_edit.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
-}
-
-.textContent{
-  height: 300px;
-  padding: 40px;
-}
-.h4MainTitle{
-  padding: 20px;
-}
-.volkswagenTitle{
-  padding: 20px;
-  text-align: center;
-}
-.titleBox{
-  height: 50px;
-  text-align: center;
-}
-.container {
-background-color: none;
-}
-
-.accordion {
-width: 100%;
-max-width: 1200px;
-padding: 20px;
-}
-
-.accordion-item:hover{
-box-shadow: 8px 4px 4px gray;
-}
-
-.accordion-item {
-border: 1px solid #ccc;
-margin-bottom: 5px;
-border-radius: 5px;
-}
-
-.accordion-header {
-padding: 10px;
-cursor: pointer;
-font-size: 18px;
-font-weight: bold;
-}
-
-.accordion-body {
-padding: 10px;
-font-size: 16px;
-}
-@media (max-width: 768px) {
-  .h4MainTitle {
-    font-size: 18px; /* A főcím kisebb képernyőkön */
+@media (max-width: 992px) {
+  .introductionBox,
+  .sidebar {
+    padding: 10px;
   }
 
-  .textContent p {
-    font-size: 14px; /* A szöveg kisebb legyen a kisebb képernyőkön */
-    line-height: 20px;
+  .h4MainTitle,
+  .volkswagenTitle {
+    font-size: 20px;
+  }
+
+  .textContent {
+    padding: 15px;
+  }
+
+  .imageContentFactories {
+    height: 150px;
+  }
+
+  .imageContent {
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .h4MainTitle {
+    font-size: 18px;
   }
 
   .volkswagenTitle {
-    font-size: 20px; /* A cím kisebb képernyőkön */
+    font-size: 20px;
+  }
+
+  .textContent p {
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .accordion-header h4 {
-    font-size: 14px; /* Kisebb képernyőkön a fejléc szöveg mérete */
+    font-size: 14px;
+  }
+
+  .imageContentFactories {
+    height: 120px;
+  }
+
+  .imageContent {
+    height: 120px;
   }
 }
 
+@media (max-width: 576px) {
+  .factory-img-container {
+    padding: 5px;
+  }
 
-  
+  .imageContentFactories {
+    height: 100px;
+  }
 
-  
+  .imageContent {
+    height: 100px;
+  }
+
+  .textContent {
+    padding: 10px;
+  }
+}

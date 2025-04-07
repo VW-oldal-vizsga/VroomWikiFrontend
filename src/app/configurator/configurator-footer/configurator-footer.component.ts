@@ -74,7 +74,6 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         this.selectedColorId = this.getColorId() ?? null;
         this.colorName = this.getColorName(this.selectedColorId);
         this.getConfigName()
-        console.log('localStorage carConfig:', localStorage.getItem("carConfig"));
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);
