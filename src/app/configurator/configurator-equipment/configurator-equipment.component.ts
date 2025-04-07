@@ -21,14 +21,18 @@ export class ConfiguratorEquipmentComponent {
     engines: IEngine[] = [];
     transmissionTypes: ITransmissionType[] = [];
     cardImages: { [key: number]: string } = {};
-    config: ISelectConfigurator[] = []
+    config: IPopularConfigs[] = []
   
     constructor(private router: Router, private configurator: configurator) {}
   
     ngOnInit(): void {
       this.loadData();
     }
-  
+
+    ngOnDestroy(): void {
+      
+    }
+    
     loadData(): void {
       forkJoin({
         configurators: this.configurator.getConfigurators(),
@@ -110,10 +114,11 @@ export class ConfiguratorEquipmentComponent {
       return this.configurator.getCredit(price);
     }
 
-    selectConfiguration(config: ISelectConfigurator) {
+    selectConfiguration(config: IPopularConfigs) {
       this.configurator.setConfigName(config.configName);
       this.configurator.setEngine(config.engine_Id);
       this.configurator.setTransmission(config.transmissionType_Id);
       this.configurator.setPrice(config.price);
+      this.selectConfig(config)
     }
 }

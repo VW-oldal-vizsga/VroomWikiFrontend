@@ -75,8 +75,6 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         this.colorName = this.getColorName(this.selectedColorId);
         this.getConfigName()
         console.log('localStorage carConfig:', localStorage.getItem("carConfig"));
-        
-
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);
@@ -103,6 +101,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   navigateToDriveTo() {
     this.router.navigate(['/configDriveTo']);
     this.saveTotal()
+    this.priceClear()
   }
 
   getColorName(colorId: number | null): string | undefined {
@@ -117,6 +116,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
 
   changeColor(color: IColor) {
     this.colorService.changeColor(color);
+    
   }
 
   saveTotal() {
@@ -127,5 +127,14 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
     const configNameObject = this.configurators.getItem<{ configName: string }>('carConfig');
     this.configName = configNameObject ? configNameObject.configName : 'string'; 
   }
+  priceClear() {
+    const key = 'carConfig';
+    const data = localStorage.getItem(key);
 
+    if (data) {
+      const parsedData = JSON.parse(data);
+      delete parsedData.price;
+      localStorage.setItem(key, JSON.stringify(parsedData));
+    }
+  }
 }

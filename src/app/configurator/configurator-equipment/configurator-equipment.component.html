@@ -18,7 +18,7 @@
                 <p class="card-text">⚡ {{getEngineData(item.engine_Id)?.horsepower}} {{ 'CONFIGURATOR.HORSEPOWER' | translate}}</p>
                 
                 <div class="text-center p-3 mt-5">
-                    <button class="selectButton" [class.selected]="isConfigSelected(item)" (click)="selectConfig(item)" (click)="selectConfiguration(item)">
+                    <button class="selectButton" [class.selected]="isConfigSelected(item)" (click)="selectConfiguration(item)">
                         {{ getButtonText( item)}}
                     </button>
                 </div>
