@@ -1,11 +1,77 @@
-.chartContainer{
-    width: 100%;
-}
-.mainContentContainer{
+
+.container {
+    padding: 20px;
+  }
+  
+  .middle {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.chart-container{
+    flex-direction: column;
+  }
+  
+  .mainContentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+  }
+  
+  .filter-container {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .filter-container label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .filter-container select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    font-size: 16px;
+  }
+  
+  .chartContainer {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  
+  .chart-container {
+    position: relative;
     border: 2px solid lightgray;
-}
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100% !important; /* A canvas töltse ki a konténert */
+    width: 100% !important;
+  }
+  
+  @media (max-width: 768px) {
+    .chartContainer {
+      max-width: 100%;
+    }
+  
+    .filter-container select {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .mainContentContainer {
+      padding: 10px;
+    }
+  
+    .filter-container {
+      margin-bottom: 15px;
+    }
+  }

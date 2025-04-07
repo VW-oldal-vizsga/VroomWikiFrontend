@@ -17,6 +17,7 @@ export class MaincontentComponent {
     this.translate.setDefaultLang('hu'); 
     this.translate.use('hu');
   }
+  
   apiImage = "http://localhost:5269/api/MainPage_Sales/image/1"
   chairmanImage = "http://localhost:5269/api/MainPage_Sales/imageChairman/1"
   bratislavaFactory = "http://localhost:5269/api/MainPage_Sales/imageBratislava/1"
