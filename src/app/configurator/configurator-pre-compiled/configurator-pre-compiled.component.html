@@ -1,4 +1,3 @@
-<!-- configPreComp HTML (részlet) -->
 <div class="bg-light" style="display: flex; justify-content: center; border-bottom: 2px solid lightgray;">
     <app-navbar></app-navbar>
 </div>
@@ -7,22 +6,24 @@
     <h2 class="middle p-5">Népszerű konfigurációk</h2>
 </div>
 
-<div class="configContainer" *ngFor="let group of configuratorGroups">
-    <div class="card-wrapper" *ngFor="let item of group">
+<div class="configContainer">
+    <div class="card-wrapper" *ngFor="let config of popularConfigs">
         <div class="card mb-5">
-            <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
+            <img *ngIf="cardImages[config.id]" [src]="cardImages[config.id]" class="card-img-top" alt="{{ config.configName }}">
             <div class="card-body">
-                <h3 class="card-text">{{item.configName}}</h3>
-                <p class="card-text">{{item.configName}} {{getEngineData(item.engine_Id)?.name}}</p>
-                <p class="card-text">{{getTransmissionData(item.transmissionType_Id)?.name}}</p>
-                <p class="card-text">{{getEngineData(item.engine_Id)?.fuelType}}</p>
-                <p class="card-text">{{getEngineData(item.engine_Id)?.horsepower}} {{ 'CONFIGURATOR.HORSEPOWER' | translate}}</p>
-                <p class="card-text">{{getEngineData(item.engine_Id)?.co2Emission}} {{ 'CONFIGURATOR.CO2' | translate}}</p>
-                <p class="card-text">{{getColorData(item.color_Id)?.name}}</p>
-                <h4 class="card-text mt-2">{{item.price | number}} {{ 'CONFIGURATOR.HUF' | translate}}</h4>
+                <h3 class="card-text">{{ config.configName }}</h3>
+                <p class="card-text">{{ getEngineData(config.engine_Id)?.name }}</p>
+                <p class="card-text">{{ getTransmissionData(config.transmissionType_Id)?.name }}</p>
+                <p class="card-text">{{ getEngineData(config.engine_Id)?.fuelType }}</p>
+                <p class="card-text">{{ getEngineData(config.engine_Id)?.horsepower }} {{ 'CONFIGURATOR.HORSEPOWER' | translate }}</p>
+                <p class="card-text">{{ getEngineData(config.engine_Id)?.co2Emission }} {{ 'CONFIGURATOR.CO2' | translate }}</p>
+                <p class="card-text">{{ getColorData(config.color_Id)?.name }}</p>
+                <h4 class="card-text mt-2">{{ config.price | number }} {{ 'CONFIGURATOR.HUF' | translate }}</h4>
                 <div class="text-center p-3">
-                    <button class="selectButton" [class.selected]="isConfigSelected(item)" (click)="selectConfig(item)">
-                        {{ getButtonText(item) }}
+                    <button class="selectButton" 
+                            [class.selected]="isConfigSelected(config)" 
+                            (click)="selectConfig(config)">
+                        {{ getButtonText(config) }}
                     </button>
                 </div>
             </div>
@@ -30,4 +31,6 @@
     </div>
 </div>
 
-<footer class="footer"><app-configurator-footer></app-configurator-footer></footer>
+<footer class="footer">
+    <app-configurator-footer></app-configurator-footer>
+</footer>

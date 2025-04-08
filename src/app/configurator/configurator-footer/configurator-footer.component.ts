@@ -1,139 +1,110 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { configurator } from '../../../services/configurator.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ConfiguratorService } from '../../../services/configurator.service';
 import { IColor, IPopularConfigs, ISelectConfigurator } from '../../../models/configurator.interface';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { TranslatePipe } from '@ngx-translate/core';
-import { forkJoin, Subscription } from 'rxjs';
-import { ColorService } from '../../../services/color.service';
-import { CartService } from '../../../services/cart.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-configurator-footer',
+  standalone: true,
   imports: [CommonModule, TranslatePipe],
   templateUrl: './configurator-footer.component.html',
-  styleUrl: './configurator-footer.component.css'
+  styleUrls: ['./configurator-footer.component.css']
 })
 export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
-  configName:string = '';
-  total:number = 0
   selectedConfig: IPopularConfigs | null = null;
-  currentRoute: string = '';
-  carConfig: ISelectConfigurator[] = [];
+  config: ISelectConfigurator = { configName: '', color_Id: 0, engine_Id: 0, transmissionType_Id: 0, price: 0 };
+  totalPrice: number = 0;
+  selectedColor: IColor | null = null;
   colors: IColor[] = [];
-  color: IColor | null = null;
-  selectedColorId: number | null = null;
-  colorName: string | undefined = undefined;
+  currentRoute: string = '';
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private configurators: configurator, private router: Router, private colorService: ColorService, private cartService: CartService) {
-  
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.currentRoute = event.url;
-      if (!event.url.includes('/configColor') && !event.url.includes('/configReady') && !event.url.includes('/configPreComp')) {
-        this.configurators.clearSelectedConfig();
-      }
-    });
+  constructor(
+    private configuratorService: ConfiguratorService,
+    private router: Router
+  ) {
+    this.subscriptions.add(
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      ).subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.url;
+        this.updateFooterData();
+      })
+    );
 
     this.subscriptions.add(
-      this.configurators.selectedConfig$.subscribe(config => {
+      this.configuratorService.selectedConfig$.subscribe(config => {
         this.selectedConfig = config;
       })
     );
 
     this.subscriptions.add(
-      this.configurators.carConfig$.subscribe(config => {
-        this.carConfig = config;
-        this.selectedColorId = this.getColorId() ?? null;
-        this.colorName = this.getColorName(this.selectedColorId);
+      this.configuratorService.config$.subscribe(config => {
+        this.config = config;
+        this.loadColor(config.color_Id);
+      })
+    );
+
+    this.subscriptions.add(
+      this.configuratorService.totalPrice$.subscribe(total => {
+        this.totalPrice = total;
       })
     );
   }
 
   ngOnInit(): void {
-    this.loadData();
+    this.loadColors();
+    this.updateFooterData();
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
-  loadData(): void {
-    forkJoin({
-      colors: this.configurators.getColors(),
-    }).subscribe({
-      next: (results) => {
-        this.colors = results.colors;
-        this.colorService.currentColor.subscribe(color => this.color = color);
-        this.cartService.currentTotal.subscribe(total => this.total = total)
-        this.carConfig = this.configurators.getCarConfig();
-        this.selectedConfig = this.configurators.getSelectedConfig();
-        this.selectedColorId = this.getColorId() ?? null;
-        this.colorName = this.getColorName(this.selectedColorId);
-        this.getConfigName()
+  loadColors(): void {
+    this.configuratorService.getColors().subscribe({
+      next: (colors) => {
+        this.colors = colors;
+        this.loadColor(this.config.color_Id);
       },
       error: (err) => {
-        console.error('Hiba az adatok betöltésekor:', err);
+        console.error('Hiba a színek betöltésekor:', err);
       }
     });
   }
 
+  loadColor(colorId: number): void {
+    this.selectedColor = this.colors.find(color => color.id === colorId) || null;
+  }
+
   getCredit(price: number): number {
-    return this.configurators.getCredit(price);
+    return this.configuratorService.getCredit(price);
   }
 
-  navigateToColor() {
-    this.router.navigate(['/configColor']);
-  }
-
-  navigateToReadyToBuy() {
+  navigateToReadyToBuy(): void {
     this.router.navigate(['/configReady']);
   }
 
-  navigateToConfig() {
+  navigateToConfig(): void {
     this.router.navigate(['/configEquipment']);
   }
 
-  navigateToDriveTo() {
+  navigateToColor(): void {
+    this.router.navigate(['/configColor']);
+  }
+
+  navigateToDriveTo(): void {
     this.router.navigate(['/configDriveTo']);
-    this.saveTotal()
-    this.priceClear()
   }
 
-  getColorName(colorId: number | null): string | undefined {
-    const foundName = this.colors.find(color => color.id === colorId);
-    return foundName?.name;
-  }
-
-  getColorId(): number | undefined {
-    const foundId = this.carConfig.find(color => color.color_Id !== undefined);
-    return foundId?.color_Id;
-  }
-
-  changeColor(color: IColor) {
-    this.colorService.changeColor(color);
-    
-  }
-
-  saveTotal() {
-    this.cartService.saveTotal();
-  }
-
-  getConfigName() {
-    const configNameObject = this.configurators.getItem<{ configName: string }>('carConfig');
-    this.configName = configNameObject ? configNameObject.configName : 'string'; 
-  }
-  priceClear() {
-    const key = 'carConfig';
-    const data = localStorage.getItem(key);
-
-    if (data) {
-      const parsedData = JSON.parse(data);
-      delete parsedData.price;
-      localStorage.setItem(key, JSON.stringify(parsedData));
-    }
+  private updateFooterData(): void {
+    this.selectedConfig = this.configuratorService.getSelectedConfig();
+    this.config = this.configuratorService.getConfig();
+    this.totalPrice = this.configuratorService.getTotalPrice();
+    this.loadColor(this.config.color_Id);
   }
 }

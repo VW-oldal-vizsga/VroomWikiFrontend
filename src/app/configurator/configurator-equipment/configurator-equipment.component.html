@@ -2,28 +2,31 @@
     <app-navbar></app-navbar>
 </div>
 <div class="container">
-    <h2 class="middle p-5">{{ 'CONFIGURATOR.CHOOSEOURTYPE' | translate}}</h2>
+    <h2 class="middle p-5">{{ 'CONFIGURATOR.CHOOSEOURTYPE' | translate }}</h2>
 </div>
 
-<div class="configContainer ">
+<div class="configContainer">
     <div class="card-wrapper" *ngFor="let item of configurators">
         <div class="card mb-5">
-            <img [src]="cardImages[item.id]" class="card-img-top" alt="...">
+            <img *ngIf="cardImages[item.id]" [src]="cardImages[item.id]" class="card-img-top" alt="{{ item.configName }}">
             <div class="card-body">
-                <h2 class="card-text">{{item.configName}}</h2>
-                <h3 class="card-text mt-1">{{item.price | number}} {{ 'CONFIGURATOR.HUF' | translate}}</h3>
-                <h5 class="card-text mt-1">{{getCredit(item.price) | number:'1.0-0'}} {{ 'CONFIGURATOR.HUF/MONTH' | translate}}</h5>
-                <p class="card-text mt-3">⚙️ {{getTransmissionData(item.transmissionType_Id)?.name}}</p>
-                <p class="card-text">⛽ {{getEngineData(item.engine_Id)?.fuelType}}</p>
-                <p class="card-text">⚡ {{getEngineData(item.engine_Id)?.horsepower}} {{ 'CONFIGURATOR.HORSEPOWER' | translate}}</p>
-                
+                <h2 class="card-text">{{ item.configName }}</h2>
+                <h3 class="card-text mt-1">{{ item.price | number }} {{ 'CONFIGURATOR.HUF' | translate }}</h3>
+                <h5 class="card-text mt-1">{{ getCredit(item.price) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate }}</h5>
+                <p class="card-text mt-3">⚙️ {{ getTransmissionData(item.transmissionType_Id)?.name }}</p>
+                <p class="card-text">⛽ {{ getEngineData(item.engine_Id)?.fuelType }}</p>
+                <p class="card-text">⚡ {{ getEngineData(item.engine_Id)?.horsepower }} {{ 'CONFIGURATOR.HORSEPOWER' | translate }}</p>
                 <div class="text-center p-3 mt-5">
-                    <button class="selectButton" [class.selected]="isConfigSelected(item)" (click)="selectConfiguration(item)">
-                        {{ getButtonText( item)}}
+                    <button class="selectButton" 
+                            [class.selected]="isConfigSelected(item)" 
+                            (click)="selectConfiguration(item)">
+                        {{ getButtonText(item) }}
                     </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<footer class="footer mt-5"><app-configurator-footer></app-configurator-footer></footer>
+<footer class="footer mt-5">
+    <app-configurator-footer></app-configurator-footer>
+</footer>

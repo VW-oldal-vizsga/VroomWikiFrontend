@@ -1,152 +1,142 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IColor, IConfigurator, IEngine, IPopularConfigs, ISelectConfigurator, ITransmissionType } from '../models/configurator.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class configurator {
-    private apiUrl = 'http://localhost:5269/api/Configurator';
-    private selectedConfigs: IPopularConfigs[] = [];
-    private selectedConfigSubject = new BehaviorSubject<IPopularConfigs | null>(null);
-    selectedConfig$ = this.selectedConfigSubject.asObservable();
+export class ConfiguratorService {
+  private apiUrl = 'http://localhost:5269/api/Configurator';
 
-    private carConfigSubject = new BehaviorSubject<ISelectConfigurator[]>([]);
-    public carConfig$ = this.carConfigSubject.asObservable();
+  private selectedConfigSubject = new BehaviorSubject<IPopularConfigs | null>(null);
+  selectedConfig$ = this.selectedConfigSubject.asObservable();
 
-    private config: ISelectConfigurator = {
-      userId : 0,
-      configName: '',
-      engine_Id: 0,
-      color_Id: 0,
-      transmissionType_Id: 0,
-      price: 0
-    }
-    private configSubject = new BehaviorSubject<ISelectConfigurator>(this.config);
-    
-    constructor(private http: HttpClient) {
-      const savedConfig = localStorage.getItem('carConfig');
-      if (savedConfig) {
-        this.config = JSON.parse(savedConfig);
-        this.configSubject.next(this.config);
-      }
-      console.log(savedConfig);
-      this.loadInitialConfig();
-      
-     }
+  private config: ISelectConfigurator = {
+    configName: '',
+    color_Id: 0,
+    engine_Id: 0,
+    transmissionType_Id: 0,
+    price: 0
+  };
+  private configSubject = new BehaviorSubject<ISelectConfigurator>(this.config);
+  config$ = this.configSubject.asObservable();
 
-     private loadInitialConfig() {
-      const storedConfig = localStorage.getItem("carConfig");
-      if (storedConfig) {
-        const parsedConfig = JSON.parse(storedConfig);
-        this.carConfigSubject.next(Array.isArray(parsedConfig) ? parsedConfig : [parsedConfig]);
-      }
-    }
+  private totalPriceSubject = new BehaviorSubject<number>(0);
+  totalPrice$ = this.totalPriceSubject.asObservable();
 
-    getCarConfig(): ISelectConfigurator[] {
-      return this.carConfigSubject.getValue();
-    }
+  private currentColorPrice: number = 0;
 
-    getConfigurators(): Observable<IConfigurator[]> {
-      return this.http.get<IConfigurator[]>(`${this.apiUrl}`)
-    }
-    getPopularConfigs(): Observable<IPopularConfigs[]> {
-      return this.http.get<[IPopularConfigs]>(`${this.apiUrl}/popularconfigs`)
-    }
+  constructor(private http: HttpClient) {}
 
-    getConfiguratorColorImage(id: number | undefined): Observable<Blob> {
-      return this.http.get(`${this.apiUrl}/color/image/${id}`, { responseType: 'blob' });
-    }
+  getConfigurators(): Observable<IConfigurator[]> {
+    return this.http.get<IConfigurator[]>(`${this.apiUrl}`);
+  }
 
-    getGolfMainImage(): Observable<Blob> {
-      return this.http.get(`${this.apiUrl}/popularconfigs/image/1`, {responseType: 'blob'});
-    }
+  getPopularConfigs(): Observable<IPopularConfigs[]> {
+    return this.http.get<IPopularConfigs[]>(`${this.apiUrl}/popularconfigs`);
+  }
 
-    getColors(): Observable<IColor[]> {
-      return this.http.get<IColor[]>(`${this.apiUrl}/colors`);
-    }
+  getColors(): Observable<IColor[]> {
+    return this.http.get<IColor[]>(`${this.apiUrl}/colors`);
+  }
 
-    getColorsById(colorid: number | null): Observable<IColor[]> {
-      return this.http.get<IColor[]>(`${this.apiUrl}/colors/${colorid}`);
-    }
-  
-    getEngines(): Observable<IEngine[]> {
-      return this.http.get<IEngine[]>(`${this.apiUrl}/engines`);
-    }
-  
-    getTransmissionTypes(): Observable<ITransmissionType[]> {
-      return this.http.get<ITransmissionType[]>(`${this.apiUrl}/transmissions`);
-    }
+  getEngines(): Observable<IEngine[]> {
+    return this.http.get<IEngine[]>(`${this.apiUrl}/engines`);
+  }
 
-    getConfiguratorImage(id: number | undefined): Observable<Blob> {
-      return this.http.get(`${this.apiUrl}/popularconfigs/image/${id}`, { responseType: 'blob' });
-    }
+  getTransmissionTypes(): Observable<ITransmissionType[]> {
+    return this.http.get<ITransmissionType[]>(`${this.apiUrl}/transmissions`);
+  }
 
-    getSelectedConfigs(): IPopularConfigs[] {
-      return this.selectedConfigs;
-    }
-  
-    getSelectedConfig(): IPopularConfigs | null {
-      return this.selectedConfigSubject.value;
-    }
-  
-    setSelectedConfig(config: IPopularConfigs | null): void {
-      this.selectedConfigSubject.next(config);
-    }
-  
-    clearSelectedConfig(): void {
-      this.selectedConfigSubject.next(null);
-    }
+  getGolfMainImage(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/popularconfigs/image/1`, { responseType: 'blob' });
+  }
 
-    getCredit(price: number): number {
-      return price / 60;
-    }
+  getConfiguratorImage(id: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/popularconfigs/image/${id}`, { responseType: 'blob' });
+  }
 
-    setEngine(engineId: number) {
-      this.config.engine_Id = engineId;
-      this.updateConfig();
-    }
-  
-    setColor(colorId: number) {
-      this.config.color_Id = colorId;
-      this.updateConfig();
-    }
+  getConfiguratorColorImage(id: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/color/image/${id}`, { responseType: 'blob' });
+  }
 
-  
-    setUser(userId: number) {
-      this.config.userId = userId;
-      this.updateConfig();
-    }
-    
-    setConfigName(configName: string) {
-      this.config.configName = configName;
-      this.updateConfig();
-    }
+  getUserConfigs(userId: number): Observable<ISelectConfigurator[]> {
+    return this.http.get<ISelectConfigurator[]>(`${this.apiUrl}/user/${userId}/configs`);
+  }
 
-    setTransmission(transmissionId: number) {
-      this.config.transmissionType_Id = transmissionId;
-      this.updateConfig();
-    }
-    setPrice(price:number) {
-      this.config.price = price;
-      this.updateConfig();
-    }
-  
-    getConfigObservable() {
-      return this.configSubject.asObservable();
-    }
+  saveConfig(userId: number, config: ISelectConfigurator): Observable<any> {
+    return this.http.post(`${this.apiUrl}/user/${userId}/configs`, config);
+  }
 
-    getItem<T>(key: string): T | null {
-      const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) as T : null;
+  setSelectedConfig(config: IPopularConfigs | null): void {
+    this.selectedConfigSubject.next(config);
+    if (config && config.price !== undefined) {
+      this.updateTotalPrice(config.price);
     }
-  
-    private updateConfig() {
-      this.configSubject.next(this.config);
-      localStorage.setItem('carConfig', JSON.stringify(this.config));
+  }
+
+  getSelectedConfig(): IPopularConfigs | null {
+    return this.selectedConfigSubject.value;
+  }
+
+  clearSelectedConfig(): void {
+    this.selectedConfigSubject.next(null);
+    this.updateTotalPrice(0);
+  }
+
+  setConfigName(configName: string): void {
+    this.config.configName = configName;
+    this.updateConfig();
+  }
+
+  setColor(colorId: number, price?: number): void {
+    this.config.color_Id = colorId;
+    if (price !== undefined) {
+      const newTotalPrice = this.config.price + price;
+      this.updateTotalPrice(newTotalPrice);
+      this.currentColorPrice = price;
     }
+    this.updateConfig();
+  }
 
+  setEngine(engineId: number): void {
+    this.config.engine_Id = engineId;
+    this.updateConfig();
+  }
 
+  setTransmission(transmissionId: number): void {
+    this.config.transmissionType_Id = transmissionId;
+    this.updateConfig();
+  }
+
+  setPrice(price: number): void {
+    this.config.price = price;
+    this.updateTotalPrice(price + this.currentColorPrice);
+    this.updateConfig();
+  }
+
+  getConfig(): ISelectConfigurator {
+    return this.configSubject.value;
+  }
+
+  getTotalPrice(): number {
+    return this.totalPriceSubject.getValue();
+  }
+
+  updateTotalPrice(price: number): void {
+    if (price >= 0) {
+      this.totalPriceSubject.next(price);
+    } else {
+      console.warn('Az ár nem lehet negatív:', price);
+    }
+  }
+
+  getCredit(price: number): number {
+    return price / 60;
+  }
+
+  private updateConfig(): void {
+    this.configSubject.next({ ...this.config });
+  }
 }

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { Router } from '@angular/router';
-import { configurator } from '../../../services/configurator.service';
+import { ConfiguratorService } from '../../../services/configurator.service';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -17,8 +17,7 @@ export class ConfiguratorMainComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private configurator: configurator,
-    private cdr: ChangeDetectorRef
+    private configuratorService: ConfiguratorService
   ) {}
 
   ngOnInit(): void {
@@ -26,16 +25,16 @@ export class ConfiguratorMainComponent implements OnInit {
   }
 
   navigateToCar(): void {
-    this.router.navigate(['/configPreComp']);
+    this.configuratorService.setConfigName('Golf'); // Modell nevének beállítása
+    this.router.navigate(['/configPreComp']); // Második lépéshez navigálás
   }
 
   private loadMainImage(): void {
-    this.configurator.getGolfMainImage().subscribe({
+    this.configuratorService.getGolfMainImage().subscribe({
       next: (imageBlob: Blob) => {
         const objectURL = URL.createObjectURL(imageBlob);
         this.cardImage = objectURL;
-        this.cdr.detectChanges(); 
-        console.log('Kép URL:', this.cardImage); 
+        console.log('Kép URL:', this.cardImage);
       },
       error: (error) => {
         console.error('Hiba a fő kép lekérdezése során:', error);

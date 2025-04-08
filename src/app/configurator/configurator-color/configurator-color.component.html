@@ -11,19 +11,19 @@
         </div>
         <div class="col-12 col-md-6 mt-5">
             <div class="container fullBorder">
-                <h2 class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOOSEOUTSIDECOLOR' | translate}}</h2>
+                <h2 class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOOSEOUTSIDECOLOR' | translate }}</h2>
                 <div class="middle mt-4 color-buttons">
                     <button class="circleButton" *ngFor="let color of colors" 
-                        (click)="selectConfiguration(color.id); changeColor(color)"
-                        [style.backgroundColor]="color.colorCode">
+                            (click)="selectConfiguration(color)"
+                            [style.backgroundColor]="color.colorCode">
                     </button>
                 </div>
-                <h2 *ngIf="selectedColorId" class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOSENCOLOR' | translate}}</h2>
-                <div class="mt-4 row">
+                <h2 *ngIf="selectedColorId" class="middle p-4 pb-0">{{ 'CONFIGURATOR.CHOSENCOLOR' | translate }}</h2>
+                <div class="mt-4 row" *ngIf="selectedColorId">
                     <div class="col-6 middle mb-3 ps-4">
-                        <h3>{{getColorName(selectedColorId)}}</h3>
+                        <h3>{{ getColorName(selectedColorId) }}</h3>
                     </div>
-                    <div *ngIf="selectedColorId" class="col-6 middle">
+                    <div class="col-6 middle">
                         <button class="circleButton" [style.backgroundColor]="getColorCodes(selectedColorId)"></button>
                     </div>
                 </div>
@@ -32,4 +32,6 @@
     </div>
 </div>
 
-<footer class="mt-5"><app-configurator-footer></app-configurator-footer></footer>
+<footer class="mt-5">
+    <app-configurator-footer></app-configurator-footer>
+</footer>

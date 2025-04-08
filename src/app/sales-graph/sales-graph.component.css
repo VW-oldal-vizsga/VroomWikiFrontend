@@ -51,7 +51,7 @@
     padding: 10px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 100% !important; /* A canvas töltse ki a konténert */
+    height: 100% !important; 
     width: 100% !important;
   }
   
