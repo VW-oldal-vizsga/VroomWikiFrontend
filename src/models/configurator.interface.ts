@@ -37,9 +37,12 @@ export interface IConfigurator {
     horsepower: number;
     fuelType: string;
     co2Emission: number;
+    price: number;
   }
   
   export interface ITransmissionType {
     id: number;
     name: string;
+    wheelDrive:string;
+    price: string;
   }

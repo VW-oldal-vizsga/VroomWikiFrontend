@@ -40,6 +40,9 @@ export class ConfiguratorPreCompiledComponent implements OnInit {
     }).subscribe({
       next: (results) => {
         this.popularConfigs = results.configs;
+        this.popularConfigs = results.configs.filter(config => 
+          [2, 3, 4, 5].includes(config.id)
+      );
         this.colors = results.colors;
         this.engines = results.engines;
         this.transmissionTypes = results.transmissionTypes;
@@ -64,6 +67,7 @@ export class ConfiguratorPreCompiledComponent implements OnInit {
       });
     });
   }
+
 
   selectConfig(config: IPopularConfigs): void {
     const currentSelected = this.configuratorService.getSelectedConfig();

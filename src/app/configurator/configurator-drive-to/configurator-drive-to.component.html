@@ -1,1 +1,36 @@
-<p>configurator-drive-to works!</p>
+
+<div class="bg-light" style="display: flex; justify-content: center; border-bottom: 2px solid lightgray;">
+    <app-navbar></app-navbar>
+</div>
+<!-- configurator-drive-to.component.html -->
+<div class="engine-transmission-selector">
+    <h2>Motor és váltó választása</h2>
+  
+    <div class="form-group">
+      <label for="engineSelect">Motor:</label>
+      <select id="engineSelect" 
+              (change)="onEngineChange($event)">
+        <option value="">Válassz motort...</option>
+        <option *ngFor="let engine of engines" 
+                [value]="engine.id">
+          {{ engine.name }} ({{ engine.horsepower }} LE, {{ engine.fuelType }}) - {{ engine.price | currency:'HUF':'symbol':'1.0-0' }}
+        </option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="transmissionSelect">Váltó:</label>
+      <select id="transmissionSelect" 
+              (change)="onTransmissionChange($event)">
+        <option value="">Válassz váltót...</option>
+        <option *ngFor="let transmission of transmissions" 
+                [value]="transmission.id">
+          {{ transmission.name }} - {{ transmission.price | currency:'HUF':'symbol':'1.0-0' }}
+        </option>
+      </select>
+    </div>
+  
+    <div class="price-display">
+      <p>Aktuális ár: {{ totalPrice | currency:'HUF':'symbol':'1.0-0' }}</p>
+    </div>
+  </div>
