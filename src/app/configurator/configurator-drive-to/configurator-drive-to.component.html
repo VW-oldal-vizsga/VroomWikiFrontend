@@ -13,7 +13,7 @@
         <option value="">Válassz motort...</option>
         <option *ngFor="let engine of engines" 
                 [value]="engine.id">
-          {{ engine.name }} ({{ engine.horsepower }} LE, {{ engine.fuelType }}) - {{ engine.price | currency:'HUF':'symbol':'1.0-0' }}
+          {{ engine.name }} ({{ engine.horsepower }} LE, {{ engine.fuelType }}) - {{ engine.price | number:'1.0-0' }} Ft
         </option>
       </select>
     </div>
@@ -25,12 +25,11 @@
         <option value="">Válassz váltót...</option>
         <option *ngFor="let transmission of transmissions" 
                 [value]="transmission.id">
-          {{ transmission.name }} - {{ transmission.price | currency:'HUF':'symbol':'1.0-0' }}
+          {{ transmission.name }} - {{ transmission.price | number :'1.0-0' }} Ft
         </option>
       </select>
     </div>
   
-    <div class="price-display">
-      <p>Aktuális ár: {{ totalPrice | currency:'HUF':'symbol':'1.0-0' }}</p>
-    </div>
   </div>
+
+<app-configurator-footer></app-configurator-footer>

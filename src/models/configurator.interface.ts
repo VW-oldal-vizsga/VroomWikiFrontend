@@ -44,5 +44,5 @@ export interface IConfigurator {
     id: number;
     name: string;
     wheelDrive:string;
-    price: string;
+    price: number;
   }

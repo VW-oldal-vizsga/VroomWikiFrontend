@@ -4,15 +4,16 @@ import { IEngine, ITransmissionType } from '../../../models/configurator.interfa
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
 
 @Component({
   selector: 'app-configurator-drive-to',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, FormsModule],
+  imports: [NavbarComponent, CommonModule, FormsModule, ConfiguratorFooterComponent],
   templateUrl: './configurator-drive-to.component.html',
-  styleUrls: ['./configurator-drive-to.component.css'] // 'styleUrl' helyett 'styleUrls', mivel tömböt vár
+  styleUrls: ['./configurator-drive-to.component.css'] 
 })
-export class ConfiguratorDriveToComponent implements OnInit { // OnInit hozzáadva az interfészhez
+export class ConfiguratorDriveToComponent implements OnInit { 
   engines: IEngine[] = [];
   transmissions: ITransmissionType[] = [];
   totalPrice: number = 0;
@@ -42,8 +43,8 @@ export class ConfiguratorDriveToComponent implements OnInit { // OnInit hozzáad
   }
 
   onEngineChange(event: Event): void {
-    const target = event.target as HTMLSelectElement; // Típuskényszerítés
-    const id = Number(target.value); // String -> Number konverzió
+    const target = event.target as HTMLSelectElement; 
+    const id = Number(target.value); 
     const selectedEngine = this.engines.find(e => e.id === id);
     if (selectedEngine) {
       this.selectedEngine = selectedEngine;
@@ -53,8 +54,8 @@ export class ConfiguratorDriveToComponent implements OnInit { // OnInit hozzáad
   }
 
   onTransmissionChange(event: Event): void {
-    const target = event.target as HTMLSelectElement; // Típuskényszerítés
-    const id = Number(target.value); // String -> Number konverzió
+    const target = event.target as HTMLSelectElement; 
+    const id = Number(target.value); 
     const selectedTransmission = this.transmissions.find(t => t.id === id);
     if (selectedTransmission) {
       this.selectedTransmission = selectedTransmission;
@@ -73,7 +74,7 @@ export class ConfiguratorDriveToComponent implements OnInit { // OnInit hozzáad
     }
 
     if (this.selectedTransmission && this.selectedTransmission.price !== undefined) {
-      newPrice 
+      newPrice += this.selectedTransmission.price 
     }
 
     this.configuratorService.updateTotalPrice(basePrice + newPrice);

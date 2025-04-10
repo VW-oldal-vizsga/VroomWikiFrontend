@@ -92,11 +92,40 @@
     </ng-template>
   </ng-container>
 
-  <!-- Debug info (ideiglenes) -->
-  <!-- <div class="debug" *ngIf="currentRoute.includes('/configPreComp') || currentRoute.includes('/configEquipment') || currentRoute.includes('/configColor')">
+  <ng-container *ngIf="currentRoute.includes('/configDriveTo')">
+    <!-- <div *ngIf="config; else noData"> -->
+      <div class="row">
+        <div class="col-12 col-md-2 borderRight middle">
+          <h3 class="text-white">{{ config.configName }}</h3>
+        </div>
+        <div class="col-12 col-md-2 middle borderRight">
+          <h4 class="text-white">{{ 'CONFIGURATOR.PRICE' | translate }}</h4>
+        </div>
+        <div class="col-12 col-md-2 middle borderRight">
+          <h5 class="text-white">{{ totalPrice | number }} {{ 'CONFIGURATOR.HUF' | translate }}</h5>
+          <h5 class="text-white">{{ getCredit(totalPrice) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate }}</h5>
+        </div>
+        <div *ngIf="selectedColor" class="col-12 col-md-3 middle borderRight">
+          <h4 class="text-white">{{ selectedColor.name }}</h4>
+        </div>
+        <div class="col-12 col-md-3 middle borderRight">
+          <h5><button (click)="navigateToDriveTo()">{{ 'CONFIGURATOR.NEXT' | translate }}</button></h5>
+        </div>
+      </div>
+    <!-- </div> -->
+    <ng-template #noData>
+      <div class="row">
+        <div class="col-12 col-md-12 middle">
+          <h3 class="right text-white">{{ 'CONFIGURATOR.CHOOSETYPE' | translate }}</h3>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <div class="debug" *ngIf="currentRoute.includes('/configPreComp') || currentRoute.includes('/configEquipment') || currentRoute.includes('/configColor') || currentRoute.includes('configDriveTo')">
     <p class="text-white">Selected Config: {{ selectedConfig | json }}</p>
     <p class="text-white">Config: {{ config | json }}</p>
     <p class="text-white">Total Price: {{ totalPrice }}</p>
     <p class="text-white">Selected Color: {{ selectedColor | json }}</p>
-  </div> -->
+  </div>
 </div>
