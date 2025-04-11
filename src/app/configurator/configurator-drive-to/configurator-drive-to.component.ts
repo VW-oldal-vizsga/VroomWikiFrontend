@@ -5,6 +5,7 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-configurator-drive-to',
@@ -14,6 +15,7 @@ import { ConfiguratorFooterComponent } from '../configurator-footer/configurator
   styleUrls: ['./configurator-drive-to.component.css'] 
 })
 export class ConfiguratorDriveToComponent implements OnInit { 
+  
   engines: IEngine[] = [];
   transmissions: ITransmissionType[] = [];
   totalPrice: number = 0;
@@ -34,6 +36,7 @@ export class ConfiguratorDriveToComponent implements OnInit {
     this.configuratorService.getTransmissionTypes().subscribe(transmissions => {
       this.transmissions = transmissions;
     });
+
   }
 
   private subscribeToPriceChanges(): void {
@@ -79,4 +82,7 @@ export class ConfiguratorDriveToComponent implements OnInit {
 
     this.configuratorService.updateTotalPrice(basePrice + newPrice);
   }
+  
+  
+
 }

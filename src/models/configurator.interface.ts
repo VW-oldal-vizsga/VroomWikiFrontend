@@ -17,7 +17,9 @@ export interface IConfigurator {
   }
   
   export interface ISelectConfigurator {
+    id?: number | null;
     configName: string;
+    user_id:number | null,
     color_Id: number;
     engine_Id: number;
     transmissionType_Id: number;
@@ -45,4 +47,14 @@ export interface IConfigurator {
     name: string;
     wheelDrive:string;
     price: number;
+  }
+  export interface IConfiguratorPut {
+    id?: number | null;
+    user_id:number| null,
+    configName:string,
+    engine_id:number,
+    color_id:number,
+    transmissionType_Id:number,
+    price:number,
+    imageUrl?:string,
   }

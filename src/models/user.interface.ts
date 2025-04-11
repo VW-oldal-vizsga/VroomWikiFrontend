@@ -1,5 +1,7 @@
 export interface User {
-    readonly email:string,
-    readonly role:string,
+    email:string,
+    role:string,
+    id: number
+
 
 }

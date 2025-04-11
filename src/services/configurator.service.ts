@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IColor, IConfigurator, IEngine, IPopularConfigs, ISelectConfigurator, ITransmissionType } from '../models/configurator.interface';
+import { IColor, IConfigurator, IConfiguratorPut, IEngine, IPopularConfigs, ISelectConfigurator, ITransmissionType } from '../models/configurator.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,9 @@ export class ConfiguratorService {
   selectedConfig$ = this.selectedConfigSubject.asObservable();
 
   private config: ISelectConfigurator = {
+    id: null,
     configName: '',
+    user_id: null,
     color_Id: 0,
     engine_Id: 0,
     transmissionType_Id: 0,
@@ -65,8 +67,8 @@ export class ConfiguratorService {
     return this.http.get<ISelectConfigurator[]>(`${this.apiUrl}/user/${userId}/configs`);
   }
 
-  saveConfig(userId: number, config: ISelectConfigurator): Observable<any> {
-    return this.http.post(`${this.apiUrl}/user/${userId}/configs`, config);
+  saveConfig(config: IConfiguratorPut): Observable<ISelectConfigurator> {
+    return this.http.post<ISelectConfigurator>(`${this.apiUrl}`, config);
   }
 
   setSelectedConfig(config: IPopularConfigs | null): void {
@@ -97,6 +99,18 @@ export class ConfiguratorService {
       this.updateTotalPrice(newTotalPrice);
       this.currentColorPrice = price;
     }
+    this.updateConfig();
+  }
+
+  setUserId(userId: number | null): void {
+    if (userId !== undefined) {
+      this.config.user_id = userId;
+      this.updateConfig();
+    }
+  }
+
+  setConfigId(id: number | null): void {
+    this.config.id = id;
     this.updateConfig();
   }
 
@@ -134,6 +148,20 @@ export class ConfiguratorService {
 
   getCredit(price: number): number {
     return price / 60;
+  }
+
+  createNewConfig(): void {
+    this.config = {
+      id: null, // A backend generálja mentéskor
+      configName: '',
+      user_id: this.config.user_id, // Megtartjuk az aktuális user_id-t
+      color_Id: 0,
+      engine_Id: 0,
+      transmissionType_Id: 0,
+      price: 0
+    };
+    this.updateConfig();
+    this.updateTotalPrice(0);
   }
 
   private updateConfig(): void {

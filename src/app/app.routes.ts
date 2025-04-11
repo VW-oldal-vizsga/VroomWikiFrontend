@@ -8,7 +8,6 @@ import { LanguageModalComponent } from './language-modal/language-modal.componen
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { ConfiguratorMainComponent } from './configurator/configurator-main/configurator-main.component';
 import { ConfiguratorColorComponent } from './configurator/configurator-color/configurator-color.component';
-import { ConfiguratorExtraComponent } from './configurator/configurator-extra/configurator-extra.component';
 import { ConfiguratorPreCompiledComponent } from './configurator/configurator-pre-compiled/configurator-pre-compiled.component';
 import { ConfiguratorDriveToComponent } from './configurator/configurator-drive-to/configurator-drive-to.component';
 import { ConfiguratorEquipmentComponent } from './configurator/configurator-equipment/configurator-equipment.component';
@@ -26,9 +25,8 @@ export const routes: Routes = [
     { path: 'sales-graph', component:SalesGraphComponent},
     { path: 'language-modal', component:LanguageModalComponent},
     { path: 'cards/:id', component:CardDetailsComponent},
-    { path: 'configuratorMain', component:ConfiguratorMainComponent},
+    { path: 'configuratorMain', component:ConfiguratorMainComponent, canActivate: [AuthGuard]},
     { path: 'configColor', component:ConfiguratorColorComponent},
-    { path: 'configExtra', component:ConfiguratorExtraComponent},
     { path: 'configPreComp', component:ConfiguratorPreCompiledComponent},
     { path: 'configDriveTo', component:ConfiguratorDriveToComponent},
     { path: 'configEquipment', component:ConfiguratorEquipmentComponent},

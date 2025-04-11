@@ -60,17 +60,26 @@ export class UserService {
       next: (response) => {
         const user: ProfileData = {
           validTo: response.user.validTo,
+          id:response.user.id,
           email: response.user.email,
           roles: response.user.roles,
           token: response.user.token
         };
         this.userSubject.next(user);
+        
       },
       error: (err) => {
         console.error('Profil betöltési hiba:', err);
         this.logout();
       }
     });
+  }
+
+  getUserId(): number | null {
+    const id = localStorage.getItem('user_id');
+
+    return (Number(id))
+    
   }
 
   isAuthenticated(): boolean {
@@ -84,6 +93,7 @@ export class UserService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
     this.isLoggedInSubject.next(false);
     this.userSubject.next(null);
   }
@@ -92,5 +102,6 @@ export class UserService {
     localStorage.setItem('token', token);
     this.isLoggedInSubject.next(true);
     this.loadUserProfile();
+    
   }
 }

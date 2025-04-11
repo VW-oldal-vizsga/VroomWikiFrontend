@@ -36,11 +36,15 @@ export class ProfileComponent {
     const token = this.userService.getToken();
     console.log("load", token);
     
+    
     if (token) {
       this.http.get('http://localhost:5269/api/Auth')
         .subscribe({
           next: (data) => {
             this.userData = data;
+            localStorage.setItem('user_id', this.userData.id)
+            console.log(this.userData.id);
+            
           },
           error: (error) => {
             if (error.status === 401) {

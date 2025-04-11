@@ -66,7 +66,7 @@
     <div *ngIf="config?.configName; else noData">
       <div class="row">
         <div class="col-12 col-md-2 borderRight middle">
-          <h3 class="text-white">{{ config.configName }}</h3>
+          <h3 class="text-white">{{ config?.configName }}</h3>
         </div>
         <div class="col-12 col-md-2 middle borderRight">
           <h4 class="text-white">{{ 'CONFIGURATOR.PRICE' | translate }}</h4>
@@ -93,7 +93,7 @@
   </ng-container>
 
   <ng-container *ngIf="currentRoute.includes('/configDriveTo')">
-    <!-- <div *ngIf="config; else noData"> -->
+    <div *ngIf="config; else noData">
       <div class="row">
         <div class="col-12 col-md-2 borderRight middle">
           <h3 class="text-white">{{ config.configName }}</h3>
@@ -109,10 +109,10 @@
           <h4 class="text-white">{{ selectedColor.name }}</h4>
         </div>
         <div class="col-12 col-md-3 middle borderRight">
-          <h5><button (click)="navigateToDriveTo()">{{ 'CONFIGURATOR.NEXT' | translate }}</button></h5>
+          <h5><button (click)="navigateToReadyToBuy()">{{ 'CONFIGURATOR.NEXT' | translate }}</button></h5>
         </div>
       </div>
-    <!-- </div> -->
+    </div>
     <ng-template #noData>
       <div class="row">
         <div class="col-12 col-md-12 middle">
