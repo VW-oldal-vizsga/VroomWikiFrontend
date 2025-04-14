@@ -1,3 +1,4 @@
+// configurator-footer.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ConfiguratorService } from '../../../services/configurator.service';
@@ -28,7 +29,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
     private configuratorService: ConfiguratorService,
     private router: Router
   ) {
-    // Router események
+
     this.subscriptions.add(
       this.router.events.pipe(
         filter(event => event instanceof NavigationEnd)
@@ -38,14 +39,14 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
       })
     );
 
-    // Selected config előfizetés
+
     this.subscriptions.add(
       this.configuratorService.selectedConfig$.subscribe(config => {
         this.selectedConfig = config;
       })
     );
 
-    // Config előfizetés
+
     this.subscriptions.add(
       this.configuratorService.config$.subscribe(config => {
         this.config = config;
@@ -55,20 +56,21 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
       })
     );
 
-    // Total price előfizetés
     this.subscriptions.add(
       this.configuratorService.totalPrice$.subscribe(total => {
         this.totalPrice = total;
       })
     );
+
+    
   }
 
   ngOnInit(): void {
     this.loadColors();
     this.updateFooterData();
-    // user_id lekérése localStorage-ból és átadása a ConfiguratorService-nek
     this.loadUserId();
   }
+
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
@@ -78,11 +80,13 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
     const userId = localStorage.getItem('user_id');
     this.userId = userId ? Number(userId) : null;
     console.log('User ID betöltve:', this.userId);
-    // user_id átadása a ConfiguratorService-nek
+
     if (this.userId !== null && this.config && this.userId !== this.config.user_id) {
       this.configuratorService.setUserId(this.userId);
     }
   }
+
+  
 
   loadColors(): void {
     this.configuratorService.getColors().subscribe({
@@ -109,17 +113,18 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   navigateToReadyToBuy(): void {
     if (this.config) {
       const configToSave: IConfiguratorPut = {
-        id: this.config.id || null, // Új konfiguráció esetén null
+        id: 0, 
         configName: this.config.configName,
         user_id: this.config.user_id,
         color_id: this.config.color_Id,
         engine_id: this.config.engine_Id,
         transmissionType_Id: this.config.transmissionType_Id,
-        price: this.config.price
+        price: this.config.price,
+        imageUrl: ""
+        
       };
       this.configuratorService.saveConfig(configToSave).subscribe({
         next: (savedConfig) => {
-          // Ellenőrizzük, hogy az id nem undefined
           if (savedConfig.id !== undefined) {
             this.configuratorService.setConfigId(savedConfig.id);
           } else {
@@ -146,10 +151,6 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
 
   navigateToDriveTo(): void {
     this.router.navigate(['/configDriveTo']);
-  }
-
-  createNewConfig(): void {
-    this.configuratorService.createNewConfig();
   }
 
   private updateFooterData(): void {

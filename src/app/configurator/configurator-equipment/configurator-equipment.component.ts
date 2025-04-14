@@ -40,6 +40,9 @@ export class ConfiguratorEquipmentComponent implements OnInit {
     }).subscribe({
       next: (results) => {
         this.configurators = results.configurators;
+        this.configurators = results.configurators.filter(config => 
+          [1, 2, 3].includes(config.id)
+      );
         this.engines = results.engines;
         this.transmissionTypes = results.transmissionTypes;
         this.loadCardImages();

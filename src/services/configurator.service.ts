@@ -152,9 +152,9 @@ export class ConfiguratorService {
 
   createNewConfig(): void {
     this.config = {
-      id: null, // A backend generálja mentéskor
+      id: null,
       configName: '',
-      user_id: this.config.user_id, // Megtartjuk az aktuális user_id-t
+      user_id: this.config.user_id, 
       color_Id: 0,
       engine_Id: 0,
       transmissionType_Id: 0,
