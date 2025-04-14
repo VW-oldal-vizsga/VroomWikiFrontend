@@ -56,6 +56,7 @@ export class ConfiguratorColorComponent implements OnInit {
 
   selectConfiguration(color: IColor): void {
     this.selectedColorId = color.id;
+    localStorage.setItem("selectedColor", color.id.toString())
     this.configuratorService.setColor(color.id, color.price);
   }
 

@@ -6,18 +6,52 @@
     <h2>Az Ön konfigurációja</h2>
 </div>
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
-        <div class="col-4"></div>
-        <div class="col-8"></div>
+        <div class="col-4 mt-2 card">
+            <div *ngFor="let item of maxIdConfigurators" class="card-body">
+                <h3 class="card-title middle">{{item.configName}}</h3>
+                <div class="divinder"></div>
+                <p class="card-title left mt-1">A teljes ajánlott kiskereskedelmi ára:</p>
+                <h4 class="card-title left mt-3">{{item.price | number:'1.0-0'}} Ft</h4>
+                <div class="divinder"></div>
+                <p class="card-title left mt-3">Havi díjas ajánlatunk:</p>
+                <h4 class="card-title left mt-3 mb-2">{{getCredit(item.price) | number:'1.0-0'}} Ft/hó</h4>
+                <div class="divinder"></div>
+                <div class="middle"><button class="buttonStyle mt-2" (click)="navigateToProfile()">Konfiguráció mentése és ugrás a konfigurációihoz</button></div>
+                <div class="middle"><button class="buttonStyle mt-2 mb-2 middle" (click)="navigateToMainAndDelete()">Konfiguráció törlése és újrakezdés</button></div>
+              </div>
+        </div>
+        <div class="col-8 mt-5 middle">
+            <div class="middle imageContainer"><img class="gallery" [src]="cardImages[selectedColorNumber]" alt="Autó képe"></div>
+        </div>
     </div>
 </div>
 
-<div class="container mt-5">
+<div *ngFor="let item of maxIdConfigurators" class="dataContainer">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-2"></div>
-        <div class="col-2"></div>
+        <div class="col-2">
+            <div class="middle mt-4">
+                <h1>
+                    <ion-icon name="fuel-outline"></ion-icon>
+                </h1>
+            </div>
+            <div class="middle text-white">{{getEngineData(item.engine_id)?.horsepower}} {{item.engine_id}}</div>
+        </div>
+        <div class="col-2 text-white">
+            <div class="middle mt-4">
+                <h1><ion-icon name="aperture-outline"></ion-icon></h1>
+            </div>
+            <div class="middle">{{getTransmissionTypeData(item.transmissionType_Id)?.wheelDrive}}</div>
+        </div>
+        <div class="col-2">
+            <div class="middle mt-4">
+                <h1>
+                    <ion-icon class="ionIcons" name="analytics-outline"></ion-icon>
+                </h1>
+            </div>
+            <div class="middle text-white">{{getTransmissionTypeData(item.transmissionType_Id)?.name}}</div>
+        </div>
         <div class="col-2"></div>
         <div class="col-2"></div>
         <div class="col-2"></div>

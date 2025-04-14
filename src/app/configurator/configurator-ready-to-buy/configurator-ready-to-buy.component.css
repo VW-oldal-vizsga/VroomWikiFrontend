@@ -1,0 +1,50 @@
+.imageContainer{
+    height: 300px;
+}
+.gallery{
+    width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: scale-down;
+  border-radius: 10px;
+}
+.divinder{
+  height: 1px;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+.buttonStyle{
+  border: none;
+}
+
+button{
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 7px;
+}
+.card{
+  background-color: lightgray;
+  color: black;
+
+}
+
+.logoContainer{
+  height: 50px;
+}
+.logo{
+  width: 100%;
+  height: auto;
+  max-height: 75px;
+  max-width: 75px;
+  border-radius: 50%;
+}
+
+.dataContainer{
+  height: 150px;
+  width: 100%;
+  background-color: blue;
+  margin-top: 100px;
+}
+.ionIcons{
+  color: white;
+}

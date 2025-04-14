@@ -31,8 +31,12 @@ export class ConfiguratorService {
 
   constructor(private http: HttpClient) {}
 
-  getConfigurators(): Observable<IConfigurator[]> {
-    return this.http.get<IConfigurator[]>(`${this.apiUrl}`);
+  getConfigurators(): Observable<any[]> {
+    return this.http.get<any>(`${this.apiUrl}`);
+  }
+
+  deleteConfigurators(id:number | null): Observable<any[]> {
+    return this.http.delete<any[]>(`${this.apiUrl}/${id}`);
   }
 
   getPopularConfigs(): Observable<IPopularConfigs[]> {
@@ -167,4 +171,6 @@ export class ConfiguratorService {
   private updateConfig(): void {
     this.configSubject.next({ ...this.config });
   }
+
+
 }

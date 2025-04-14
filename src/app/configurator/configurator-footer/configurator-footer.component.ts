@@ -69,6 +69,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
     this.loadColors();
     this.updateFooterData();
     this.loadUserId();
+    
   }
 
 
@@ -119,7 +120,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         color_id: this.config.color_Id,
         engine_id: this.config.engine_Id,
         transmissionType_Id: this.config.transmissionType_Id,
-        price: this.config.price,
+        price: this.totalPrice,
         imageUrl: ""
         
       };
