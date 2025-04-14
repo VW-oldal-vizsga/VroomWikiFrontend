@@ -70,6 +70,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
     this.updateFooterData();
     this.loadUserId();
     
+    
   }
 
 
@@ -93,6 +94,8 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
     this.configuratorService.getColors().subscribe({
       next: (colors) => {
         this.colors = colors;
+        
+        
         if (this.config) {
           this.loadColor(this.config.color_Id);
         }
@@ -111,18 +114,47 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
     return this.configuratorService.getCredit(price);
   }
 
+  navigateToReadyToBuyPreComp(): void {
+    if (this.config &&this.selectedConfig) {
+      const configToSave: IConfiguratorPut = {
+        id: 0, 
+        configName: this.selectedConfig.configName,
+        user_id: this.config?.user_id,
+        color_Id: this.selectedConfig.color_Id,
+        engine_Id: this.selectedConfig.engine_Id,
+        transmissionType_Id: this.selectedConfig.transmissionType_Id,
+        price: this.selectedConfig.price,
+        imageUrl: ""
+      };
+      this.configuratorService.saveConfig(configToSave).subscribe({
+        next: (savedConfig) => {
+          if (savedConfig.id !== undefined) {
+            this.configuratorService.setConfigId(savedConfig.id);
+          } else {
+            console.warn('A visszakapott konfiguráció nem tartalmaz id-t:', savedConfig);
+          }
+          this.router.navigate(['/configReady']);
+        },
+        error: (err) => {
+          console.error('Hiba a konfiguráció mentésekor:', err);
+        }
+      });
+    } else {
+      console.error('Nincs érvényes konfiguráció a mentéshez');
+    }
+  }
+
   navigateToReadyToBuy(): void {
     if (this.config) {
       const configToSave: IConfiguratorPut = {
         id: 0, 
         configName: this.config.configName,
-        user_id: this.config.user_id,
+        user_id: this.config?.user_id,
         color_Id: this.config.color_Id,
         engine_Id: this.config.engine_Id,
         transmissionType_Id: this.config.transmissionType_Id,
         price: this.totalPrice,
         imageUrl: ""
-        
       };
       this.configuratorService.saveConfig(configToSave).subscribe({
         next: (savedConfig) => {

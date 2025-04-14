@@ -14,7 +14,7 @@
           <h5 class="text-white">{{ getCredit(selectedConfig.price) | number:'1.0-0' }} {{ 'CONFIGURATOR.HUF/MONTH' | translate }}</h5>
         </div>
         <div class="col-12 col-md-3 middle borderRight">
-          <h5><button (click)="navigateToReadyToBuy()">{{ 'CONFIGURATOR.PAY' | translate }}</button></h5>
+          <h5><button (click)="navigateToReadyToBuyPreComp()">{{ 'CONFIGURATOR.PAY' | translate }}</button></h5>
         </div>
         <div class="col-12 col-md-3 middle">
           <h5><button (click)="navigateToConfig()">{{ 'CONFIGURATOR.CONFIGCUSTOM' | translate }}</button></h5>
@@ -122,10 +122,10 @@
     </ng-template>
   </ng-container>
 
-  <!-- <div class="debug" *ngIf="currentRoute.includes('/configPreComp') || currentRoute.includes('/configEquipment') || currentRoute.includes('/configColor') || currentRoute.includes('configDriveTo')">
+  <div class="debug" *ngIf="currentRoute.includes('/configPreComp') || currentRoute.includes('/configEquipment') || currentRoute.includes('/configColor') || currentRoute.includes('configDriveTo')">
     <p class="text-white">Selected Config: {{ selectedConfig | json }}</p>
     <p class="text-white">Config: {{ config | json }}</p>
     <p class="text-white">Total Price: {{ totalPrice }}</p>
     <p class="text-white">Selected Color: {{ selectedColor | json }}</p>
-  </div> -->
+  </div>
 </div>

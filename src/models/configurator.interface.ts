@@ -9,11 +9,13 @@ export interface IConfigurator {
   
   export interface IPopularConfigs {
     id: number;
+    user_id:number |null;
     configName: string;
     engine_Id: number;
     color_Id: number;
     transmissionType_Id: number;
     price: number;
+    imageUrl?:string,
   }
   
   export interface ISelectConfigurator {
@@ -51,7 +53,7 @@ export interface IConfigurator {
   }
   export interface IConfiguratorPut {
     id?: number | null;
-    user_id:number| null,
+    user_id: number| null,
     configName:string,
     engine_Id:number,
     color_Id:number,
