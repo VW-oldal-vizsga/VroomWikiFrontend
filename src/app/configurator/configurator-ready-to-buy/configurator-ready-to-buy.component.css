@@ -48,3 +48,26 @@ button{
 .ionIcons{
   color: white;
 }
+
+.secondTitle{
+  margin-top: 6%;
+}
+
+.secondImageContainer{
+  margin-top: 6%;
+}
+.col-2{
+  padding: 0;
+}
+.row{
+  margin: 0;
+}
+.circleButton {
+  height: clamp(40px, 5vw, 50px); 
+  width: clamp(40px, 5vw, 50px);
+  border-radius: 50%;
+  padding: clamp(15px, 2vw, 20px);
+  margin: 0 clamp(4px, 1vw, 8px);
+  border: 2px solid black;
+  margin-bottom: clamp(10px, 2vw, 20px);
+}

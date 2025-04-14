@@ -12,13 +12,13 @@
             <div *ngFor="let item of maxIdConfigurators" class="card-body">
                 <h3 class="card-title middle">{{item.configName}}</h3>
                 <div class="divinder"></div>
-                <p class="card-title left mt-1">A teljes ajánlott kiskereskedelmi ára:</p>
+                <p class="card-title left mt-3">A teljes ajánlott kiskereskedelmi ára:</p>
                 <h4 class="card-title left mt-3">{{item.price | number:'1.0-0'}} Ft</h4>
                 <div class="divinder"></div>
                 <p class="card-title left mt-3">Havi díjas ajánlatunk:</p>
                 <h4 class="card-title left mt-3 mb-2">{{getCredit(item.price) | number:'1.0-0'}} Ft/hó</h4>
                 <div class="divinder"></div>
-                <div class="middle"><button class="buttonStyle mt-2" (click)="navigateToProfile()">Konfiguráció mentése és ugrás a konfigurációihoz</button></div>
+                <div class="middle"><button class="buttonStyle mt-2" (click)="navigateToProfile()">Konfiguráció mentése</button></div>
                 <div class="middle"><button class="buttonStyle mt-2 mb-2 middle" (click)="navigateToMainAndDelete()">Konfiguráció törlése és újrakezdés</button></div>
               </div>
         </div>
@@ -33,10 +33,10 @@
         <div class="col-2">
             <div class="middle mt-4">
                 <h1>
-                    <ion-icon name="fuel-outline"></ion-icon>
+                    <ion-icon class="ionIcons" name="battery-full-outline"></ion-icon>
                 </h1>
             </div>
-            <div class="middle text-white">{{getEngineData(item.engine_id)?.horsepower}} {{item.engine_id}}</div>
+            <div class="middle text-white">{{getEngineData(item.engine_Id)?.fuelType}}</div>
         </div>
         <div class="col-2 text-white">
             <div class="middle mt-4">
@@ -52,9 +52,43 @@
             </div>
             <div class="middle text-white">{{getTransmissionTypeData(item.transmissionType_Id)?.name}}</div>
         </div>
-        <div class="col-2"></div>
-        <div class="col-2"></div>
-        <div class="col-2"></div>
+        <div class="col-2">
+            <div class="middle mt-4">
+                <h1><ion-icon class="ionIcons" name="barbell-outline"></ion-icon></h1>
+            </div>
+            <div class="middle text-white">{{getEngineData(item.engine_Id)?.horsepower}} LE</div>
+        </div>
+        <div class="col-2">
+            <div class="middle mt-4">
+                <h1><ion-icon class="ionIcons" name="flame-outline"></ion-icon></h1>
+            </div>
+            <div class="middle text-white">{{getEngineData(item.engine_Id)?.fuelConsumption}}L / 100km</div>
+        </div>
+        <div class="col-2">
+            <div class="middle mt-4">
+                <h1><ion-icon class="ionIcons" name="cloud-upload-outline"></ion-icon></h1>
+            </div>
+            <div class="middle text-white">{{getEngineData(item.engine_Id)?.co2Emission}} g/km</div>
+        </div>
+    </div>
+</div>
+
+<div class="secondTitle middle"><h2>Dizájn és megjelenés</h2></div>
+
+<div class="colorDataContainer">
+    <div class="row">
+        <div class="col-6 left">
+            <div *ngFor="let color of secondColor" style="width: 100%;" class="card mt-5 ">
+                <div   class="card-body row">
+                    <div  class="circleButton col-2 mt-2" [style.backgroundColor]="color.colorCode"></div>
+                    <div class="col-10 mt-3"><h3>Fényezés: {{color.name}}</h3></div> 
+                </div>
+                <div class="p-5 pt-0 ps-4"><h4>Ára: {{color.price | number}} Ft</h4></div>
+            </div>
+        </div>
+        <div class="col-6 middle">
+            <div class="middle secondImageContainer"><img class="gallery" [src]="cardImages[selectedColorNumber]" alt="Autó képe"></div>
+        </div>
     </div>
 </div>
 

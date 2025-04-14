@@ -117,8 +117,8 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         id: 0, 
         configName: this.config.configName,
         user_id: this.config.user_id,
-        color_id: this.config.color_Id,
-        engine_id: this.config.engine_Id,
+        color_Id: this.config.color_Id,
+        engine_Id: this.config.engine_Id,
         transmissionType_Id: this.config.transmissionType_Id,
         price: this.totalPrice,
         imageUrl: ""

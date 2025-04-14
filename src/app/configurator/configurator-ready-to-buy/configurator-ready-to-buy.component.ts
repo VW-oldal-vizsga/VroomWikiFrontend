@@ -17,6 +17,7 @@ import { IonicModule } from '@ionic/angular';
 export class ConfiguratorReadyToBuyComponent {
   configurator: IConfiguratorPut [] = []
   popularConfig: IPopularConfigs [] = []
+  secondColor:IColor[] = []
   maxIdConfigurators: IConfiguratorPut[] = [];
   maxId: number | null = this.maxKereses()
   selectedColor: string | null = localStorage.getItem('selectedColor')
@@ -46,6 +47,7 @@ export class ConfiguratorReadyToBuyComponent {
         this.transmissionType = results.transmissionTypes;
         this.loadCardImages();
         this.storeMaxIdConfigurator()
+        this.setSecondColor()
         console.log(this.configurator);
         console.log(this.maxIdConfigurators);
         console.log(this.engines);
@@ -130,5 +132,18 @@ export class ConfiguratorReadyToBuyComponent {
   navigateToMainAndDelete() {
     this.router.navigate(['/configuratorMain'])
     this.configuratorService.deleteConfigurators(this.maxId)
+  }
+
+  secondColorData(colorId: number): IColor | undefined {
+    return this.colors.find(c => c.id === colorId);
+  }
+
+  setSecondColor(): void {
+    if (this.selectedColorNumber) {
+      const color = this.secondColorData(this.selectedColorNumber);
+      if (color) {
+        this.secondColor = [color];
+      }
+    }
   }
 }

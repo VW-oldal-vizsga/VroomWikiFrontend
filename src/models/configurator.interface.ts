@@ -37,6 +37,7 @@ export interface IConfigurator {
     id: number;
     name: string;
     horsepower: number;
+    fuelConsumption: number;
     fuelType: string;
     co2Emission: number;
     price: number;
@@ -52,8 +53,8 @@ export interface IConfigurator {
     id?: number | null;
     user_id:number| null,
     configName:string,
-    engine_id:number,
-    color_id:number,
+    engine_Id:number,
+    color_Id:number,
     transmissionType_Id:number,
     price:number,
     imageUrl?:string,
