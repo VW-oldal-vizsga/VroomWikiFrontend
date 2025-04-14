@@ -108,6 +108,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
 
   loadColor(colorId: number): void {
     this.selectedColor = this.colors.find(color => color.id === colorId) || null;
+
   }
 
   getCredit(price: number): number {
@@ -126,6 +127,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         price: this.selectedConfig.price,
         imageUrl: ""
       };
+      localStorage.setItem('selectedColor', configToSave.color_Id.toString())
       this.configuratorService.saveConfig(configToSave).subscribe({
         next: (savedConfig) => {
           if (savedConfig.id !== undefined) {
@@ -156,6 +158,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
         price: this.totalPrice,
         imageUrl: ""
       };
+      
       this.configuratorService.saveConfig(configToSave).subscribe({
         next: (savedConfig) => {
           if (savedConfig.id !== undefined) {
