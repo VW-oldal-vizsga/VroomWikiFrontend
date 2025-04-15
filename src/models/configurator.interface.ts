@@ -29,6 +29,7 @@ export interface IConfigurator {
   }
   
   export interface IColor {
+colorName: any;
     id: number;
     name: string;
     colorCode:string;

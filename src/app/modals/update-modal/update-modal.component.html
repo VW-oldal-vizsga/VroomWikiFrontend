@@ -1,0 +1,80 @@
+<div class="modal-header">
+    <h4 class="modal-title">Konfiguráció szerkesztése</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <form #configForm="ngForm">
+      <div class="mb-3">
+        <label for="configName" class="form-label">Konfiguráció neve</label>
+        <input
+          type="text"
+          class="form-control"
+          id="configName"
+          [(ngModel)]="configData.configName"
+          name="configName"
+          readonly
+        />
+      </div>
+      <div class="mb-3">
+        <label for="colorId" class="form-label">Szín</label>
+        <select
+          class="form-select"
+          id="colorId"
+          [(ngModel)]="configData.color_Id"
+          name="colorId"
+          required
+          (ngModelChange)="updatePrice()"
+        >
+          <option *ngFor="let color of colors" [value]="color.id">{{ color.colorName }} ({{ color.price }} Ft)</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="engineId" class="form-label">Motor</label>
+        <select
+          class="form-select"
+          id="engineId"
+          [(ngModel)]="configData.engine_Id"
+          name="engineId"
+          required
+          (ngModelChange)="updatePrice()"
+        >
+          <option *ngFor="let engine of engines" [value]="engine.id">{{ engine.name }} ({{ engine.price }} Ft)</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="transmissionId" class="form-label">Sebességváltó</label>
+        <select
+          class="form-select"
+          id="transmissionId"
+          [(ngModel)]="configData.transmissionType_Id"
+          name="transmissionId"
+          required
+          (ngModelChange)="updatePrice()"
+        >
+          <option *ngFor="let transmission of transmissionTypes" [value]="transmission.id">{{ transmission.name }} ({{ transmission.price }} Ft)</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Teljes ár</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          [(ngModel)]="configData.price"
+          name="price"
+          readonly
+        />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Mégse</button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="save()"
+      [disabled]="!configForm.valid"
+    >
+      Mentés
+    </button>
+  </div>

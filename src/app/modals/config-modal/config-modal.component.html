@@ -10,7 +10,9 @@
     <p><strong>Ára:</strong> {{configData.price | number:'1.0-0'}} Ft</p>
     <img *ngIf="imageUrl" [src]="imageUrl" alt="Konfiguráció képe" class="img-fluid" />
     <p *ngIf="!imageUrl">Kép betöltése folyamatban...</p>
+    
   </div>
+  
   <ng-template #noData>
     <h2 class="middle">Nincsenek megjeleníthető adatok.</h2>
   </ng-template>

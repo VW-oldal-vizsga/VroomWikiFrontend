@@ -3,8 +3,8 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 import { ConfiguratorFooterComponent } from '../configurator-footer/configurator-footer.component';
 import { CommonModule } from '@angular/common';
 import { ConfiguratorService } from '../../../services/configurator.service';
-import { IColor, IConfigurator, IConfiguratorPut, IEngine, IPopularConfigs, ITransmissionType } from '../../../models/configurator.interface';
-import { config, forkJoin } from 'rxjs';
+import { IColor, IConfiguratorPut, IEngine, IPopularConfigs, ITransmissionType } from '../../../models/configurator.interface';
+import { forkJoin } from 'rxjs';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
@@ -32,6 +32,7 @@ export class ConfiguratorReadyToBuyComponent {
   ngOnInit(): void {
     this.loadData();
   }
+  
 
   loadData(): void {
     forkJoin({

@@ -11,14 +11,16 @@
         <div class="middle">
           <p>Email címed: {{ userData.email }}</p>
         </div>
-        <div class="middle"><button (click)="logout()">Kijelentkezés</button></div>
+        <div class="middle mt-3"><button class="btn bg-danger" (click)="logout()">Kijelentkezés</button></div>
       </div>
+      <div class="middle m-5 mb-0"><h1>Konfigurációi</h1></div>
       <div *ngIf="errorMessage" class="error">
         {{ errorMessage }}
       </div>
     </div>
   </div>
 </div>
+
 
 <div class="container">
   <div class="middle">
@@ -36,6 +38,7 @@
                   </button>
               </div>
               </ng-container>
+              
               <ng-template #noConfigs>
                   <div class="col-12 text-center">
                       <h4>Még nincsenek konfigurációid</h4>
