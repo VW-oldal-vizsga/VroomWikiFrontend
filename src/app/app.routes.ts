@@ -4,7 +4,7 @@ import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OldmodelsComponent } from './oldmodels/oldmodels.component';
 import { SalesGraphComponent } from './sales-graph/sales-graph.component';
-import { LanguageModalComponent } from './language-modal/language-modal.component';
+import { LanguageModalComponent } from './modals/language-modal/language-modal.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { ConfiguratorMainComponent } from './configurator/configurator-main/configurator-main.component';
 import { ConfiguratorColorComponent } from './configurator/configurator-color/configurator-color.component';

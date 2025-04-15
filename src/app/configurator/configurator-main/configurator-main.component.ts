@@ -25,8 +25,8 @@ export class ConfiguratorMainComponent implements OnInit {
   }
 
   navigateToCar(): void {
-    this.configuratorService.setConfigName('Golf'); // Modell nevének beállítása
-    this.router.navigate(['/configPreComp']); // Második lépéshez navigálás
+    this.configuratorService.setConfigName('Golf');
+    this.router.navigate(['/configPreComp']); 
   }
 
   private loadMainImage(): void {
@@ -34,7 +34,6 @@ export class ConfiguratorMainComponent implements OnInit {
       next: (imageBlob: Blob) => {
         const objectURL = URL.createObjectURL(imageBlob);
         this.cardImage = objectURL;
-        console.log('Kép URL:', this.cardImage);
       },
       error: (error) => {
         console.error('Hiba a fő kép lekérdezése során:', error);

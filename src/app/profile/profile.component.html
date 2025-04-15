@@ -1,11 +1,49 @@
 <div class="bg-light" style="display: flex; justify-content: center; border-bottom: 2px solid lightgray;">
-    <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 </div>
-<div *ngIf="userData">
-    <h2>Üdvözöllek, {{ userData.username }}!</h2>
-    <p>Email: {{ userData.email }}</p>
-    <button (click)="logout()">Kijelentkezés</button>
+<div class="container">
+  <div class="middle">
+    <div class="mainContentContainer">
+      <div class="mt-5" *ngIf="userData">
+        <div class="middle">
+          <h2>Üdvözöllek!</h2>
+        </div>
+        <div class="middle">
+          <p>Email címed: {{ userData.email }}</p>
+        </div>
+        <div class="middle"><button (click)="logout()">Kijelentkezés</button></div>
+      </div>
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+    </div>
   </div>
-  <div *ngIf="errorMessage" class="error">
-    {{ errorMessage }}
+</div>
+
+<div class="container">
+  <div class="middle">
+      <div class="mainContentContainer">
+          <div class="row rowPadding justify-content-center">
+              <ng-container *ngIf="configurator.length > 0; else noConfigs">
+                <div *ngFor="let config of configurator" class="col-12 col-md-6 col-lg-4 middle p-4">
+                  <button (click)="openModal(config)" class="cardBtn">
+                      <div class="card">
+                          <img [src]="cardImages[config.color_Id]" alt="Card Image" class="card-img-top" />
+                          <div class="card-body text-center">
+                              <h4 class="card-text">{{ config.configName }}</h4>
+                          </div>
+                      </div>
+                  </button>
+              </div>
+              </ng-container>
+              <ng-template #noConfigs>
+                  <div class="col-12 text-center">
+                      <h4>Még nincsenek konfigurációid</h4>
+                      <p>Szeretnél csinálni egyet?</p>
+                      <button class="btn-success" (click)="navigateToConfigurator()">Kattints rám!</button>
+                  </div>
+              </ng-template>
+          </div>
+      </div>
   </div>
+</div>

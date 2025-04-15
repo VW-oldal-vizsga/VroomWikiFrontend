@@ -48,11 +48,6 @@ export class ConfiguratorReadyToBuyComponent {
         this.loadCardImages();
         this.storeMaxIdConfigurator()
         this.setSecondColor()
-        console.log(this.configurator);
-        console.log(this.maxIdConfigurators);
-        console.log(this.engines);
-        
-        console.log('Max ID:', this.maxKereses());
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);

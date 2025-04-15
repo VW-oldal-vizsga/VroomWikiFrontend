@@ -53,7 +53,7 @@ export interface IConfigurator {
   }
   export interface IConfiguratorPut {
     id?: number | null;
-    user_id: number| null,
+    user_Id: number| null,
     configName:string,
     engine_Id:number,
     color_Id:number,

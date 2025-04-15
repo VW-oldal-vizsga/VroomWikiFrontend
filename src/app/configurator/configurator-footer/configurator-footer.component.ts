@@ -81,7 +81,6 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   private loadUserId(): void {
     const userId = localStorage.getItem('user_id');
     this.userId = userId ? Number(userId) : null;
-    console.log('User ID betöltve:', this.userId);
 
     if (this.userId !== null && this.config && this.userId !== this.config.user_id) {
       this.configuratorService.setUserId(this.userId);
@@ -120,7 +119,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
       const configToSave: IConfiguratorPut = {
         id: 0, 
         configName: this.selectedConfig.configName,
-        user_id: this.config?.user_id,
+        user_Id: this.config?.user_id,
         color_Id: this.selectedConfig.color_Id,
         engine_Id: this.selectedConfig.engine_Id,
         transmissionType_Id: this.selectedConfig.transmissionType_Id,
@@ -151,7 +150,7 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
       const configToSave: IConfiguratorPut = {
         id: 0, 
         configName: this.config.configName,
-        user_id: this.config?.user_id,
+        user_Id: this.config?.user_id,
         color_Id: this.config.color_Id,
         engine_Id: this.config.engine_Id,
         transmissionType_Id: this.config.transmissionType_Id,

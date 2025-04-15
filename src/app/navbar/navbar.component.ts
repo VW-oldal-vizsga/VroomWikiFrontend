@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LanguageModalComponent } from '../language-modal/language-modal.component';
+import { LanguageModalComponent } from '../modals/language-modal/language-modal.component';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { TranslatePipe } from '@ngx-translate/core';
 import { UserService } from '../../services/user.service';
