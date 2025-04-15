@@ -1,0 +1,9 @@
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .modal-body p {
+    margin: 5px 0;
+  }

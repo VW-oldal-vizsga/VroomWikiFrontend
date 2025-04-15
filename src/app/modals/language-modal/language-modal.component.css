@@ -1,0 +1,32 @@
+
+.langcoverer{
+    height: auto;
+    width: auto;
+}
+
+.enLang{
+    height: 40px;
+    background-image: url(../../../assets/English_language.svg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid lightgray;
+    width: 60px;
+}
+.deLang{
+    height: 40px;
+    background-image: url(../../../assets/Flag_of_Germany.svg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid lightgray;
+    width: 60px;
+}
+.huLang{
+    height: 40px;
+    background-image: url(../../../assets/magyarzaszlo-min.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid lightgray;
+    width: 60px;
+    background-position: center;
+}
+

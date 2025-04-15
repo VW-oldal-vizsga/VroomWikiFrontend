@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h4 class="modal-title">Konfiguráció részletei</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+  </div>
+  <div class="modal-body" *ngIf="configData; else noData">
+    <h5>{{ configData.configName }}</h5>
+    <p><strong>Szín:</strong> {{ getColorData(configData.color_Id)?.name || 'Ismeretlen szín' }}</p>
+    <p><strong>Motor:</strong> {{ getEngineData(configData.engine_Id)?.name || 'Ismeretlen motor' }}</p>
+    <p><strong>Sebességváltó:</strong> {{ getTransmissionTypeData(configData.transmissionType_Id)?.name || 'Ismeretlen sebességváltó' }}</p>
+    <p><strong>Ára:</strong> {{configData.price | number:'1.0-0'}} Ft</p>
+    <img *ngIf="imageUrl" [src]="imageUrl" alt="Konfiguráció képe" class="img-fluid" />
+    <p *ngIf="!imageUrl">Kép betöltése folyamatban...</p>
+  </div>
+  <ng-template #noData>
+    <h2 class="middle">Nincsenek megjeleníthető adatok.</h2>
+  </ng-template>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Bezárás</button>
+  </div>
