@@ -16,3 +16,9 @@ button{
 .cardBtn{
     border: none;
 }
+
+.container {
+    min-height: 100vh; 
+    overflow-y: auto; 
+}
+
