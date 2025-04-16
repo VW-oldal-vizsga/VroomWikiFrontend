@@ -1,80 +1,70 @@
 <div class="modal-header">
-    <h4 class="modal-title">Konfiguráció szerkesztése</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
-  </div>
-  <div class="modal-body">
-    <form #configForm="ngForm">
-      <div class="mb-3">
-        <label for="configName" class="form-label">Konfiguráció neve</label>
-        <input
-          type="text"
-          class="form-control"
-          id="configName"
-          [(ngModel)]="configData.configName"
-          name="configName"
-          readonly
-        />
-      </div>
-      <div class="mb-3">
-        <label for="colorId" class="form-label">Szín</label>
-        <select
-          class="form-select"
-          id="colorId"
-          [(ngModel)]="configData.color_Id"
-          name="colorId"
-          required
-          (ngModelChange)="updatePrice()"
-        >
-          <option *ngFor="let color of colors" [value]="color.id">{{ color.colorName }} ({{ color.price }} Ft)</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="engineId" class="form-label">Motor</label>
-        <select
-          class="form-select"
-          id="engineId"
-          [(ngModel)]="configData.engine_Id"
-          name="engineId"
-          required
-          (ngModelChange)="updatePrice()"
-        >
-          <option *ngFor="let engine of engines" [value]="engine.id">{{ engine.name }} ({{ engine.price }} Ft)</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="transmissionId" class="form-label">Sebességváltó</label>
-        <select
-          class="form-select"
-          id="transmissionId"
-          [(ngModel)]="configData.transmissionType_Id"
-          name="transmissionId"
-          required
-          (ngModelChange)="updatePrice()"
-        >
-          <option *ngFor="let transmission of transmissionTypes" [value]="transmission.id">{{ transmission.name }} ({{ transmission.price }} Ft)</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="price" class="form-label">Teljes ár</label>
-        <input
-          type="number"
-          class="form-control"
-          id="price"
-          [(ngModel)]="configData.price"
-          name="price"
-          readonly
-        />
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Mégse</button>
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="save()"
-      [disabled]="!configForm.valid"
-    >
-      Mentés
-    </button>
-  </div>
+  <h4 class="modal-title">{{ isEditing ? 'Konfiguráció szerkesztése' : 'Konfiguráció megtekintése' }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <form>
+    <div class="mb-3">
+      <label for="configName" class="form-label">Konfiguráció neve</label>
+      <input
+        type="text"
+        class="form-control"
+        id="configName"
+        [(ngModel)]="configData.configName"
+        name="configName"
+        [disabled]="!isEditing"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="color" class="form-label">Szín</label>
+      <select
+        class="form-select"
+        id="color"
+        [(ngModel)]="configData.color_Id"
+        name="color"
+        [disabled]="!isEditing"
+        (ngModelChange)="onColorChange($event)"
+      >
+        <option *ngFor="let color of colors" [value]="color.id">{{ color.name }} ({{ color.price }} Ft)</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="engine" class="form-label">Motor</label>
+      <select
+        class="form-select"
+        id="engine"
+        [(ngModel)]="configData.engine_Id"
+        name="engine"
+        [disabled]="!isEditing"
+        (ngModelChange)="onEngineChange($event)"
+      >
+        <option *ngFor="let engine of engines" [value]="engine.id">{{ engine.name }} ({{ engine.price }} Ft)</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="transmission" class="form-label">Váltó</label>
+      <select
+        class="form-select"
+        id="transmission"
+        [(ngModel)]="configData.transmissionType_Id"
+        name="transmission"
+        [disabled]="!isEditing"
+        (ngModelChange)="onTransmissionChange($event)"
+      >
+        <option *ngFor="let transmission of transmissionTypes" [value]="transmission.id">
+          {{ transmission.name }} ({{ transmission.price }} Ft)
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Teljes ár</label>
+      <p class="form-control-static">{{ totalPrice | number }} Ft</p>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Mégse</button>
+  <button *ngIf="isEditing" type="button" class="btn btn-primary" (click)="save()">Mentés</button>
+</div>

@@ -35,6 +35,10 @@ export class ConfiguratorService {
     return this.http.get<any>(`${this.apiUrl}`);
   }
 
+  updateConfigurators(id: number, config: IConfiguratorPut): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}`, config);
+  }
+
   deleteConfigurators(id: number | null): Observable<any> {
     if (id === null) {
       throw new Error('Érvénytelen konfigurátor ID');

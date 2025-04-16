@@ -6,9 +6,10 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ConfiguratorService } from '../../services/configurator.service';
 import { IConfiguratorPut } from '../../models/configurator.interface';
-import { ConfigModalComponent } from '../modals/config-modal/config-modal.component';
+import { UpdateModalComponent } from '../modals/update-modal/update-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import { ConfigModalComponent } from '../modals/config-modal/config-modal.component';
 
 @Component({
   selector: 'app-profile',
@@ -37,7 +38,6 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    // Szekvenciálisan hívjuk meg a függvényeket
     this.loadProfileData().subscribe({
       next: () => {
         this.getConfiguratorById();
@@ -123,5 +123,46 @@ export class ProfileComponent implements OnInit {
   openModal(config: IConfiguratorPut) {
     const modalRef = this.modalService.open(ConfigModalComponent, { size: 'lg' });
     modalRef.componentInstance.configData = config;
+    modalRef.componentInstance.isEditing = false; 
+  }
+
+  deleteConfig(id: number) {
+    this.configuratorService.deleteConfigurators(id).subscribe({
+      next: () => {
+        this.configurator = this.configurator.filter(config => config.id !== id);
+        this.errorMessage = 'Konfiguráció sikeresen törölve!';
+        this.loadCardImages();
+      },
+      error: (error) => {
+        this.errorMessage = 'Hiba történt a konfiguráció törlésekor.';
+        console.error('Delete config error:', error);
+      }
+    });
+  }
+
+  startEditing(id: number) {
+    const config = this.configurator.find(c => c.id === id);
+    if (config) {
+      const modalRef = this.modalService.open(UpdateModalComponent, { size: 'lg' });
+      modalRef.componentInstance.configData = { ...config }; 
+      modalRef.componentInstance.isEditing = true; 
+      modalRef.result.then(
+        (result) => {
+          if (result) {
+            const index = this.configurator.findIndex(c => c.id === result.id);
+            if (index !== -1) {
+              this.configurator[index] = result;
+              this.loadCardImages();
+            }
+            this.errorMessage = 'Konfiguráció sikeresen frissítve!';
+          }
+        },
+        (reason) => {
+          console.log('Modal dismissed:', reason);
+        }
+      );
+    } else {
+      this.errorMessage = 'Nem található konfiguráció az adott azonosítóval.';
+    }
   }
 }

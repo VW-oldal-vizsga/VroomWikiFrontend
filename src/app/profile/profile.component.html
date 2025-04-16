@@ -28,17 +28,18 @@
           <div class="row rowPadding justify-content-center">
               <ng-container *ngIf="configurator.length > 0; else noConfigs">
                 <div *ngFor="let config of configurator" class="col-12 col-md-6 col-lg-4 middle p-4">
-                  <button (click)="openModal(config)" class="cardBtn">
-                      <div class="card">
-                          <img [src]="cardImages[config.color_Id]" alt="Card Image" class="card-img-top" />
-                          <div class="card-body text-center">
-                              <h4 class="card-text">{{ config.configName }}</h4>
-                          </div>
+                  <div class="card" (click)="openModal(config)">
+                      <img [src]="cardImages[config.color_Id]" alt="Card Image" class="card-img-top" />
+                      <div class="card-body text-center">
+                          <h4 class="card-text">{{ config.configName }}</h4>
                       </div>
-                  </button>
-              </div>
+                      <div class="row p-2">
+                        <div class="col-6 middle"><button class="btn btn-warning btn-sm me-2 border-0" (click)="startEditing(config.id!); $event.stopPropagation()">✏️</button></div>
+                        <div class="col-6 middle "><button class="btn btn-danger btn-sm border-0" (click)="deleteConfig(config.id!); $event.stopPropagation()">🗑️</button></div>
+                      </div>
+                  </div>
+                </div>
               </ng-container>
-              
               <ng-template #noConfigs>
                   <div class="col-12 text-center">
                       <h4>Még nincsenek konfigurációid</h4>
