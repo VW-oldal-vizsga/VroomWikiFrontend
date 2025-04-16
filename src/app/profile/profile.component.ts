@@ -10,6 +10,7 @@ import { UpdateModalComponent } from '../modals/update-modal/update-modal.compon
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { ConfigModalComponent } from '../modals/config-modal/config-modal.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +30,8 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private configuratorService: ConfiguratorService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -130,12 +132,11 @@ export class ProfileComponent implements OnInit {
     this.configuratorService.deleteConfigurators(id).subscribe({
       next: () => {
         this.configurator = this.configurator.filter(config => config.id !== id);
-        this.errorMessage = 'Konfiguráció sikeresen törölve!';
+        this.toastr.success('Sikeresen törölted a konfigurációt!')
         this.loadCardImages();
       },
       error: (error) => {
-        this.errorMessage = 'Hiba történt a konfiguráció törlésekor.';
-        console.error('Delete config error:', error);
+        this.toastr.error('Valami hiba történt a törlés közben.', 'Hiba');
       }
     });
   }
@@ -154,7 +155,7 @@ export class ProfileComponent implements OnInit {
               this.configurator[index] = result;
               this.loadCardImages();
             }
-            this.errorMessage = 'Konfiguráció sikeresen frissítve!';
+            this.toastr.success('Konfiguráció sikeresen frissítve!', 'Siker');
           }
         },
         (reason) => {
@@ -162,7 +163,8 @@ export class ProfileComponent implements OnInit {
         }
       );
     } else {
-      this.errorMessage = 'Nem található konfiguráció az adott azonosítóval.';
+      this.toastr.error('Valami hiba történt.', 'Hiba');
     }
   }
+
 }
