@@ -35,8 +35,11 @@ export class ConfiguratorService {
     return this.http.get<any>(`${this.apiUrl}`);
   }
 
-  deleteConfigurators(id:number | null): Observable<any[]> {
-    return this.http.delete<any[]>(`${this.apiUrl}/${id}`);
+  deleteConfigurators(id: number | null): Observable<any> {
+    if (id === null) {
+      throw new Error('Érvénytelen konfigurátor ID');
+    }
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
   getPopularConfigs(): Observable<IPopularConfigs[]> {

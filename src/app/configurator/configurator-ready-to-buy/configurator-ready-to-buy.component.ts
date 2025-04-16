@@ -19,7 +19,7 @@ export class ConfiguratorReadyToBuyComponent {
   popularConfig: IPopularConfigs [] = []
   secondColor:IColor[] = []
   maxIdConfigurators: IConfiguratorPut[] = [];
-  maxId: number | null = this.maxKereses()
+  maxId: number | null = 0
   selectedColor: string | null = localStorage.getItem('selectedColor')
   selectedColorNumber = Number(this.selectedColor)
   colors: IColor[] = [];
@@ -46,9 +46,11 @@ export class ConfiguratorReadyToBuyComponent {
         this.colors = results.colors;
         this.engines = results.engines;
         this.transmissionType = results.transmissionTypes;
+        this.maxKereses()
         this.loadCardImages();
         this.storeMaxIdConfigurator()
         this.setSecondColor()
+
       },
       error: (err) => {
         console.error('Hiba az adatok betöltésekor:', err);
@@ -95,7 +97,7 @@ export class ConfiguratorReadyToBuyComponent {
         }
     }
     
-    return maxElem;
+    return this.maxId = maxElem;
   }
 
   getConfiguratorByMaxId(): IConfiguratorPut | null {
@@ -126,8 +128,21 @@ export class ConfiguratorReadyToBuyComponent {
     this.router.navigate(['/profile']);
   }
   navigateToMainAndDelete() {
-    this.router.navigate(['/configuratorMain'])
-    this.configuratorService.deleteConfigurators(this.maxId)
+    if (this.maxId === null) {
+      console.error('Nincs érvényes maxId, nem lehet törölni.');
+      this.router.navigate(['/configuratorMain']);
+      return;
+    }
+  
+    this.configuratorService.deleteConfigurators(this.maxId).subscribe({
+      next: () => {
+        this.router.navigate(['/configuratorMain']);
+      },
+      error: (err) => {
+        console.error('Hiba a konfiguráció törlésekor:', err);
+        this.router.navigate(['/configuratorMain']);
+      }
+    });
   }
 
   secondColorData(colorId: number): IColor | undefined {
