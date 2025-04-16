@@ -25,6 +25,17 @@ export class oldModelsService {
     getOldModelsImage(id: number | undefined): Observable<Blob> {
       return this.http.get(`${this.apiUrl}/api/PastModels/image/${id}`, { responseType: 'blob' });
     }
+
+    addOldModels(newCard:ICard): Observable<ICard[]> {
+      return this.http.post<ICard[]>(`${this.apiUrl}/api/PastModels`, newCard)
+    }
+
+    deleteConfigurators(id: number | null): Observable<any> {
+      if (id === null) {
+        throw new Error('Érvénytelen konfigurátor ID');
+      }
+      return this.http.delete<void>(`${this.apiUrl}api/PastModels/${id}`);
+    }
     
     
 

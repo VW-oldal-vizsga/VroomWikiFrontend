@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { Login } from '../models/login.interface';
 import { Register } from '../models/register.interface';
@@ -11,6 +11,11 @@ import { ProfileData } from '../models/profiledata.interface';
 export class UserService {
   private userSubject = new BehaviorSubject<any | null>(null);
   user$ = this.userSubject.asObservable();
+
+  private user = {
+    roles: localStorage.getItem('userRole')
+    
+  };
 
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.checkLoginStatus());
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
@@ -103,5 +108,11 @@ export class UserService {
     this.isLoggedInSubject.next(true);
     this.loadUserProfile();
     
+  }
+
+  
+
+  hasRole(role: string): boolean | undefined {
+    return this.user.roles === role;
   }
 }

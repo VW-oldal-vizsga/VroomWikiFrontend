@@ -58,7 +58,10 @@ export class ProfileComponent implements OnInit {
         this.http.get('http://localhost:5269/api/Auth').subscribe({
           next: (data) => {
             this.userData = data;
+            console.log(data);
+            
             localStorage.setItem('user_id', this.userData.id);
+            localStorage.setItem('userRole', this.userData.roles)
             observer.next(data);
             observer.complete();
           },
@@ -95,6 +98,7 @@ export class ProfileComponent implements OnInit {
 
   logout(): void {
     this.userService.logout();
+    localStorage.removeItem('userRole')
     this.router.navigate(['/login-signup']);
   }
 
