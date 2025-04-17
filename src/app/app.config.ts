@@ -14,10 +14,11 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideToastr({
-      positionClass: 'toast-top-full-width',
-      timeOut: 3000,
+      positionClass: 'toast-top-center',
+      timeOut: 10000,
       progressBar: true,
-      preventDuplicates: true
+      preventDuplicates: true,
+      
     }),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     {
