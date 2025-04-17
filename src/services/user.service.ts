@@ -101,6 +101,7 @@ export class UserService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
+    localStorage.removeItem('userRole')
     this.isLoggedInSubject.next(false);
     this.userSubject.next(null);
   }

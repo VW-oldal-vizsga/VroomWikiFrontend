@@ -30,11 +30,11 @@ export class oldModelsService {
       return this.http.post<ICard[]>(`${this.apiUrl}/api/PastModels`, newCard)
     }
 
-    deleteConfigurators(id: number | null): Observable<any> {
+    deleteOldModels(id: number | null): Observable<any> {
       if (id === null) {
         throw new Error('Érvénytelen konfigurátor ID');
       }
-      return this.http.delete<void>(`${this.apiUrl}api/PastModels/${id}`);
+      return this.http.delete<void>(`${this.apiUrl}/api/PastModels/${id}`);
     }
     
     
