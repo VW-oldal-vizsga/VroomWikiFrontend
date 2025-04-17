@@ -22,7 +22,11 @@ export class UserService {
 
   private apiUrl = 'http://localhost:5269';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (this.checkLoginStatus()) {
+      this.loadUserProfile();
+    }
+  }
 
   private checkLoginStatus(): boolean {
     return !!this.getToken();
@@ -65,17 +69,15 @@ export class UserService {
       next: (response) => {
         const user: ProfileData = {
           validTo: response.user.validTo,
-          id:response.user.id,
+          id: response.user.id,
           email: response.user.email,
           roles: response.user.roles,
           token: response.user.token
         };
         this.userSubject.next(user);
-        
       },
       error: (err) => {
         console.error('Profil betöltési hiba:', err);
-        this.logout();
       }
     });
   }
@@ -112,7 +114,12 @@ export class UserService {
 
   
 
-  hasRole(role: string): boolean | undefined {
-    return this.user.roles === role;
+  hasRole(role: string): boolean {
+    const user = this.userSubject.getValue();
+    if (user?.roles) {
+      return user.roles.includes(role);
+    }
+    const roles = JSON.parse(localStorage.getItem('userRole') || '[]');
+    return roles.includes(role);
   }
 }

@@ -19,7 +19,7 @@
                             
                         </div>
                         <div *ngIf="isAdmin" class="card-footer text-center">
-                            <button class="btn btn-danger btn-sm" (click)="onDeleteItem(card.id)">🗑️</button>
+                            <button class="btn btn-danger btn-sm" (click)="onDeleteItem(card.id); $event.stopPropagation()" >🗑️</button>
                         </div>
                     </button>
                     

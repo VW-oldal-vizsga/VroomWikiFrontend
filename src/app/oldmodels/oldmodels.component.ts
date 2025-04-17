@@ -29,7 +29,7 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
       this.isAdmin = user?.roles?.includes('Admin') ?? false;
     });
     this.subscriptions.add(sub);
-
+  
     this.oldModelsService.getOldModels().subscribe({
       next: (data) => {
         this.cardData = data;
@@ -50,7 +50,18 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
   }
 
   onDeleteItem(id: number) {
-    console.log(`Törlés gombra kattintva, ID: ${id}`);
+    if (confirm('Biztosan törölni szeretnéd ezt az elemet?')) {
+      this.oldModelsService.deleteOldModels(id).subscribe({
+        next: () => {
+          this.cardData = this.cardData.filter(card => card.id !== id);
+          alert('Sikeresen törölve!');
+        },
+        error: (error) => {
+          console.error(`Hiba a törlés során (ID: ${id}):`, error);
+          alert('Hiba történt a törlés során. Kérlek, próbáld újra!');
+        }
+      });
+    }
   }
 
   private loadCardImages(): void {
