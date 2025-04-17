@@ -6,6 +6,8 @@ import { ICard } from '../../models/oldModels.interface';
 import { oldModelsService } from '../../services/oldModelsService.service';
 import { UserService } from '../../services/user.service';
 import { Subscription } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PastModelNewComponent } from '../modals/past-model-new/past-model-new.component';
 
 @Component({
   selector: 'app-oldmodels',
@@ -22,14 +24,14 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
   private userService = inject(UserService);
 
-  constructor(private router: Router, private oldModelsService: oldModelsService) {}
+  constructor(private router: Router, private oldModelsService: oldModelsService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     const sub = this.userService.user$.subscribe(user => {
       this.isAdmin = user?.roles?.includes('Admin') ?? false;
     });
     this.subscriptions.add(sub);
-  
+
     this.oldModelsService.getOldModels().subscribe({
       next: (data) => {
         this.cardData = data;
@@ -46,6 +48,7 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
   }
 
   onAddItem() {
+    this.openModal()
     console.log('Hozzáadás gombra kattintva');
   }
 
@@ -76,6 +79,11 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
         }
       });
     });
+  }
+
+  openModal() {
+    const modalRef = this.modalService.open(PastModelNewComponent);
+      modalRef.componentInstance.name = 'New';
   }
 
   ngOnDestroy(): void {
