@@ -1,1 +1,166 @@
-<p>past-model-new works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">Régi modell hozzáadása</h4>
+</div>
+<div class="modal-body">
+    <form #cardForm="ngForm">
+        <div class="form-group">
+            <label for="name">Név</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
+                name="name" 
+                [(ngModel)]="newCard[0].name" 
+                required 
+                #name="ngModel" 
+                [ngClass]="{'is-invalid': name.invalid && name.touched}">
+            <div *ngIf="name.invalid && name.touched" class="invalid-feedback">
+                A név megadása kötelező.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Leírás</label>
+            <textarea 
+                class="form-control" 
+                id="description" 
+                name="description" 
+                [(ngModel)]="newCard[0].description" 
+                required 
+                #description="ngModel" 
+                [ngClass]="{'is-invalid': description.invalid && description.touched}"></textarea>
+            <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
+                A leírás megadása kötelező.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="releaseDate">Kiadás dátuma</label>
+            <input 
+                type="number" 
+                class="form-control" 
+                id="releaseDate" 
+                name="releaseDate" 
+                [(ngModel)]="newCard[0].releaseDate" 
+                required 
+                #releaseDate="ngModel" 
+                [ngClass]="{'is-invalid': releaseDate.invalid && releaseDate.touched}">
+            <div *ngIf="releaseDate.invalid && releaseDate.touched" class="invalid-feedback">
+                A kiadás dátuma megadása kötelező.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Kép feltöltése</label>
+            <input 
+                type="file" 
+                class="form-control-file" 
+                id="image" 
+                name="image" 
+                accept="image/*" 
+                (change)="onFileSelected($event)">
+            <div *ngIf="imageError" class="text-danger">
+                {{ imageError }}
+            </div>
+            <img *ngIf="newCard[0].imageBase64" [src]="newCard[0].imageBase64" alt="Előnézet" class="img-preview mt-2">
+        </div>
+
+        <div class="form-group">
+            <label for="assembly">Összeszerelés</label>
+            <div class="input-group mb-2">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="assemblyInput" 
+                    [(ngModel)]="assemblyInput" 
+                    name="assemblyInput" 
+                    placeholder="Összeszerelés hozzáadása">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="addAssembly()">Hozzáad</button>
+                </div>
+            </div>
+            <ul class="list-group" *ngIf="newCard[0].assembly.length > 0">
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of newCard[0].assembly; let i = index">
+                    {{ item }}
+                    <button class="btn btn-sm btn-danger" (click)="removeAssembly(i)">Töröl</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="production">Gyártás</label>
+            <div class="input-group mb-2">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="productionInput" 
+                    [(ngModel)]="productionInput" 
+                    name="productionInput" 
+                    placeholder="Gyártás hozzáadása">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="addProduction()">Hozzáad</button>
+                </div>
+            </div>
+            <ul class="list-group" *ngIf="newCard[0].production.length > 0">
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of newCard[0].production; let i = index">
+                    {{ item }}
+                    <button class="btn btn-sm btn-danger" (click)="removeProduction(i)">Töröl</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="design">Tervezés</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="design" 
+                name="design" 
+                [(ngModel)]="newCard[0].design" 
+                #design="ngModel">
+        </div>
+
+        <div class="form-group">
+            <label for="designer">Tervező</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="designer" 
+                name="designer" 
+                [(ngModel)]="newCard[0].designer" 
+                #designer="ngModel">
+        </div>
+
+        <div class="form-group">
+            <label for="engine">Motor</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="engine" 
+                name="engine" 
+                [(ngModel)]="newCard[0].engine" 
+                #engine="ngModel">
+        </div>
+
+        <div class="form-group">
+            <label for="horsepower">Lóerő</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="horsepower" 
+                name="horsepower" 
+                [(ngModel)]="newCard[0].horsepower" 
+                #horsepower="ngModel">
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Mégse</button>
+    <button 
+        type="button" 
+        class="btn btn-primary" 
+        (click)="save()" 
+        [disabled]="cardForm.invalid">
+        Hozzáadás
+    </button>
+</div>

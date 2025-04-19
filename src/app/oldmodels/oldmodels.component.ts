@@ -49,6 +49,7 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
 
   onAddItem() {
     this.openModal()
+    
     console.log('Hozzáadás gombra kattintva');
   }
 
@@ -84,6 +85,7 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
   openModal() {
     const modalRef = this.modalService.open(PastModelNewComponent);
       modalRef.componentInstance.name = 'New';
+      modalRef.componentInstance.isEditing = false; 
   }
 
   ngOnDestroy(): void {

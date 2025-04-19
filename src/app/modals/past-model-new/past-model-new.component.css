@@ -1,0 +1,38 @@
+.form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .invalid-feedback {
+    display: none;
+  }
+  
+  .is-invalid ~ .invalid-feedback {
+    display: block;
+  }
+  
+  textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .img-preview {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-control-file {
+    display: block;
+    margin-top: 0.5rem;
+  }
+  
+  .list-group-item {
+    font-size: 0.9rem;
+  }
+  
+  .list-group {
+    max-height: 150px;
+    overflow-y: auto;
+  }
