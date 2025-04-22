@@ -17,7 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from '../services/auth.guard';
 
 export const routes: Routes = [
-    { path: '', component: MainComponent },
+    { path: 'main', component: MainComponent },
     { path: 'navbar', component: NavbarComponent },
     { path: 'maincontent', component: MainComponent},
     { path: 'oldmodels', component:OldmodelsComponent},

@@ -6,7 +6,7 @@
         </button>
         
         <ul class="navbar-nav d-none d-lg-flex flex-row gap-5">
-            <li class="nav-item"><a class="nav-link" href="#">{{ 'NAVBAR.MAINPAGE' | translate}}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/main" href="#">{{ 'NAVBAR.MAINPAGE' | translate}}</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/oldmodels">{{ 'NAVBAR.PREVIOUS' | translate}}</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/sales-graph">{{ 'NAVBAR.SALESGRAPH' | translate}}</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/configuratorMain">{{ 'NAVBAR.CONFIGURATOR' | translate}}</a></li>
@@ -19,7 +19,6 @@
     </div>
 </nav>
 
-<!-- Offcanvas Sidebar for small screens -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title">Menü</h5>

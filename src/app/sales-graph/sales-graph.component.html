@@ -4,13 +4,32 @@
   <div class="container">
     <div class="middle">
       <div class="mainContentContainer rowPadding">
-        <div class="filter-container">
-          <label for="yearFilter">Filter by Year: </label>
-          <select id="yearFilter" (change)="onYearChange($event)">
-            <option value="all">All Years</option>
-            <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
-          </select>
+        <div class="filter-section" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; margin-bottom: 1.5rem;">
+          <div class="filter-group">
+            <label for="yearFilter">Filter by Range:</label><br />
+            <select id="yearFilter" (change)="onYearChange($event)" class="form-select">
+              <option value="all">All Years</option>
+              <option *ngFor="let range of availableYearRanges" [value]="range.start">
+                {{ range.start }}–{{ range.end }}
+              </option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="startYear">Start Year:</label><br />
+            <input type="number" id="startYear" [(ngModel)]="startYear" class="form-control" />
+          </div>
+        
+          <div class="filter-group">
+            <label for="endYear">End Year:</label><br />
+            <input type="number" id="endYear" [(ngModel)]="endYear" class="form-control" />
+          </div>
+
+          <div class="filter-group">
+            <button class="btn btn-primary" style="margin-top: 1.6rem;" (click)="onCustomRangeFilter()">Filter</button>
+          </div>
         </div>
+        
   
         <div class="chartContainer">
           <div class="chart-container">

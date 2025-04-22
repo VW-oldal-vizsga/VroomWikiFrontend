@@ -4,6 +4,7 @@ import { Chart, ChartConfiguration, registerables, TooltipItem } from 'chart.js'
 import { SalesService } from '../../services/sales.service';
 import { FilteredChartData, SalesData } from '../../models/sales.interface';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 Chart.register(...registerables);
@@ -12,7 +13,7 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-sales-graph',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, FormsModule],
   templateUrl: './sales-graph.component.html',
   styleUrls: ['./sales-graph.component.css'],
 })
@@ -20,16 +21,31 @@ export class SalesGraphComponent implements OnInit {
   chart: any;
   availableYears: number[] = [];
   salesData: SalesData[] = [];
+  availableYearRanges: { start: number, end: number }[] = [];
+  startYear: number | null = null;
+  endYear: number | null = null;
+
 
   constructor(private salesService: SalesService) {}
 
   ngOnInit(): void {
     this.salesService.getSalesData().subscribe((data: SalesData[]) => {
       this.salesData = data;
-      this.availableYears = [...new Set(data.map((item: SalesData) => item.year))] as number[];
-      this.availableYears.sort((a, b) => a - b);
+      const uniqueYears = [...new Set(data.map((item: SalesData) => item.year))] as number[];
+      uniqueYears.sort((a, b) => a - b);
+  
+      this.availableYearRanges = uniqueYears
+        .filter((year) => uniqueYears.includes(year + 1) && uniqueYears.includes(year + 2))
+        .map((year) => ({ start: year, end: year + 2 }));
+  
       this.renderChart('all');
     });
+  }
+
+  onCustomRangeFilter() {
+    if (this.startYear !== null && this.endYear !== null && this.startYear <= this.endYear) {
+      this.renderChartByRange(this.startYear, this.endYear);
+    }
   }
 
   private getChartConfig(filteredData: FilteredChartData, chartType: 'line' | 'bar'): ChartConfiguration<'line' | 'bar', number[], number> {
@@ -89,10 +105,34 @@ export class SalesGraphComponent implements OnInit {
     };
   }
 
+  renderChartByRange(startYear: number, endYear: number) {
+    const filteredData: FilteredChartData = {
+      labels: [],
+      totalIncome: [],
+      totalSale: [],
+    };
+  
+    const rangeData = this.salesData
+      .filter(item => item.year >= startYear && item.year <= endYear)
+      .sort((a, b) => a.year - b.year);
+  
+    filteredData.labels = rangeData.map(item => item.year);
+    filteredData.totalSale = rangeData.map(item => item.totalSale);
+    filteredData.totalIncome = rangeData.map(item => item.totalIncome);
+  
+    if (this.chart) {
+      this.chart.destroy();
+    }
+  
+    const config = this.getChartConfig(filteredData, 'line');
+    this.chart = new Chart('MyChart', config);
+  }
+
   renderChart(selectedYear: string) {
     const filteredData: FilteredChartData = {
       labels: [],
       totalIncome: [],
+      totalSale: [],
     };
   
     if (selectedYear === 'all') {
@@ -100,22 +140,28 @@ export class SalesGraphComponent implements OnInit {
       filteredData.totalSale = this.salesData.map((item) => item.totalSale);
       filteredData.totalIncome = this.salesData.map((item) => item.totalIncome);
     } else {
-      const yearData = this.salesData.filter((item) => item.year === +selectedYear);
-      filteredData.labels = yearData.map((item) => item.year);
-      filteredData.totalSale = yearData.map((item) => item.totalSale);
-      filteredData.totalIncome = yearData.map((item) => item.totalIncome);
+      const startYear = +selectedYear;
+      const endYear = startYear + 2;
+  
+      const rangeData = this.salesData
+        .filter((item) => item.year >= startYear && item.year <= endYear)
+        .sort((a, b) => a.year - b.year);
+  
+      filteredData.labels = rangeData.map((item) => item.year);
+      filteredData.totalSale = rangeData.map((item) => item.totalSale);
+      filteredData.totalIncome = rangeData.map((item) => item.totalIncome);
     }
   
-    const chartType: 'line' | 'bar' = selectedYear === 'all' ? 'line' : 'bar';
-  
+    const chartType: 'line' | 'bar' = 'line';
+
     if (this.chart) {
       this.chart.destroy();
     }
   
-
     const config = this.getChartConfig(filteredData, chartType);
     this.chart = new Chart('MyChart', config);
   }
+  
 
   onYearChange(event: Event) {
     const selectedYear = (event.target as HTMLSelectElement).value;
