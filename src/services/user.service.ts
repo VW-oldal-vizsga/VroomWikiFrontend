@@ -12,11 +12,6 @@ export class UserService {
   private userSubject = new BehaviorSubject<any | null>(null);
   user$ = this.userSubject.asObservable();
 
-  private user = {
-    roles: localStorage.getItem('userRole')
-    
-  };
-
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.checkLoginStatus());
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
@@ -101,7 +96,6 @@ export class UserService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
-    localStorage.removeItem('userRole')
     this.isLoggedInSubject.next(false);
     this.userSubject.next(null);
   }
@@ -113,14 +107,12 @@ export class UserService {
     
   }
 
-  
+  getCurrentUser(): any {
+    return this.userSubject.value;
+  }
 
   hasRole(role: string): boolean {
-    const user = this.userSubject.getValue();
-    if (user?.roles) {
-      return user.roles.includes(role);
-    }
-    const roles = JSON.parse(localStorage.getItem('userRole') || '[]');
-    return roles.includes(role);
+    const user = this.getCurrentUser();
+    return !!user && Array.isArray(user.roles) && user.roles.includes(role);
   }
 }

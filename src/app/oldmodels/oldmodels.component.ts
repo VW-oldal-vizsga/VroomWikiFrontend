@@ -22,15 +22,13 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
   isAdmin: boolean = false;
 
   private subscriptions = new Subscription();
-  private userService = inject(UserService);
+  public userService = inject(UserService);
 
   constructor(private router: Router, private oldModelsService: oldModelsService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    const sub = this.userService.user$.subscribe(user => {
-      this.isAdmin = user?.roles?.includes('Admin') ?? false;
-    });
-    this.subscriptions.add(sub);
+
+    this.isAdmin = this.userService.hasRole('Admin');
 
     this.oldModelsService.getOldModels().subscribe({
       next: (data) => {
@@ -49,8 +47,6 @@ export class OldmodelsComponent implements OnInit, OnDestroy {
 
   onAddItem() {
     this.openModal()
-    
-    console.log('Hozzáadás gombra kattintva');
   }
 
   onDeleteItem(id: number) {

@@ -59,9 +59,7 @@ export class ProfileComponent implements OnInit {
           next: (data) => {
             this.userData = data;
             console.log(data);
-            
             localStorage.setItem('user_id', this.userData.id);
-            localStorage.setItem('userRole', this.userData.roles)
             observer.next(data);
             observer.complete();
           },
