@@ -11,11 +11,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { ConfigModalComponent } from '../modals/config-modal/config-modal.component';
 import { ToastrService } from 'ngx-toastr';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule,TranslatePipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

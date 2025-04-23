@@ -6,7 +6,7 @@
   <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
   <form>
     <div class="mb-3">
-      <label for="configName" class="form-label">Konfiguráció neve</label>
+      <label for="configName" class="form-label">{{"MODAL.CONFIGURATORNAME" | translate}}</label>
       <input
         type="text"
         class="form-control"
@@ -18,7 +18,7 @@
       />
     </div>
     <div class="mb-3">
-      <label for="color" class="form-label">Szín</label>
+      <label for="color" class="form-label">{{"MODAL.COLOR" | translate}}</label>
       <select
         class="form-select"
         id="color"
@@ -27,11 +27,11 @@
         [disabled]="!isEditing"
         (ngModelChange)="onColorChange($event)"
       >
-        <option *ngFor="let color of colors" [value]="color.id">{{ color.name }} ({{ color.price }} Ft)</option>
+        <option *ngFor="let color of colors" [value]="color.id">{{ color.name }} ({{ color.price }} {{"MODAL.HUF" | translate}})</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="engine" class="form-label">Motor</label>
+      <label for="engine" class="form-label">{{"MODAL.ENGINE" | translate}}</label>
       <select
         class="form-select"
         id="engine"
@@ -40,11 +40,11 @@
         [disabled]="!isEditing"
         (ngModelChange)="onEngineChange($event)"
       >
-        <option *ngFor="let engine of engines" [value]="engine.id">{{ engine.name }} ({{ engine.price }} Ft)</option>
+        <option *ngFor="let engine of engines" [value]="engine.id">{{ engine.name }} ({{ engine.price }} {{"MODAL.HUF" | translate}})</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="transmission" class="form-label">Váltó</label>
+      <label for="transmission" class="form-label">{{"MODAL.TRANSMISSION" | translate}}</label>
       <select
         class="form-select"
         id="transmission"
@@ -54,17 +54,17 @@
         (ngModelChange)="onTransmissionChange($event)"
       >
         <option *ngFor="let transmission of transmissionTypes" [value]="transmission.id">
-          {{ transmission.name }} ({{ transmission.price }} Ft)
+          {{ transmission.name }} ({{ transmission.price }} {{"MODAL.HUF" | translate}})
         </option>
       </select>
     </div>
     <div class="mb-3">
-      <label class="form-label">Teljes ár</label>
-      <p class="form-control-static">{{ totalPrice | number }} Ft</p>
+      <label class="form-label">{{"MODAL.FULLPRICE" | translate}}</label>
+      <p class="form-control-static">{{ totalPrice | number }} {{"MODAL.HUF" | translate}}</p>
     </div>
   </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Mégse</button>
-  <button *ngIf="isEditing" type="button" class="btn btn-primary" (click)="save()">Mentés</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">{{ "BUTTONS.CANCEL" | translate}}</button>
+  <button *ngIf="isEditing" type="button" class="btn btn-primary" (click)="save()">{{"BUTTONS.SAVE" | translate}}</button>
 </div>

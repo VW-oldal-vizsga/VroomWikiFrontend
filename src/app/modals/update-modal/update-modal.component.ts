@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { IColor, IConfiguratorPut, IEngine, ITransmissionType } from '../../../models/configurator.interface';
 import { ConfiguratorService } from '../../../services/configurator.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-update-modal',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TranslatePipe],
   templateUrl: './update-modal.component.html',
   styleUrls: ['./update-modal.component.css']
 })

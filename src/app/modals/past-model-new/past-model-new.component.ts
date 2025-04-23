@@ -4,11 +4,12 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICard } from '../../../models/oldModels.interface';
 import { FormsModule } from '@angular/forms';
 import { oldModelsService } from '../../../services/oldModelsService.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-past-model-new',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './past-model-new.component.html',
   styleUrl: './past-model-new.component.css',
   providers: [NgbModal]

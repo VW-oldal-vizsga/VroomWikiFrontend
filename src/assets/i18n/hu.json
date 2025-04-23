@@ -30,7 +30,14 @@
     },
     "BUTTONS":{
         "BACK": "Vissza",
-        "CHOOSE": "Kiválasztás"
+        "CHOOSE": "Kiválasztás",
+        "CLICK": "Kattints rám!",
+        "LOGOUT": "Kijelentkezés",
+        "FILTER": "Szűrés",
+        "ADD": "Hozzáadás",
+        "CANCEL": "Mégse",
+        "SAVE": "Mentés",
+        "CLEAR": "Töröl"
     },
     "NAVBAR": {
         "MAINPAGE": "Kezdőlap",
@@ -60,5 +67,39 @@
         "CHOOSEOURTYPE": "Válasszon típusaink közül!",
         "CHOOSEOUTSIDECOLOR": "Válassz egy külső színt!",
         "CHOSENCOLOR": "Választott szín:"
+    },
+    "PROFILE": {
+        "WELCOME": "Üdvözöllek!",
+        "EMAIL": "Email címed:",
+        "CONFIGURATOR": "Konfigurációi",
+        "NOCONFIGURATOR": "Még nincsenek konfigurációid!",
+        "NEWCONFIGURATOR": "Szeretnél csinálni egyet?"
+    },
+    "SALESGRAPH": {
+        "FILTER": "Szűrés tartomány szerint:",
+        "ALLYEAR": "Összes év",
+        "STARTYEAR": "Kezdő év:",
+        "ENDYEAR": "Utolsó év:"
+    },
+    "MODAL": {
+        "CONFIGURATORNAME": "Konfiguráció neve",
+        "COLOR": "Szín",
+        "ENGINE": "Motor",
+        "HUF": "Ft",
+        "TRANSMISSION": "Váltó",
+        "FULPRICE": "Teljes ár",
+        "OLDMODELADD": "Régi modell hozzáadása",
+        "NAME": "Név",
+        "REQUIREDNAME": "A név megadása kötelező.",
+        "DESCRIPTION": "Leírás",
+        "REQUIREDDESC": "A leírás megadása kötelező.",
+        "RELEASEDATE": "Kiadás dátuma",
+        "REQUIREDDATE": "A kiadás dátuma megadása kötelező.",
+        "UPLOADIMAGE": "Kép feltöltése",
+        "ASSEMBLY": "Összeszerelés",
+        "CREATE": "Gyártás",
+        "PLANING": "Tervezés",
+        "Designer": "Tervező",
+        "HORSEPOWER": "Lóerő"
     }
 }

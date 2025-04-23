@@ -30,7 +30,13 @@
     },
     "BUTTONS": {
         "BACK": "Back",
-        "CHOOSE": "Choose"
+        "CHOOSE": "Choose",
+        "CLICK": "Click on me!",
+        "LOGOUT": "Logout",
+        "FILTER": "Filter",
+        "ADD": "Add to",
+        "CANCEL": "Cancel",
+        "SAVE": "Save"
     },
     "NAVBAR": {
         "MAINPAGE": "Main Page",
@@ -60,6 +66,40 @@
         "CHOOSEOURTYPE": "Choose from our types!",
         "CHOOSEOUTSIDECOLOR": "Choose an external colour!",
         "CHOSENCOLOR": "Choice of colour:"
+    },
+    "PROFILE": {
+        "WELCOME": "Welcome!",
+        "EMAIL": "Your email address:",
+        "CONFIGURATOR": "Configurations",
+        "NOCONFIGURATOR": "No configurations yet!",
+        "NEWCONFIGURATOR": "Want to make one?"
+    },
+    "SALESGRAPH": {
+        "FILTER": "Filter by Range",
+        "ALLYEAR": "All year",
+        "STARTYEAR": "Start year",
+        "ENDYEAR": "End year"
+    },
+    "MODAL": {
+        "CONFIGURATORNAME": "Configuration name",
+        "COLOR": "Color",
+        "ENGINE": "Engine",
+        "HUF": "Ft",
+        "TRANSMISSION": "Transmission",
+        "FULPRICE": "Full Price",
+        "OLDMODELADD": "Add Old Model",
+        "NAME": "Name",
+        "REQUIREDNAME": "Name is required.",
+        "DESCRIPTION": "Description",
+        "REQUIREDDESC": "Description is required.",
+        "RELEASEDATE": "Release Date",
+        "REQUIREDDATE": "Release date is required.",
+        "UPLOADIMAGE": "Upload Image",
+        "ASSEMBLY": "Assembly",
+        "CREATE": "Production",
+        "PLANING": "Planning",
+        "Designer": "Designer",
+        "HORSEPOWER": "Horsepower"
     }
 
 }

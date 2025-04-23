@@ -56,12 +56,12 @@
             <div class="accordion">
               <div *ngFor="let item of historyData; let i = index" class="accordion-item">
                 <div class="accordion-header" (click)="toggle(i)">
-                  <h4>{{ item.title }}</h4>
+                  <h4>{{ getTitle(item) }}</h4>
                 </div>
                 <div class="accordion-body" *ngIf="item.open" (click)="toggle(i)">
-                  <p>{{ item.history }}</p>
-                  <p>{{ item.history2 }}</p>
-                  <p>{{ item.history3 }}</p>
+                  <p>{{ getHistory(item) }}</p>
+                  <p>{{ getHistory2(item) }}</p>
+                  <p>{{ getHistory3(item) }}</p>
                 </div>
               </div>
             </div>

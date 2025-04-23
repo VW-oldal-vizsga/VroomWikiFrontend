@@ -8,11 +8,12 @@ import { UserService } from '../../services/user.service';
 import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PastModelNewComponent } from '../modals/past-model-new/past-model-new.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-oldmodels',
   standalone: true,
-  imports: [NavbarComponent, CommonModule],
+  imports: [NavbarComponent, CommonModule, TranslatePipe],
   templateUrl: './oldmodels.component.html',
   styleUrls: ['./oldmodels.component.css']
 })

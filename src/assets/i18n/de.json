@@ -30,7 +30,13 @@
     },
     "BUTTONS": {
         "BACK": "Zurück",
-        "CHOOSE": "Auswählen"
+        "CHOOSE": "Auswählen",
+        "CLICK": "Klicken Sie auf mich!",
+        "LOGOUT": "Abmeldung",
+        "FILTER": "Filtern",
+        "ADD": "Hinzufügen zu",
+        "CANCEL": "Abbrechen",
+        "SAVE": "Speichern bei"
     },
     "NAVBAR": {
         "MAINPAGE": "Startseite",
@@ -60,6 +66,32 @@
         "CHOOSEOURTYPE": "Wählen Sie aus unseren Typen!",
         "CHOOSEOUTSIDECOLOR": "Wählen Sie eine Außenfarbe!",
         "CHOSENCOLOR": "Wählen Sie die Farbe:"
+    },
+    "PROFILE": {
+        "WELCOME": "Willkommen!",
+        "EMAIL": "Ihre E-Mail Adresse:",
+        "CONFIGURATOR": "Konfigurationen",
+        "NOCONFIGURATOR": "Noch keine Konfigurationen!",
+        "NEWCONFIGURATOR": "Möchten Sie eine machen?"
+    },
+    "SALESGRAPH": {
+        "FILTER": "Filtern nach Bereich:",
+        "ALLYEAR": "Jahre insgesamt",
+        "STARTYEAR": "Anfangs Jahr:",
+        "ENDYEAR": "Letztes Jahr:",
+        "OLDMODELADD": "Altes Modell hinzufügen",
+        "NAME": "Name",
+        "REQUIREDNAME": "Name ist erforderlich.",
+        "DESCRIPTION": "Beschreibung",
+        "REQUIREDDESC": "Beschreibung ist erforderlich.",
+        "RELEASEDATE": "Veröffentlichungsdatum",
+        "REQUIREDDATE": "Veröffentlichungsdatum ist erforderlich.",
+        "UPLOADIMAGE": "Bild hochladen",
+        "ASSEMBLY": "Montage",
+        "CREATE": "Produktion",
+        "PLANING": "Planung",
+        "Designer": "Designer",
+        "HORSEPOWER": "Pferdestärke"
     }
 
 }

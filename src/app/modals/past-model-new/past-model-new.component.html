@@ -1,10 +1,10 @@
 <div class="modal-header">
-    <h4 class="modal-title">Régi modell hozzáadása</h4>
+    <h4 class="modal-title">{{"MODAL.OLDMODELADD" | translate}}</h4>
 </div>
 <div class="modal-body">
     <form #cardForm="ngForm">
         <div class="form-group">
-            <label for="name">Név</label>
+            <label for="name">{{"MODAL.NAME" | translate}}</label>
             <input 
                 type="text" 
                 class="form-control" 
@@ -15,12 +15,12 @@
                 #name="ngModel" 
                 [ngClass]="{'is-invalid': name.invalid && name.touched}">
             <div *ngIf="name.invalid && name.touched" class="invalid-feedback">
-                A név megadása kötelező.
+                {{"MODAL.REQUIREDNAME" | translate}}
             </div>
         </div>
 
         <div class="form-group">
-            <label for="description">Leírás</label>
+            <label for="description">{{"MODAL.DESCRIPTION" | translate}}</label>
             <textarea 
                 class="form-control" 
                 id="description" 
@@ -30,12 +30,12 @@
                 #description="ngModel" 
                 [ngClass]="{'is-invalid': description.invalid && description.touched}"></textarea>
             <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
-                A leírás megadása kötelező.
+                {{"MODAL.REQUIREDDESC" | translate}}
             </div>
         </div>
 
         <div class="form-group">
-            <label for="releaseDate">Kiadás dátuma</label>
+            <label for="releaseDate">{{"MODAL.RELEASEDATE" | translate}}</label>
             <input 
                 type="number" 
                 class="form-control" 
@@ -46,12 +46,12 @@
                 #releaseDate="ngModel" 
                 [ngClass]="{'is-invalid': releaseDate.invalid && releaseDate.touched}">
             <div *ngIf="releaseDate.invalid && releaseDate.touched" class="invalid-feedback">
-                A kiadás dátuma megadása kötelező.
+                {{"MODAL.REQUIREDDATE" | translate}}
             </div>
         </div>
 
         <div class="form-group">
-            <label for="image">Kép feltöltése</label>
+            <label for="image">{{"MODAL.UPLOAD" | translate}}</label>
             <input 
                 type="file" 
                 class="form-control-file" 
@@ -66,7 +66,7 @@
         </div>
 
         <div class="form-group">
-            <label for="assembly">Összeszerelés</label>
+            <label for="assembly">{{"MODAL.ASSEMBLY" | translate}}</label>
             <div class="input-group mb-2">
                 <input 
                     type="text" 
@@ -76,19 +76,19 @@
                     name="assemblyInput" 
                     placeholder="Összeszerelés hozzáadása">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" (click)="addAssembly()">Hozzáad</button>
+                    <button class="btn btn-outline-secondary" type="button" (click)="addAssembly()">{{"BUTTONS.ADD" | translate}}</button>
                 </div>
             </div>
             <ul class="list-group" *ngIf="newCard[0].assembly.length > 0">
                 <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of newCard[0].assembly; let i = index">
                     {{ item }}
-                    <button class="btn btn-sm btn-danger" (click)="removeAssembly(i)">Töröl</button>
+                    <button class="btn btn-sm btn-danger" (click)="removeAssembly(i)">{{"BUTTONS.CLEAR" | translate}}</button>
                 </li>
             </ul>
         </div>
 
         <div class="form-group">
-            <label for="production">Gyártás</label>
+            <label for="production">{{"MODAL.CREATE" | translate}}</label>
             <div class="input-group mb-2">
                 <input 
                     type="text" 
@@ -98,19 +98,19 @@
                     name="productionInput" 
                     placeholder="Gyártás hozzáadása">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" (click)="addProduction()">Hozzáad</button>
+                    <button class="btn btn-outline-secondary" type="button" (click)="addProduction()">{{"BUTTONS.ADD" | translate}}</button>
                 </div>
             </div>
             <ul class="list-group" *ngIf="newCard[0].production.length > 0">
                 <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of newCard[0].production; let i = index">
                     {{ item }}
-                    <button class="btn btn-sm btn-danger" (click)="removeProduction(i)">Töröl</button>
+                    <button class="btn btn-sm btn-danger" (click)="removeProduction(i)">{{"BUTTONS.CLEAR" | translate}}</button>
                 </li>
             </ul>
         </div>
 
         <div class="form-group">
-            <label for="design">Tervezés</label>
+            <label for="design">{{"MODAL.PLAN" | translate}}</label>
             <input 
                 type="text" 
                 class="form-control" 
@@ -121,7 +121,7 @@
         </div>
 
         <div class="form-group">
-            <label for="designer">Tervező</label>
+            <label for="designer">{{"MODAL.DESIGNER" | translate}}</label>
             <input 
                 type="text" 
                 class="form-control" 
@@ -132,7 +132,7 @@
         </div>
 
         <div class="form-group">
-            <label for="engine">Motor</label>
+            <label for="engine">{{"MODAL.ENGINE" | translate}}</label>
             <input 
                 type="text" 
                 class="form-control" 
@@ -143,7 +143,7 @@
         </div>
 
         <div class="form-group">
-            <label for="horsepower">Lóerő</label>
+            <label for="horsepower">{{"MODAL.HORSEPOWER" | translate}}</label>
             <input 
                 type="text" 
                 class="form-control" 
@@ -155,12 +155,12 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Mégse</button>
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">{{ "BUTTONS.CANCEL" | translate}}</button>
     <button 
         type="button" 
         class="btn btn-primary" 
         (click)="save()" 
         [disabled]="cardForm.invalid">
-        Hozzáadás
+        {{"BUTTONS.ADD" | translate}}
     </button>
 </div>

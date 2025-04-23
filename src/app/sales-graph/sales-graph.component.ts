@@ -5,6 +5,7 @@ import { SalesService } from '../../services/sales.service';
 import { FilteredChartData, SalesData } from '../../models/sales.interface';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 Chart.register(...registerables);
@@ -13,7 +14,7 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-sales-graph',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, FormsModule],
+  imports: [NavbarComponent, CommonModule, FormsModule, TranslatePipe],
   templateUrl: './sales-graph.component.html',
   styleUrls: ['./sales-graph.component.css'],
 })

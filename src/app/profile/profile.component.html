@@ -7,14 +7,14 @@
     <div class="mainContentContainer">
       <div class="mt-5" *ngIf="userData">
         <div class="middle">
-          <h2>Üdvözöllek!</h2>
+          <h2>{{ "PROFILE.WELCOME" | translate}}</h2>
         </div>
         <div class="middle">
-          <p>Email címed: {{ userData.email }}</p>
+          <p>{{"PROFILE.EMAIL" | translate}} {{ userData.email }}</p>
         </div>
-        <div class="middle mt-3"><button class="btn bg-danger" (click)="logout()">Kijelentkezés</button></div>
+        <div class="middle mt-3"><button class="btn bg-danger text-white" (click)="logout()">{{"BUTTONS.LOGOUT" | translate}}</button></div>
       </div>
-      <div class="middle m-5 mb-0"><h1>Konfigurációi</h1></div>
+      <div class="middle m-5 mb-0"><h1>{{"PROFILE.CONFIGURATOR" | translate}}</h1></div>
     </div>
   </div>
   <div class="middle">
@@ -36,9 +36,9 @@
               </ng-container>
               <ng-template #noConfigs>
                   <div class="col-12 text-center">
-                      <h4>Még nincsenek konfigurációid</h4>
-                      <p>Szeretnél csinálni egyet?</p>
-                      <button class="btn-success" (click)="navigateToConfigurator()">Kattints rám!</button>
+                      <h4>{{"PROFILE.NOCONFIGURATOR" | translate}}</h4>
+                      <p>{{"PROFILE.NEWCONFIGURATOR" | translate}}</p>
+                      <button class="btn-success" (click)="navigateToConfigurator()">{{"BUTTONS.CLICK" |translate}}</button>
                   </div>
               </ng-template>
           </div>

@@ -59,4 +59,55 @@ export class MaincontentComponent {
     
 
   }
+
+  getHistory(item: any) {
+    switch (this.translate.currentLang) {
+      case 'hu':
+        return item.history;
+      case 'en':
+        return item.historyEN;
+      case 'de':
+        return item.historyDU;
+      default:
+        return item.history;
+    }
+  }
+  getHistory2(item: any) {
+    switch (this.translate.currentLang) {
+      case 'hu':
+        return item.history2;
+      case 'en':
+        return item.history2EN;
+      case 'de':
+        return item.history2DU;
+      default:
+        return item.history2;
+    }
+  }
+
+  getHistory3(item:any) {
+    switch (this.translate.currentLang) {
+      case 'hu':
+        return item.history3;
+      case 'en':
+        return item.history3EN;
+      case 'de':
+        return item.history3DU;
+      default:
+        return item.history3;
+    }
+  }
+
+  getTitle(item:any) {
+    switch (this.translate.currentLang) {
+      case 'hu':
+        return item.title;
+      case 'en':
+        return item.titleEN;
+      case 'de':
+        return item.titleDU;
+      default:
+        return item.title;
+    }
+  }
 }
