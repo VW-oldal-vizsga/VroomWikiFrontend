@@ -36,7 +36,8 @@
         "FILTER": "Filtern",
         "ADD": "Hinzufügen zu",
         "CANCEL": "Abbrechen",
-        "SAVE": "Speichern bei"
+        "SAVE": "Speichern bei",
+        "CLEAR": "Löschen"
     },
     "NAVBAR": {
         "MAINPAGE": "Startseite",
