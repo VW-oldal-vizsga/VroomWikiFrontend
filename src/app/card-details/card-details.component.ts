@@ -4,7 +4,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { ICard } from '../../models/oldModels.interface';
 import { oldModelsService } from '../../services/oldModelsService.service';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-card-details',
@@ -21,7 +21,8 @@ export class CardDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private oldModelsService: oldModelsService
+    private oldModelsService: oldModelsService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -65,5 +66,30 @@ export class CardDetailsComponent implements OnInit {
 
   navigateToDetail() {
     this.router.navigate(['/oldmodels']);
+  }
+
+  getDescription(item: any) {
+    switch (this.translate.currentLang) {
+      case 'hu':
+        return item.descriptionHU;
+      case 'en':
+        return item.descriptionEN;
+      case 'de':
+        return item.descriptionDE;
+      default:
+        return item.descriptionHU;
+    }
+  }
+  getDesign(item: any) {
+    switch (this.translate.currentLang) {
+      case 'hu':
+        return item.designHU;
+      case 'en':
+        return item.designEN;
+      case 'de':
+        return item.designDE;
+      default:
+        return item.designHU;
+    }
   }
 }
