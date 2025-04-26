@@ -25,7 +25,7 @@
                 class="form-control" 
                 id="description" 
                 name="description" 
-                [(ngModel)]="newCard[0].description" 
+                [(ngModel)]="newCard[0].descriptionHU" 
                 required 
                 #description="ngModel" 
                 [ngClass]="{'is-invalid': description.invalid && description.touched}"></textarea>
@@ -116,7 +116,7 @@
                 class="form-control" 
                 id="design" 
                 name="design" 
-                [(ngModel)]="newCard[0].design" 
+                [(ngModel)]="newCard[0].designHU" 
                 #design="ngModel">
         </div>
 

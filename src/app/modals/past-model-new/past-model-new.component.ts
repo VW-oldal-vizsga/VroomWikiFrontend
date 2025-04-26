@@ -18,9 +18,13 @@ export class PastModelNewComponent {
   newCard: ICard[] = [{
     id: 0,
     name: '',
-    description: '',
+    descriptionHU: '',
+    descriptionEN: '',
+    descriptionDE: '',
     releaseDate: 0,
-    design: '',
+    designHU: '',
+    designDE: '',
+    designEN: '',
     designer: '',
     assembly: [],
     production: [], 
@@ -96,7 +100,7 @@ export class PastModelNewComponent {
   }
 
   save() {
-    if (!this.newCard[0].name || !this.newCard[0].description || !this.newCard[0].releaseDate) {
+    if (!this.newCard[0].name || !this.newCard[0].descriptionHU || !this.newCard[0].releaseDate) {
       console.error('Hiányzó kötelező mezők');
       return;
     }
